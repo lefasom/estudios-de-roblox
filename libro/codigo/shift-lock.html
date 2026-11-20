@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shift Lock — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/shift-lock.html">
+<div class="hoja">
+  <h2>🔒 Script del Shift Lock</h2>
+  <p>Con <b>Shift Lock</b> la cámara queda fija atrás de tu personaje y el mouse en el centro. Así es más fácil saltar derecho en la torre.</p>
+  <div class="dibujo">
+    <svg width="520" height="160" viewBox="0 0 520 160" font-family="Segoe UI, Arial">
+      <rect x="10" y="10" width="500" height="140" rx="10" fill="#9fc7ef" stroke="#555"/>
+      <rect x="10" y="110" width="500" height="40" fill="#8a8fa3"/>
+      <circle cx="260" cy="70" r="14" fill="#ffd36b" stroke="#333" stroke-width="2"/><rect x="248" y="84" width="24" height="26" fill="#3b82f6" stroke="#333" stroke-width="2"/>
+      <line x1="285" y1="60" x2="295" y2="60" stroke="#fff" stroke-width="2"/><line x1="290" y1="55" x2="290" y2="65" stroke="#fff" stroke-width="2"/>
+      <text x="330" y="55" font-size="12" fill="#fff">← el mouse, en el centro</text>
+      <rect x="370" y="112" width="130" height="30" rx="8" fill="#00aa5a"/><text x="435" y="132" font-size="13" text-anchor="middle" fill="#fff" font-weight="700">🔒 Shift Lock: SÍ</text>
+    </svg>
+  </div>
+  <ul>
+    <li>Apretás <b>Shift</b> → se prende 🔒. Apretás otra vez → se apaga 🔓.</li>
+    <li>Abajo a la derecha hay un <b>botón</b> que dice si está prendido o no (y sirve en celular).</li>
+  </ul>
+  <div class="tip">📍 <b>Dónde está:</b> <b>StarterPlayer → StarterPlayerScripts → ShiftLock</b>. Es un <b>LocalScript</b>, porque maneja <b>tu</b> cámara y <b>tus</b> teclas.</div>
+  <p>Roblox ya trae un Shift Lock, pero cada jugador tiene que prenderlo en su menú. Por eso hicimos uno propio que siempre funciona. Para que no haya dos peleándose, apagamos el de Roblox: elegí <b>StarterPlayer</b> → característica <b>EnableMouseLockOption</b> → ☐ destildado.</p>
+
+  <h3>Parte 1: los servicios</h3>
+<pre>local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService") <span class="c">-- teclas y mouse</span>
+local RunService = game:GetService("RunService")             <span class="c">-- el reloj del juego</span>
+
+local jugador = Players.LocalPlayer   <span class="c">-- VOS (solo existe en un LocalScript)</span>
+local camara = workspace.CurrentCamera
+local prendido = false                <span class="c">-- empieza apagado</span></pre>
+
+  <h3>Parte 2: el botón en la pantalla</h3>
+<pre>local gui = Instance.new("ScreenGui")      <span class="c">-- una "hoja" pegada a tu pantalla</span>
+gui.Name = "ShiftLockGui"
+gui.ResetOnSpawn = false
+gui.Parent = jugador:WaitForChild("PlayerGui")
+
+local boton = Instance.new("TextButton")   <span class="c">-- un botón con letras</span>
+boton.Size = UDim2.fromOffset(150, 44)
+boton.AnchorPoint = Vector2.new(1, 1)
+boton.Position = UDim2.new(1, -20, 1, -20) <span class="c">-- abajo a la derecha</span>
+boton.Font = Enum.Font.FredokaOne
+boton.TextSize = 20
+boton.TextColor3 = Color3.new(1, 1, 1)
+boton.Parent = gui
+Instance.new("UICorner", boton).CornerRadius = UDim.new(0, 10) <span class="c">-- esquinas redondas</span></pre>
+  <p><code>Instance.new</code> = "<b>crear</b> una cosa nueva" desde el código. Es lo mismo que apretar <b>+</b> en la lista, pero con código.</p>
+
+  <h3>Parte 3: prender y apagar</h3>
+<pre>local function pintar()
+    if prendido then
+        boton.Text = "🔒 Shift Lock: SÍ"
+        boton.BackgroundColor3 = Color3.fromRGB(0, 170, 90)   <span class="c">-- verde</span>
+    else
+        boton.Text = "🔓 Shift Lock: NO"
+        boton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)   <span class="c">-- gris</span>
+    end
+end
+
+local function cambiar()
+    prendido = not prendido   <span class="c">-- si estaba prendido, se apaga; y al revés</span>
+    pintar()
+    local personaje = jugador.Character
+    local humanoide = personaje and personaje:FindFirstChildOfClass("Humanoid")
+    if humanoide then
+        humanoide.AutoRotate = not prendido
+        humanoide.CameraOffset = prendido and Vector3.new(1.75, 0, 0) or Vector3.zero
+    end
+    if not prendido then
+        UserInputService.MouseBehavior = Enum.MouseBehavior.Default
+    end
+end</pre>
+  <ul>
+    <li><code>not</code> = "lo contrario". <code>not true</code> es <code>false</code>.</li>
+    <li><code>AutoRotate</code> = el personaje gira solo para donde camina. Con Shift Lock lo apagamos, porque gira para donde mira la cámara.</li>
+    <li><code>CameraOffset</code> = corre la cámara un poquito a la derecha (1.75), para ver por arriba del hombro.</li>
+  </ul>
+
+  <h3>Parte 4: escuchar la tecla y el botón</h3>
+<pre>boton.MouseButton1Click:Connect(cambiar)   <span class="c">-- CUANDO hacés clic en el botón</span>
+
+UserInputService.InputBegan:Connect(function(input, ocupado)
+    if ocupado then return end <span class="c">-- por ejemplo, si está escribiendo en el chat</span>
+    if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
+        cambiar()
+    end
+end)</pre>
+  <p><code>InputBegan</code> = "cuando aprietan una tecla". Si es <b>Shift</b> (el de la izquierda o el de la derecha), prende o apaga.</p>
+
+  <h3>Parte 5: cuando reaparecés</h3>
+<pre>jugador.CharacterAdded:Connect(function(personaje)
+    local humanoide = personaje:WaitForChild("Humanoid")
+    humanoide.AutoRotate = not prendido
+    humanoide.CameraOffset = prendido and Vector3.new(1.75, 0, 0) or Vector3.zero
+end)</pre>
+
+  <h3>Parte 6: en cada cuadrito de la pantalla</h3>
+<pre>RunService:BindToRenderStep("ShiftLock", Enum.RenderPriority.Camera.Value + 1, function()
+    if not prendido then return end
+    UserInputService.MouseBehavior = Enum.MouseBehavior.LockCenter <span class="c">-- mouse al centro</span>
+    local personaje = jugador.Character
+    local raiz = personaje and personaje:FindFirstChild("HumanoidRootPart")
+    if raiz then
+        local mira = camara.CFrame.LookVector          <span class="c">-- para dónde mira la cámara</span>
+        local plano = Vector3.new(mira.X, 0, mira.Z)   <span class="c">-- sin mirar arriba ni abajo</span>
+        if plano.Magnitude > 0.01 then
+            raiz.CFrame = CFrame.lookAt(raiz.Position, raiz.Position + plano)
+        end
+    end
+end)
+
+pintar()</pre>
+  <p>El juego dibuja la pantalla unas <b>60 veces por segundo</b>. <code>BindToRenderStep</code> = "cada vez que dibujás, hacé esto". Así el personaje siempre mira para donde mira la cámara.</p>
+
+  <details><summary>🎯 Jueguito: ¿cómo hago que el botón diga "ON" y "OFF"?</summary>
+    <p>En <code>pintar()</code>, cambiá <code>"🔒 Shift Lock: SÍ"</code> por <code>"ON"</code> y <code>"🔓 Shift Lock: NO"</code> por <code>"OFF"</code>.</p>
+  </details>
+  <details><summary>🎯 Jueguito: quiero que se prenda con la tecla <b>Ctrl</b> en vez de Shift.</summary>
+    <p>Cambiá <code>LeftShift</code> por <code>LeftControl</code> y <code>RightShift</code> por <code>RightControl</code>.</p>
+  </details>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

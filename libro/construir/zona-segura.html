@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zonas seguras — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="construir/zona-segura.html">
+<div class="hoja">
+  <h2>🛡️ Las zonas seguras</h2>
+  <p>El gusano es <b>más rápido que vos</b> 😱. ¿Cómo hacés para ganar? ¡Te escondés! Al costado de la torre hay <b>7 zonas seguras</b>: plataformas verdes con un escudo. Adentro del escudo, <b>el gusano no te puede atrapar</b>.</p>
+  <div class="dibujo">
+    <svg width="560" height="250" viewBox="0 0 560 250" font-family="Segoe UI, Arial">
+      <rect x="0" y="0" width="560" height="250" rx="12" fill="#140f33"/>
+      <rect x="40" y="20" width="60" height="230" fill="#231e3c" stroke="#7850ff" stroke-width="2"/>
+      <rect x="100" y="170" width="60" height="8" fill="#ff5ac8"/>
+      <!-- zona -->
+      <a href="../codigo/script-gusano.html">
+        <rect x="200" y="100" width="120" height="90" fill="#00ff78" opacity=".25" stroke="#00ff78" stroke-width="3" stroke-dasharray="6 4"/>
+      </a>
+      <rect x="200" y="190" width="120" height="10" fill="#28c85a"/>
+      <circle cx="260" cy="160" r="11" fill="#ffd36b" stroke="#333" stroke-width="2"/><rect x="250" y="171" width="20" height="18" fill="#3b82f6" stroke="#333" stroke-width="2"/>
+      <text x="260" y="85" font-size="15" text-anchor="middle" fill="#78ffa0" font-weight="700">🛡️ ZONA SEGURA</text>
+      <text x="260" y="230" font-size="12" text-anchor="middle" fill="#fff">vos, a salvo 😌</text>
+      <!-- gusano pasando -->
+      <circle cx="130" cy="150" r="14" fill="#e0401a"/><circle cx="125" cy="146" r="3.5" fill="#fff6a0"/><circle cx="136" cy="146" r="3.5" fill="#fff6a0"/>
+      <circle cx="128" cy="172" r="11" fill="#ff5a00"/><circle cx="126" cy="192" r="9" fill="#ff8c00"/><circle cx="124" cy="208" r="7" fill="#ffc800"/>
+      <text x="130" y="120" font-size="12" text-anchor="middle" fill="#ffb070">pasa de largo…</text>
+      <text x="440" y="120" font-size="13" text-anchor="middle" fill="#fff">Cuando pasa,</text>
+      <text x="440" y="140" font-size="13" text-anchor="middle" fill="#fff">¡salís y seguís</text>
+      <text x="440" y="160" font-size="13" text-anchor="middle" fill="#fff">subiendo! 🏃</text>
+    </svg>
+  </div>
+  <p class="pista">👆 Tocá el escudo para ver el pedacito de script que te protege.</p>
+
+  <h3>¿Dónde están?</h3>
+  <p>Hay una por cada vuelta de la torre, al lado de los escalones <b>10, 22, 34, 46, 58, 70 y 82</b>. ¡Están todas una arriba de la otra, del mismo lado!</p>
+
+  <h3>Cómo se hace una (a mano)</h3>
+  <ol>
+    <li><b>El piso</b>: un bloque <code>10, 1, 10</code>, Material <b>DiamondPlate</b>, verde. Llamalo <b>Piso</b>. Ponelo al lado de un escalón, a la misma altura, con un espacio chiquito (unos 3) para saltar.</li>
+    <li><b>El escudo</b>: un bloque <code>10, 9, 10</code> encima del piso. Llamalo <b>Escudo</b>.
+      <ul>
+        <li>Material <b>ForceField</b> (campo de fuerza: brilla y se mueve), verde.</li>
+        <li><b>CanCollide</b> ☐ (para poder entrar).</li>
+        <li><b>CanTouch</b> ☐ y <b>CanQuery</b> ☐ (para que no moleste).</li>
+      </ul>
+    </li>
+    <li><b>El cartel</b>: al Piso, un <a href="cartel.html">BillboardGui</a> que diga "🛡️ ZONA SEGURA".</li>
+    <li>Juntá Piso y Escudo con <b>Ctrl + G</b> y llamá al grupo <b>ZonaSegura1</b> (después 2, 3…).</li>
+    <li>Metelo en la carpeta <b>TorreEspacio → ZonasSeguras</b>.</li>
+  </ol>
+  <div class="ojo">⚠️ La parte que protege es el <b>Escudo</b>. Si le cambiás el nombre, ¡deja de proteger! El script busca "Escudo" adentro de cada zona.</div>
+  <div class="bien">✅ Si hacés una zona nueva y la ponés en la carpeta <b>ZonasSeguras</b>, ¡funciona sola! No hace falta tocar el código.</div>
+
+  <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🛡️</span><span><b>¿Cómo sabe el gusano que estás a salvo?</b><br>Ver la parte <code>estaASalvo</code> del script.</span></a>
+  <div class="reto">⭐⭐ <b>Desafío:</b> Hacé una zona segura nueva (ZonaSegura8) en la parte Experto, cerca del escalón 90.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

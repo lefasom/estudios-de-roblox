@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juguetes, bate y bananas — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="construir/juguetes.html">
+<div class="hoja">
+  <h2>⚽ Juguetes, bate y bananas</h2>
+  <p>En la torre hay cosas <b>flotando y girando</b>. Las tocás y van a tu <b>mochila</b> (abajo en la pantalla). Las elegís con el número (1, 2, 3) y hacés <b>clic</b> para usarlas. ¡Podés llevar hasta 3!</p>
+  <div class="dibujo">
+    <svg width="620" height="200" viewBox="0 0 620 200" font-family="Segoe UI, Arial">
+      <a href="../codigo/juguetes.html">
+        <circle cx="70" cy="80" r="30" fill="#fff" stroke="#333" stroke-width="2"/><circle cx="70" cy="62" r="8" fill="#000"/><circle cx="90" cy="88" r="7" fill="#000"/><circle cx="52" cy="90" r="7" fill="#000"/>
+      </a>
+      <text x="70" y="140" font-size="13" text-anchor="middle" font-weight="700">⚽ Fútbol</text>
+      <a href="../codigo/juguetes.html"><circle cx="190" cy="85" r="20" fill="#d2ff28" stroke="#333" stroke-width="2"/><path d="M172 78 Q190 90 208 78" stroke="#fff" stroke-width="3" fill="none"/></a>
+      <text x="190" y="140" font-size="13" text-anchor="middle" font-weight="700">🎾 Tenis</text>
+      <a href="../codigo/juguetes.html"><ellipse cx="310" cy="85" rx="38" ry="22" fill="#965020" stroke="#333" stroke-width="2"/><line x1="292" y1="85" x2="328" y2="85" stroke="#fff" stroke-width="3"/></a>
+      <text x="310" y="140" font-size="13" text-anchor="middle" font-weight="700">🏉 Rugby</text>
+      <a href="../codigo/juguetes.html"><rect x="400" y="78" width="90" height="16" rx="6" fill="#288cff"/><circle cx="496" cy="86" r="14" fill="#ffc800"/></a>
+      <text x="450" y="140" font-size="13" text-anchor="middle" font-weight="700">🏏 Bate</text>
+      <a href="../codigo/objetos.html"><g transform="translate(570 90)"><rect x="-4" y="-3" width="8" height="6" fill="#6e501e"/><rect x="-3" y="-28" width="6" height="26" fill="#ffe132" transform="rotate(0)"/><rect x="-3" y="-28" width="6" height="26" fill="#ffe132" transform="rotate(120)"/><rect x="-3" y="-28" width="6" height="26" fill="#ffe132" transform="rotate(240)"/></g></a>
+      <text x="570" y="140" font-size="13" text-anchor="middle" font-weight="700">🍌 Banana</text>
+      <text x="310" y="180" font-size="13" text-anchor="middle">Las pelotas marean al gusano 3 segundos. El bate, 5 segundos.</text>
+    </svg>
+  </div>
+  <p class="pista">👆 Tocá un juguete para ver su script.</p>
+
+  <div class="tabla"><table>
+    <tr><th>Cosa</th><th>¿Cómo se usa?</th><th>¿Qué hace?</th></tr>
+    <tr><td>⚽🎾🏉 <b>Pelotas</b></td><td>Mirá al gusano y hacé <b>clic</b>: la pelota sale volando.</td><td>Si le pega, el gusano queda <b>mareado 3 segundos</b> 💫: no se mueve y no te toca. Cada pelota se usa <b>una sola vez</b>.</td></tr>
+    <tr><td>🏏 <b>Bate</b></td><td>Tenés que estar <b>cerca y mirando</b> al gusano. Clic = ¡pegar!</td><td>Lo marea <b>5 segundos</b>. ¡Pero ojo! Si el gusano te toca antes de que le pegues… te atrapa. Es difícil, hay que ser preciso. No se gasta.</td></tr>
+    <tr><td>🍌 <b>Banana</b></td><td>Está tirada en los escalones. ¡No la pises!</td><td>Te resbalás y caés <b>3 escalones para atrás</b>. Justo ahí puede venir un gusano… 😱</td></tr>
+    <tr><td>👑 <b>Lanzapelotas Dorado</b></td><td>¡Premio de campeón! Clic para tirar.</td><td>Tira pelotas doradas que <b>nunca se acaban</b>.</td></tr>
+  </table></div>
+  <div class="tip">💡 Hay <b>una pelota por cada vuelta</b> de la torre, <b>3 bates</b> y <b>12 bananas</b>, repartidos parejo y en lugares al azar. Cuando agarrás algo, a los 20 segundos aparece otro.</div>
+
+  <h3>Cómo se hace una herramienta (Tool) a mano</h3>
+  <p>Una <b>Tool</b> (herramienta) es algo que el personaje <b>lleva en la mano</b>.</p>
+  <ol>
+    <li>En la lista, <b>+</b> al lado de <b>ServerStorage → Juguetes</b> → <b>Tool</b>. Llamala <b>PelotaTenis</b>.</li>
+    <li>Adentro de la Tool, <b>+</b> → <b>Part</b>. Hacela pelota (Shape → Ball), Size <code>1, 1, 1</code>, verde limón, Material <b>Fabric</b> (tela).</li>
+    <li>⚠️ Llamala <b>Handle</b> (mango). <b>¡Tiene que llamarse así!</b> Es la parte que agarra la mano.</li>
+    <li><b>Anchored</b> ☐ (¡destildado! si no, no la podés llevar) y <b>CanCollide</b> ☐.</li>
+    <li>En las características de la Tool, en <b>ToolTip</b> escribí qué hace: aparece cuando pasás el mouse.</li>
+    <li>Adentro de la Tool, un <b>Script</b> llamado <b>AlHacerClic</b>. <a href="../codigo/juguetes.html">Mirá qué tiene adentro</a>.</li>
+  </ol>
+  <div class="tip">💡 <b>El bate</b> tiene 2 partes: el <b>Handle</b> (palo azul largo, <code>0.9, 0.9, 5.5</code>) y la <b>Punta</b> (pelota amarilla). La Punta está pegada al Handle con un <b>WeldConstraint</b> (soldadura).</div>
+  <div class="tip">💡 Si querés que un jugador <b>empiece</b> con una herramienta, ponela en <b>StarterPack</b>. Nosotros las ponemos en ServerStorage porque se ganan en la torre.</div>
+
+  <h3>La cáscara de banana</h3>
+  <p>La arma el script con 4 piezas: un <b>Centro</b> marrón y 3 <b>Tiras</b> amarillas finitas (<code>0.5, 0.15, 1.6</code>) giradas como una estrella. Más una caja invisible (<b>Zona</b>, <code>3, 2, 3</code>, Transparency <code>1</code>) que es la que te hace resbalar.</p>
+
+  <a class="enlace codigo" href="../codigo/juguetes.html"><span class="emoji">⚽</span><span><b>¿Cómo vuela la pelota? ¿Cómo pega el bate?</b><br>Ver el script Juguetes.</span></a>
+  <a class="enlace codigo" href="../codigo/objetos.html"><span class="emoji">🍌</span><span><b>¿Cómo te resbalás con la banana?</b><br>Ver el script Objetos.</span></a>
+  <div class="reto">⭐⭐ <b>Desafío:</b> Hacé una pelota nueva: una <b>pelota de básquet</b> 🏀 (naranja, Size <code>1.4</code>). Copiá la Tool PelotaTenis (Ctrl + D), cambiale el nombre, el color y el tamaño del Handle.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script Partida — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/partida.html">
+<div class="hoja">
+  <h2>🛡️ Script Partida: armadura y puntos</h2>
+  <div class="tip">📍 <b>Dónde está:</b> <b>ServerScriptService → Partida</b>. Es un <b>ModuleScript</b>: no hace nada solo, pero <b>presta</b> sus funciones a los otros scripts (<a href="script-gusano.html">Gusanos</a>, <a href="objetos.html">Objetos</a> y <b>Reglas</b>).</div>
+
+  <h3>Las reglas del juego</h3>
+  <div class="dibujo">
+    <svg width="600" height="230" viewBox="0 0 600 230" font-family="Segoe UI, Arial">
+      <rect x="10" y="10" width="180" height="90" rx="12" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/>
+      <text x="100" y="38" font-size="15" text-anchor="middle" font-weight="700">🏆 Llegás arriba</text>
+      <text x="100" y="60" font-size="12" text-anchor="middle">+ puntos (por tiempo)</text>
+      <text x="100" y="80" font-size="12" text-anchor="middle">🎁 + 1 pieza de armadura</text>
+      <rect x="210" y="10" width="180" height="90" rx="12" fill="#ffe4e4" stroke="#e02424" stroke-width="2"/>
+      <text x="300" y="38" font-size="15" text-anchor="middle" font-weight="700">🐛 Te toca un gusano</text>
+      <text x="300" y="60" font-size="12" text-anchor="middle">con armadura: se te cae 1 pieza</text>
+      <text x="300" y="80" font-size="12" text-anchor="middle">sin armadura: ¡perdiste!</text>
+      <rect x="410" y="10" width="180" height="90" rx="12" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/>
+      <text x="500" y="38" font-size="15" text-anchor="middle" font-weight="700">🕳️ Te caés</text>
+      <text x="500" y="60" font-size="12" text-anchor="middle">¡perdiste! se te cae</text>
+      <text x="500" y="80" font-size="12" text-anchor="middle">TODA la armadura</text>
+      <rect x="110" y="125" width="380" height="90" rx="12" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/>
+      <text x="300" y="153" font-size="15" text-anchor="middle" font-weight="700">👑 Juntás las 7 piezas</text>
+      <text x="300" y="175" font-size="12" text-anchor="middle">¡CAMPEÓN! Premio: Lanzapelotas Dorado</text>
+      <text x="300" y="195" font-size="12" text-anchor="middle">Casco · Pechera · Cinturón · Hombreras · Guantes · Rodilleras · Botas</text>
+    </svg>
+  </div>
+  <ul>
+    <li><b>Perder</b> = volvés al inicio <b>sin armadura</b> y con los puntos de la partida en 0.</li>
+    <li>Pero <b>tu mejor puntaje</b> queda guardado en la <b>tabla de la cima</b> 🏆 y en la lista del costado. Se guarda <b>cada vez que llegás arriba</b>.</li>
+    <li>Después de perder una pieza, tenés <b>2 segundos</b> en que ningún gusano te toca, para escapar.</li>
+  </ul>
+
+  <h3>¿Cuántos puntos te dan?</h3>
+<pre>local PUNTOS_MAXIMOS = 5000      <span class="c">-- si subís en 0 segundos (¡imposible!)</span>
+local RESTA_POR_SEGUNDO = 15     <span class="c">-- cada segundo que tardás, valés un poco menos</span>
+local PUNTOS_MINIMOS = 100       <span class="c">-- llegar siempre vale algo</span>
+local PLUS_POR_PIEZA = 0.10      <span class="c">-- cada pieza de armadura: +10%</span></pre>
+<pre>local segundos = math.floor(ahora() - d.inicio)
+local base = math.max(PUNTOS_MINIMOS, PUNTOS_MAXIMOS - segundos * RESTA_POR_SEGUNDO)
+local multiplica = 1 + #d.piezas * PLUS_POR_PIEZA
+local puntos = math.floor(base * multiplica)</pre>
+  <div class="tabla"><table>
+    <tr><th>Ejemplo</th><th>Cuenta</th><th>Puntos</th></tr>
+    <tr><td>Subís en 2 minutos (120 s), sin armadura</td><td>5000 − 120 × 15 = 3200 → × 1.0</td><td><b>3200</b></td></tr>
+    <tr><td>Subís en 2 minutos, con 3 piezas</td><td>3200 × 1.3</td><td><b>4160</b> ⭐</td></tr>
+    <tr><td>Subís en 4 minutos (240 s), con 7 piezas</td><td>5000 − 3600 = 1400 → × 1.7</td><td><b>2380</b></td></tr>
+  </table></div>
+  <p><code>#d.piezas</code> = <b>cuántas piezas tenés</b> (el <code>#</code> cuenta las cosas de una lista). <code>math.max</code> = "el más grande de los dos": así nunca te dan menos de 100.</p>
+
+  <h3>Te toca un gusano</h3>
+<pre>function Partida.atrapar(jugador)
+    local d = datos[jugador]
+    if not d or d.llego or ahora() &lt; d.invencibleHasta then return end
+    local raiz = jugador.Character and jugador.Character:FindFirstChild("HumanoidRootPart")
+    if not raiz or Partida.estaASalvo(raiz) then return end   <span class="c">-- 🛡️ zona segura</span>
+
+    if #d.piezas > 0 then
+        local pieza = table.remove(d.piezas)     <span class="c">-- se te cae la última pieza</span>
+        soltarPieza(jugador.Character, pieza)
+        d.invencibleHasta = ahora() + INVENCIBLE
+        Partida.mensaje(jugador, "😱 ¡Te tocó un gusano!\nSe te cayó: " .. NOMBRES[pieza])
+    else
+        Partida.perder(jugador, "😵 ¡Te atrapó un gusano!")
+    end
+end</pre>
+  <ul>
+    <li><code>table.remove(lista)</code> = "sacá el último de la lista".</li>
+    <li><code>soltarPieza</code> le saca la <b>soldadura</b> a la pieza: ¡se cae del personaje y desaparece! 💥</li>
+  </ul>
+
+  <h3>La armadura que se ve</h3>
+<pre>local pieza = Instance.new("Part")
+pieza.Size = tam
+pieza.CFrame = parte.CFrame * donde        <span class="c">-- encima de la cabeza, del pecho...</span>
+pieza.Material = Enum.Material.Metal
+local soldar = Instance.new("WeldConstraint")
+soldar.Part0 = parte; soldar.Part1 = pieza   <span class="c">-- pegada al cuerpo</span>
+pieza.Parent = personaje</pre>
+  <p>Cada pieza es un bloque de metal <b>pegado</b> (WeldConstraint = soldadura) a una parte de tu personaje: el casco a la <b>Head</b> (cabeza), la pechera al torso, las botas a los pies… Se mueve con vos.</p>
+
+  <h3>La tabla del costado (leaderstats)</h3>
+<pre>local stats = Instance.new("Folder")
+stats.Name = "leaderstats"   <span class="c">-- con este nombre, Roblox lo muestra en la lista del costado</span>
+for _, nombre in ipairs({"Puntos", "Vueltas", "Armadura"}) do
+    local v = Instance.new("IntValue"); v.Name = nombre; v.Parent = stats
+end
+stats.Parent = jugador</pre>
+  <p>¡Truco de Roblox! Si a un jugador le ponés una carpeta llamada <b>leaderstats</b> (así, en inglés y en minúscula), Roblox muestra lo que hay adentro en la <b>lista de jugadores</b>, arriba a la derecha.</p>
+
+  <h3>Reglas: el script que conecta todo</h3>
+  <p>En <b>ServerScriptService → Reglas</b> hay un Script cortito que usa a Partida:</p>
+<pre>torre:WaitForChild("Caida").Touched:Connect(function(golpe)
+    local jugador = jugadorDe(golpe)
+    if jugador then Partida.caer(jugador) end
+end)
+torre:WaitForChild("Meta").Touched:Connect(function(golpe)
+    local jugador = jugadorDe(golpe)
+    if jugador then Partida.llegarArriba(jugador) end
+end)
+Players.PlayerAdded:Connect(Partida.nuevoJugador)</pre>
+
+  <details><summary>🎯 Jueguito: quiero que cada pieza de armadura valga +20% en vez de +10%.</summary>
+    <p><code>local PLUS_POR_PIEZA = 0.20</code> 🎉</p>
+  </details>
+  <div class="reto">⭐⭐ <b>Desafío:</b> Cambiá el color de la armadura. Buscá <code>Color3.fromRGB(190, 205, 235)</code> en Partida y poné otro color (por ejemplo dorado: <code>255, 200, 40</code>).</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

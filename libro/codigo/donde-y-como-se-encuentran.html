@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dónde se guarda — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/donde-y-como-se-encuentran.html">
+<div class="hoja">
+  <h2>🔎 Dónde se guarda y cómo encuentra las cosas</h2>
+
+  <h3>1. ¿En qué carpeta va cada script?</h3>
+  <p>Es como una casa: cada cosa tiene su cuarto. Si ponés un script en el cuarto equivocado, <b>no anda</b>.</p>
+  <div class="tabla"><table>
+    <tr><th>Carpeta de la lista</th><th>¿Qué va ahí?</th><th>En nuestro juego</th></tr>
+    <tr><td><b>Workspace</b></td><td>Todo lo que se ve. Un Script adentro de un bloque también anda.</td><td>TorreEspacio (con los gusanos activos, los objetos…)</td></tr>
+    <tr><td><b>ServerScriptService</b></td><td>Los <b>Script</b> y <b>ModuleScript</b> del servidor. Es una caja fuerte: los jugadores no los pueden ver ni copiar.</td><td><a href="script-gusano.html">Gusanos</a>, <a href="partida.html">Partida</a>, Reglas, <a href="juguetes.html">Juguetes</a>, <a href="objetos.html">Objetos</a></td></tr>
+    <tr><td><b>ServerStorage</b></td><td>Un depósito escondido para <b>moldes</b>. No se ve en el juego. Los scripts sacan copias (Clone).</td><td><a href="../construir/gusano.html">Gusanos</a>, <a href="../construir/juguetes.html">Juguetes</a></td></tr>
+    <tr><td><b>StarterPlayer → StarterPlayerScripts</b></td><td>Los <b>LocalScript</b> de cada jugador (cámara, teclas, pantalla).</td><td><a href="shift-lock.html">ShiftLock</a>, <a href="cielo-espacio.html">CieloEspacio</a>, <a href="pantalla.html">Pantalla</a></td></tr>
+    <tr><td><b>StarterGui</b></td><td>Pantallas y botones, con sus LocalScript.</td><td>(todavía nada)</td></tr>
+    <tr><td><b>StarterPack</b></td><td>Herramientas que te dan al empezar (espadas, armas…). Cada una lleva su script adentro.</td><td>(todavía nada)</td></tr>
+    <tr><td><b>ReplicatedStorage</b></td><td>Cosas que comparten el servidor y los jugadores.</td><td>(todavía nada)</td></tr>
+  </table></div>
+  <div class="ojo">⚠️ <b>Ejemplo de error:</b> en nuestro juego hay un <b>LocalScript</b> viejo suelto en <b>StarterPlayer</b> (no adentro de StarterPlayerScripts). Por eso <b>no corre</b>. ¡Está en el cuarto equivocado!</div>
+
+  <h3>2. ¿Cómo encuentra un script a un bloque? (el "camino")</h3>
+  <p>Un script encuentra las cosas como una <b>dirección</b>: carpeta, punto, adentro, punto, adentro…</p>
+  <div class="dibujo">
+    <svg width="600" height="150" viewBox="0 0 600 150" font-family="Consolas, monospace">
+      <rect x="10" y="20" width="120" height="40" rx="8" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/><text x="70" y="45" font-size="15" text-anchor="middle">workspace</text>
+      <text x="140" y="46" font-size="22">.</text>
+      <rect x="155" y="20" width="100" height="40" rx="8" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/><text x="205" y="45" font-size="13" text-anchor="middle">TorreEspacio</text>
+      <text x="265" y="46" font-size="22">.</text>
+      <rect x="280" y="20" width="90" height="40" rx="8" fill="#ffe4e4" stroke="#e02424" stroke-width="2"/><text x="325" y="45" font-size="15" text-anchor="middle">Gusano</text>
+      <text x="380" y="46" font-size="22">.</text>
+      <rect x="395" y="20" width="90" height="40" rx="8" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/><text x="440" y="45" font-size="15" text-anchor="middle">Cabeza</text>
+      <text x="70" y="90" font-size="12" text-anchor="middle" font-family="Segoe UI">el mundo</text>
+      <text x="205" y="90" font-size="12" text-anchor="middle" font-family="Segoe UI">la torre</text>
+      <text x="325" y="90" font-size="12" text-anchor="middle" font-family="Segoe UI">el gusano 🔥</text>
+      <text x="440" y="90" font-size="12" text-anchor="middle" font-family="Segoe UI">su cabeza</text>
+      <text x="300" y="130" font-size="14" text-anchor="middle" font-family="Segoe UI">= "En el mundo, en la torre, en el Gusano, la Cabeza"</text>
+    </svg>
+  </div>
+<pre>local cabeza = workspace.TorreEspacio.Gusano.Cabeza</pre>
+  <div class="ojo">⚠️ Los nombres tienen que estar escritos <b>igualito</b> que en la lista: mayúsculas, minúsculas, sin espacios. <code>inicio</code> no es lo mismo que <code>Inicio</code>.</div>
+
+  <h3>3. Las formas de encontrar cosas</h3>
+  <div class="tabla"><table>
+    <tr><th>Código</th><th>Quiere decir…</th></tr>
+    <tr><td><code>script.Parent</code></td><td>"El que me tiene adentro" (mi papá). Si el script está adentro de la Meta, <code>script.Parent</code> es la Meta.</td></tr>
+    <tr><td><code>workspace.TorreEspacio</code></td><td>"En el mundo, la cosa llamada TorreEspacio". Si no existe, ¡error!</td></tr>
+    <tr><td><code>workspace:WaitForChild("TorreEspacio")</code></td><td>"Esperá hasta que aparezca TorreEspacio". Más seguro: a veces las cosas tardan en cargar.</td></tr>
+    <tr><td><code>personaje:FindFirstChild("Humanoid")</code></td><td>"¿Tenés algo llamado Humanoid?" Si no tiene, da <code>nil</code> (nada), sin error.</td></tr>
+    <tr><td><code>carpeta:GetChildren()</code></td><td>"Dame todos los hijos" (lo que está justo adentro).</td></tr>
+    <tr><td><code>torre:GetDescendants()</code></td><td>"Dame todo lo de adentro, y lo de adentro de lo de adentro…"</td></tr>
+    <tr><td><code>cuerpo:FindFirstChild("Parte" .. 3)</code></td><td>"Buscá la que se llama Parte3". Con <code>..</code> armamos el nombre pegando texto y número.</td></tr>
+    <tr><td><code>game:GetService("Players")</code></td><td>"Traeme el servicio de jugadores" (la lista de gente jugando).</td></tr>
+  </table></div>
+
+  <h3>4. Un script, ¿cómo "conecta" con un bloque?</h3>
+  <p>Con <code>:Connect</code>. Es como poner un <b>timbre</b> en el bloque: cuando alguien lo toca, suena y el script hace algo.</p>
+<pre><span class="c">-- 1) encontrar el bloque</span>
+local boton = workspace.BotonRojo
+
+<span class="c">-- 2) ponerle el "timbre": CUANDO lo tocan, hacé esto</span>
+boton.Touched:Connect(function(loQueToco)
+    print("¡Me tocó " .. loQueToco.Name .. "!")
+end)</pre>
+  <details><summary>🎯 Jueguito: si el script está adentro del bloque "Escalon5", ¿qué es <code>script.Parent</code>?</summary>
+    <p><b>El bloque Escalon5.</b> Porque es el que tiene al script adentro (su papá). 👨‍👦</p>
+  </details>
+  <details><summary>🎯 Jueguito: escribí el camino para llegar al Escalon10 de la torre (está en la carpeta Escalones).</summary>
+    <p><code>workspace.TorreEspacio.Escalones.Escalon10</code> 🎉</p>
+  </details>
+
+  <a class="enlace codigo" href="script-gusano.html"><span class="emoji">🐛</span><span><b>Ahora sí: el script del gusano</b><br>Todo esto junto, funcionando.</span></a>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

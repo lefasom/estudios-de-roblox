@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Los hoyos — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="construir/hoyos.html">
+<div class="hoja">
+  <h2>🕳️ Los hoyos de los gusanos</h2>
+  <p>En la columna de la torre hay <b>4 hoyos</b> negros con borde de fuego. De ahí salen los gusanos, <b>al azar</b>. ¡Cuidado cuando pasás al lado! 😱</p>
+  <div class="dibujo">
+    <svg width="560" height="360" viewBox="0 0 560 360" font-family="Segoe UI, Arial">
+      <rect x="0" y="0" width="560" height="360" rx="12" fill="#140f33"/>
+      <rect x="230" y="20" width="70" height="330" fill="#231e3c" stroke="#7850ff" stroke-width="2"/>
+      <g>
+        <a href="../codigo/script-gusano.html">
+        <circle cx="265" cy="300" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
+        <circle cx="265" cy="220" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
+        <circle cx="265" cy="140" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
+        <circle cx="265" cy="60" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
+        </a>
+      </g>
+      <g font-size="13" fill="#fff">
+        <text x="320" y="305">Hoyo1 — escalón 7</text>
+        <text x="320" y="225">Hoyo2 — escalón 31</text>
+        <text x="320" y="145">Hoyo3 — escalón 55</text>
+        <text x="320" y="65">Hoyo4 — escalón 79</text>
+      </g>
+      <g font-size="12" fill="#ffb070" text-anchor="end">
+        <text x="215" y="265">24 escalones</text><text x="215" y="185">24 escalones</text><text x="215" y="105">24 escalones</text>
+      </g>
+      <circle cx="285" cy="215" r="7" fill="#aaff28"/><circle cx="296" cy="208" r="5" fill="#96ff00"/>
+      <text x="120" y="30" font-size="13" fill="#78ffa0" text-anchor="middle">¡Repartidos parejo!</text>
+    </svg>
+  </div>
+  <p class="pista">👆 Tocá un hoyo para ver cómo elige el script de cuál sale el gusano.</p>
+
+  <h3>Repartidos parejo</h3>
+  <p>Los hoyos están <b>cada 24 escalones</b> (cada 2 vueltas). Así hay gusanos <b>en toda la torre</b>: abajo, en el medio y arriba. ¡No podés pasar rápido la parte de abajo y llegar tranquilo arriba!</p>
+  <p>El script siempre elige el hoyo que tiene <b>menos gusanos cerca</b>. Si hay empate, elige al azar 🎲. Cada gusano de hoyo sube <b>24 escalones</b> y se esconde. Así nunca se juntan todos en el mismo lugar.</p>
+
+  <h3>Cómo se hace un hoyo (a mano)</h3>
+  <ol>
+    <li>Hacé un cilindro (<b>Shape → Cylinder</b>), Size <code>0.6, 9, 9</code>: es un disco.</li>
+    <li>Color casi negro. <b>Anchored</b> ☑, <b>CanCollide</b> ☐.</li>
+    <li>Pegalo en la columna, mirando para afuera, al lado de un escalón. Giralo con <b>Rotate</b>.</li>
+    <li><b>El borde de fuego</b>: otro cilindro un poquito más grande (<code>0.4, 10.5, 10.5</code>), Material <b>Neon</b> naranja, atrás del disco. Metelo adentro del hoyo.</li>
+    <li><b>El humo</b>: <b>+</b> → <b>ParticleEmitter</b> (chispitas). Llamalo <b>Humo</b>. Rate <code>0</code>: el script lo hace soltar humo cuando sale un gusano. ¡Puf! 💨</li>
+    <li>Llamalo <b>Hoyo1</b>, <b>Hoyo2</b>… y agregale un atributo <code>Escalon</code> (número) con el escalón que tiene al lado.</li>
+    <li>Metelo en la carpeta <b>TorreEspacio → Hoyos</b>.</li>
+  </ol>
+  <div class="bien">✅ Si hacés un <b>Hoyo5</b> con su atributo Escalon y lo ponés en la carpeta Hoyos, ¡el script lo usa solo!</div>
+
+  <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🎲</span><span><b>¿Cómo elige el hoyo?</b><br>Ver la parte <code>elegirHoyo</code> del script Gusanos.</span></a>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* Estilo de todas las páginas del libro interactivo */
+:root {
+  --azul: #1b5fd6; --naranja: #c2410c; --verde: #17a34a; --rojo: #e02424; --violeta: #9333ea;
+  --texto: #222; --fondo: #fdfcf7; --hoja: #ffffff; --borde: #c9d6ee;
+}
+* { box-sizing: border-box; }
+body { font-family: "Segoe UI", Arial, sans-serif; font-size: 17px; line-height: 1.6; color: var(--texto); background: var(--fondo); margin: 0; }
+.hoja { max-width: 860px; margin: 0 auto; background: var(--hoja); padding: 22px 26px 30px; min-height: 80vh; box-shadow: 0 0 0 1px #eee, 0 6px 24px rgba(0,0,0,.06); }
+@media (max-width: 600px) { .hoja { padding: 16px; } body { font-size: 16px; } }
+
+h1 { font-size: 32px; color: var(--azul); margin: 6px 0 12px; }
+h2 { font-size: 24px; color: #fff; background: var(--azul); padding: 8px 14px; border-radius: 10px; margin: 0 0 14px; }
+h3 { font-size: 20px; color: var(--naranja); margin: 24px 0 6px; border-bottom: 2px dashed #f4b183; padding-bottom: 3px; }
+p { margin: 8px 0; }
+ol, ul { margin: 6px 0 6px 24px; padding: 0; }
+li { margin: 4px 0; }
+a { color: var(--azul); }
+code { background: #f1f1f6; border-radius: 4px; padding: 1px 5px; font-size: 15px; }
+
+.menu { background: #eef4ff; border: 2px solid var(--azul); border-radius: 6px; padding: 1px 6px; font-weight: 700; color: var(--azul); white-space: nowrap; }
+.tip  { background: #fff8d6; border-left: 6px solid #f2b600; border-radius: 8px; padding: 8px 12px; margin: 12px 0; }
+.ojo  { background: #ffe4e4; border-left: 6px solid var(--rojo); border-radius: 8px; padding: 8px 12px; margin: 12px 0; }
+.bien { background: #e3f9e5; border-left: 6px solid var(--verde); border-radius: 8px; padding: 8px 12px; margin: 12px 0; }
+.reto { background: #f3e8ff; border: 2px dashed var(--violeta); border-radius: 10px; padding: 8px 12px; margin: 12px 0; }
+
+pre { background: #1e1e2e; color: #e6e6e6; border-radius: 10px; padding: 12px 14px; font-size: 14px; line-height: 1.45; overflow-x: auto; white-space: pre; }
+pre .c { color: #8bd5a0; }
+pre .k { color: #f5a97f; }
+
+table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+th, td { border: 2px solid var(--borde); padding: 6px 8px; text-align: left; vertical-align: top; }
+th { background: #eef4ff; }
+.tabla { overflow-x: auto; }
+
+.dibujo { text-align: center; margin: 12px 0; }
+.dibujo svg { max-width: 100%; height: auto; }
+.dibujo a:hover rect, .dibujo a:hover circle, .dibujo a:hover polygon { filter: brightness(1.15); stroke: #000; stroke-width: 3; }
+.pista { font-size: 14px; color: #666; text-align: center; margin-top: -4px; }
+
+/* Cajita que lleva a otra página (como un portal del juego) */
+.enlace { display: flex; gap: 12px; align-items: center; text-decoration: none; color: var(--texto);
+  border: 3px solid var(--azul); border-radius: 14px; padding: 10px 14px; margin: 14px 0; background: #f4f8ff; transition: transform .1s; }
+.enlace:hover { transform: scale(1.02); background: #e6efff; }
+.enlace .emoji { font-size: 34px; }
+.enlace b { color: var(--azul); }
+.enlace.codigo { border-color: #1e1e2e; background: #f3f3f8; }
+.enlace.codigo b { color: #1e1e2e; }
+.enlace.juego { border-color: var(--verde); background: #effbf1; }
+.enlace.juego b { color: var(--verde); }
+
+/* Respuestas escondidas */
+details { background: #f7f7fb; border: 2px solid #ddd; border-radius: 10px; padding: 8px 12px; margin: 10px 0; }
+summary { cursor: pointer; font-weight: 700; color: var(--violeta); }
+
+/* Barra de arriba y botones de abajo (los pone nav.js) */
+.barra { position: sticky; top: 0; z-index: 5; background: var(--azul); color: #fff; padding: 8px 14px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.barra a { color: #fff; font-weight: 700; text-decoration: none; background: rgba(255,255,255,.18); padding: 4px 10px; border-radius: 8px; }
+.barra a:hover { background: rgba(255,255,255,.32); }
+.barra .donde { opacity: .9; font-size: 15px; }
+.pasos { display: flex; justify-content: space-between; gap: 10px; margin-top: 30px; flex-wrap: wrap; }
+.pasos a { flex: 1 1 220px; text-decoration: none; border: 3px solid var(--azul); border-radius: 12px; padding: 10px 14px; color: var(--azul); font-weight: 700; background: #f4f8ff; }
+.pasos a:hover { background: #e6efff; }
+.pasos a.sig { text-align: right; }
+.pasos small { display: block; color: #666; font-weight: 400; }
+.num-pagina { text-align: center; color: #888; font-size: 14px; margin-top: 16px; }
+
+/* Índice */
+.portada { text-align: center; }
+.portada h1 { font-size: 44px; }
+.parte { border: 3px solid var(--borde); border-radius: 14px; padding: 6px 16px 12px; margin: 16px 0; }
+.parte h3 { margin-top: 10px; }
+.parte ol { columns: 2 260px; }
+.parte li { break-inside: avoid; }
+
+@media print { .barra, .pasos { display: none; } .hoja { box-shadow: none; } }

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script Pantalla — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/pantalla.html">
+<div class="hoja">
+  <h2>⏱️ Script Pantalla: tiempo y mensajes</h2>
+  <div class="dibujo">
+    <svg width="560" height="200" viewBox="0 0 560 200" font-family="Segoe UI, Arial">
+      <rect x="0" y="0" width="560" height="200" rx="12" fill="#9fc7ef"/>
+      <rect x="130" y="10" width="300" height="34" rx="10" fill="#19143a" opacity=".85"/>
+      <text x="280" y="33" font-size="16" text-anchor="middle" fill="#fff" font-weight="700">⏱️ 1:23    🛡️ 3/7    ⭐ 4160</text>
+      <text x="280" y="100" font-size="20" text-anchor="middle" fill="#ffe678" stroke="#000" stroke-width="0.6" font-weight="700">😱 ¡Te tocó un gusano!</text>
+      <text x="280" y="126" font-size="20" text-anchor="middle" fill="#ffe678" stroke="#000" stroke-width="0.6" font-weight="700">Se te cayó: Casco</text>
+      <text x="280" y="185" font-size="12" text-anchor="middle">arriba: tu tiempo, tus piezas y tus puntos · en el medio: los mensajes</text>
+    </svg>
+  </div>
+  <div class="tip">📍 <b>Dónde está:</b> <b>StarterPlayer → StarterPlayerScripts → Pantalla</b>. Es un <b>LocalScript</b>, porque cada uno ve <b>su</b> tiempo y <b>sus</b> mensajes.</div>
+
+  <h3>¿Cómo sabe tus datos?</h3>
+  <p>El servidor (<a href="partida.html">Partida</a>) le pone <b>atributos</b> a tu jugador: <code>TiempoInicio</code>, <code>Piezas</code>, <code>PuntosPartida</code> y <code>Mensaje</code>. La Pantalla los <b>lee</b> y los muestra.</p>
+<pre>RunService.RenderStepped:Connect(function()
+    local inicio = jugador:GetAttribute("TiempoInicio") or workspace:GetServerTimeNow()
+    local segundos = math.max(0, math.floor(workspace:GetServerTimeNow() - inicio))
+    arriba.Text = ("⏱️ %d:%02d     🛡️ %d/7     ⭐ %d"):format(
+        segundos // 60, segundos % 60,
+        jugador:GetAttribute("Piezas") or 0,
+        jugador:GetAttribute("PuntosPartida") or 0)
+end)</pre>
+  <ul>
+    <li><code>RenderStepped</code> = cada vez que se dibuja la pantalla (unas 60 veces por segundo).</li>
+    <li><code>segundos // 60</code> = los <b>minutos</b> (dividir sin coma). <code>segundos % 60</code> = los segundos que <b>sobran</b>. 83 segundos → 1:23.</li>
+    <li><code>%d</code> en el texto = "acá va un número". <code>%02d</code> = con 2 cifras (05, no 5).</li>
+  </ul>
+
+  <h3>Los mensajes grandes</h3>
+<pre>jugador:GetAttributeChangedSignal("MensajeNumero"):Connect(function()
+    mensaje.Text = jugador:GetAttribute("Mensaje") or ""
+    mensaje.Visible = true
+    task.delay(3.5, function() mensaje.Visible = false end)
+end)</pre>
+  <p><code>GetAttributeChangedSignal</code> = "<b>cuando cambie</b> este atributo, avisame". El mensaje aparece 3 segundos y medio y se va.</p>
+  <details><summary>🎯 Jueguito: quiero que los mensajes duren 6 segundos.</summary>
+    <p>Cambiá <code>task.delay(3.5, …)</code> por <code>task.delay(6, …)</code>.</p>
+  </details>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Los 5 gusanos — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="construir/gusano.html">
+<div class="hoja">
+  <h2>🐛 Los 5 gusanos</h2>
+  <p>En la torre hay <b>5 tipos de gusanos</b>, todos inventados por nosotros. Siempre hay <b>2 o 3</b> andando: el <b>grande</b> (que nunca se va) y 1 o 2 que salen de los <a href="hoyos.html">hoyos</a> al azar.</p>
+  <div class="dibujo">
+    <svg width="640" height="230" viewBox="0 0 640 230" font-family="Segoe UI, Arial">
+      <rect x="0" y="0" width="640" height="230" rx="12" fill="#140f33"/>
+      <!-- Grande -->
+      <a href="../codigo/script-gusano.html">
+        <circle cx="80" cy="80" r="30" fill="#e0401a"/><circle cx="68" cy="70" r="8" fill="#fff6a0"/><circle cx="92" cy="70" r="8" fill="#fff6a0"/><circle cx="68" cy="72" r="4"/><circle cx="92" cy="72" r="4"/>
+        <rect x="64" y="92" width="32" height="6" fill="#280000"/>
+        <circle cx="62" cy="122" r="22" fill="#ff5a00"/><circle cx="45" cy="152" r="17" fill="#ff8c00"/><circle cx="34" cy="177" r="13" fill="#ffc800"/>
+      </a>
+      <text x="80" y="215" font-size="13" text-anchor="middle" fill="#fff" font-weight="700">Grande</text>
+      <!-- Loco -->
+      <a href="../codigo/script-gusano.html">
+        <circle cx="200" cy="95" r="20" fill="#aaff28"/>
+        <circle cx="190" cy="90" r="8" fill="#fff"/><circle cx="208" cy="91" r="5" fill="#fff"/><circle cx="189" cy="89" r="3" fill="#f00"/><circle cx="209" cy="90" r="2" fill="#f00"/>
+        <line x1="182" y1="78" x2="196" y2="82" stroke="#000" stroke-width="3"/><line x1="204" y1="82" x2="216" y2="78" stroke="#000" stroke-width="3"/>
+        <rect x="188" y="102" width="24" height="7" fill="#3c0000"/>
+        <circle cx="196" cy="125" r="13" fill="#96ff00"/><circle cx="190" cy="145" r="10" fill="#d2ff00"/>
+      </a>
+      <text x="200" y="215" font-size="13" text-anchor="middle" fill="#fff" font-weight="700">Loco</text>
+      <!-- Forzudo -->
+      <a href="../codigo/script-gusano.html">
+        <circle cx="330" cy="75" r="22" fill="#e62323"/>
+        <rect x="314" y="60" width="32" height="6" fill="#280a0a"/>
+        <circle cx="322" cy="74" r="5" fill="#fff"/><circle cx="338" cy="74" r="5" fill="#fff"/><circle cx="322" cy="75" r="2.5"/><circle cx="338" cy="75" r="2.5"/>
+        <rect x="314" y="86" width="32" height="12" fill="#b41919"/>
+        <circle cx="330" cy="130" r="26" fill="#c81919"/>
+        <circle cx="290" cy="100" r="11" fill="#e62828"/><circle cx="370" cy="100" r="11" fill="#e62828"/>
+        <circle cx="290" cy="78" r="8" fill="#c81e1e"/><circle cx="370" cy="78" r="8" fill="#c81e1e"/>
+      </a>
+      <text x="330" y="215" font-size="13" text-anchor="middle" fill="#fff" font-weight="700">Forzudo 💪</text>
+      <!-- Largo -->
+      <a href="../codigo/script-gusano.html">
+        <circle cx="460" cy="70" r="20" fill="#ff7800"/><circle cx="452" cy="64" r="5" fill="#fff6a0"/><circle cx="468" cy="64" r="5" fill="#fff6a0"/>
+        <g fill="#c84a00"><circle cx="452" cy="98" r="16"/><circle cx="444" cy="124" r="14"/><circle cx="440" cy="148" r="12"/><circle cx="440" cy="170" r="10"/><circle cx="444" cy="188" r="8"/></g>
+      </a>
+      <text x="460" y="215" font-size="13" text-anchor="middle" fill="#fff" font-weight="700">Largo</text>
+      <!-- Cortito -->
+      <a href="../codigo/script-gusano.html">
+        <circle cx="575" cy="110" r="17" fill="#ffaa28"/><circle cx="568" cy="105" r="5" fill="#fff6a0"/><circle cx="582" cy="105" r="5" fill="#fff6a0"/>
+        <circle cx="571" cy="135" r="13" fill="#ff961e"/><circle cx="568" cy="156" r="10" fill="#ffd23c"/>
+      </a>
+      <text x="575" y="215" font-size="13" text-anchor="middle" fill="#fff" font-weight="700">Cortito</text>
+    </svg>
+  </div>
+  <p class="pista">👆 Tocá un gusano para ver el script que lo mueve.</p>
+
+  <div class="tabla"><table>
+    <tr><th>Gusano</th><th>¿Cómo es?</th><th>¿Qué hace?</th><th>Velocidad</th></tr>
+    <tr><td><b>Grande</b> 🔥</td><td>Cabeza de lava con fuego, 14 bolitas.</td><td>Sube despacio y <b>siempre igual</b>. Cuando llega arriba, vuelve a salir abajo. <b>¡Nunca se va!</b></td><td>0.9</td></tr>
+    <tr><td><b>Loco</b> 😠</td><td>Verde limón, cortito. Un ojo grande y uno chico, pupilas rojas, cejas enojadas, dientes.</td><td>Sale de un hoyo y corre <b>muy rápido</b>.</td><td>2.4 ⚡</td></tr>
+    <tr><td><b>Forzudo</b> 💪</td><td>Rojo, con cejas gruesas, mandíbula cuadrada, brazos con músculos y una panza.</td><td><b>Salta de a 2 escalones</b> y golpea donde cae. Si estás en el escalón que salta por arriba, ¡no te pasa nada!</td><td>salta</td></tr>
+    <tr><td><b>Largo</b></td><td>Naranja, con fuego, 12 bolitas.</td><td>Sale de un hoyo, lento.</td><td>0.8</td></tr>
+    <tr><td><b>Cortito</b></td><td>Naranja clarito, 4 bolitas, cara simpática.</td><td>Sale de un hoyo, lento.</td><td>0.9</td></tr>
+  </table></div>
+
+  <h3>¿Dónde están guardados?</h3>
+  <p>Los 5 gusanos están en <b>ServerStorage → Gusanos</b>. Ahí son <b>moldes</b> (como el molde de una torta 🎂): no se ven en el juego. El script hace una <b>copia</b> (Clone) cada vez que necesita un gusano nuevo.</p>
+<pre>▾ ServerStorage
+    ▾ Gusanos
+        ▸ GusanoGrande
+        ▸ GusanoLoco
+        ▸ GusanoForzudo
+        ▸ GusanoLargo
+        ▸ GusanoCortito</pre>
+
+  <h3>Cómo se arma un gusano (a mano)</h3>
+  <ol>
+    <li><b>La cabeza</b>: una pelota (<b>Shape → Ball</b>). Llamala <b>Cabeza</b>. <b>Anchored</b> ☑ y <b>CanCollide</b> ☐.</li>
+    <li><b>La cara</b>: ojos (pelotas blancas o amarillas), pupilas (pelotitas negras o rojas), boca (un bloque finito) y dientes (<b>WedgePart</b> = cuña, dados vuelta). <b>Arrastralos adentro de la Cabeza</b> en la lista, así se mueven con ella.</li>
+    <li><b>El cuerpo</b>: una carpeta (<b>Folder</b>) llamada <b>Cuerpo</b>, con pelotas que se achican: <b>Parte1</b>, <b>Parte2</b>… ¡Con número!</li>
+    <li>Juntá todo en un grupo (<b>Ctrl + G</b>) y ponele el nombre del gusano.</li>
+    <li>Agregale <b>atributos</b> (abajo de todo en las características, <span class="menu">+ Add Attribute</span>):
+      <ul>
+        <li><code>Velocidad</code> (número): cuántos escalones por segundo.</li>
+        <li><code>Forma</code> (texto): <code>arrastra</code> o <code>salta</code>.</li>
+        <li><code>Separacion</code> (número): qué tan juntas van las bolitas (0.3 está bien).</li>
+      </ul>
+    </li>
+    <li>Arrastralo a <b>ServerStorage → Gusanos</b>.</li>
+  </ol>
+  <div class="tip">💡 <b>El forzudo</b> no tiene bolitas en el Cuerpo: sus brazos y su panza están <b>adentro de la Cabeza</b>, así se mueve todo junto cuando salta.</div>
+  <div class="tip">💡 Cada cabeza tiene un cartel escondido (<b>BillboardGui</b>) llamado <b>Mareo</b> que dice "💫 ¡Mareado!". Se prende cuando le pegás con un juguete.</div>
+
+  <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🐛</span><span><b>¿Cómo se mueven y cómo atacan?</b><br>Ver el script Gusanos.</span></a>
+  <div class="reto">⭐⭐⭐ <b>Desafío:</b> Inventá un gusano nuevo (por ejemplo un gusano de hielo 🧊). Hacelo con la receta de arriba, guardalo en ServerStorage → Gusanos y agregá su nombre en la lista <code>TIPOS</code> del script Gusanos.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

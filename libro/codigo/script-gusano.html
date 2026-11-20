@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script Gusanos — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/script-gusano.html">
+<div class="hoja">
+  <h2>🐛 Script Gusanos: cómo se mueven y atacan</h2>
+  <a class="enlace juego" href="../construir/gusano.html"><span class="emoji">🎮</span><span><b>¿Dónde se ve en el juego?</b><br>Volver a los 5 gusanos.</span></a>
+  <div class="tip">📍 <b>Dónde está:</b> <b>ServerScriptService → Gusanos</b>. Es un <b>Script</b> (del servidor): así los gusanos son <b>los mismos para todos los jugadores</b>. Si vos ves al gusano en el escalón 20, tu amigo también lo ve ahí. ¡No hay cuenta regresiva para nadie!</div>
+
+  <h3>Los scripts de la torre trabajan en equipo</h3>
+  <div class="dibujo">
+    <svg width="600" height="190" viewBox="0 0 600 190" font-family="Segoe UI, Arial">
+      <defs><marker id="fe" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <a href="partida.html"><rect x="220" y="10" width="160" height="56" rx="12" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/><text x="300" y="34" font-size="15" text-anchor="middle" font-weight="700">📋 Partida</text><text x="300" y="54" font-size="11" text-anchor="middle">armadura y puntos</text></a>
+      <a href="script-gusano.html"><rect x="10" y="120" width="130" height="56" rx="12" fill="#ffe4e4" stroke="#e02424" stroke-width="2"/><text x="75" y="144" font-size="15" text-anchor="middle" font-weight="700">🐛 Gusanos</text><text x="75" y="164" font-size="11" text-anchor="middle">"¡toqué a alguien!"</text></a>
+      <a href="partida.html"><rect x="160" y="120" width="130" height="56" rx="12" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/><text x="225" y="144" font-size="15" text-anchor="middle" font-weight="700">📜 Reglas</text><text x="225" y="164" font-size="11" text-anchor="middle">caída y meta</text></a>
+      <a href="objetos.html"><rect x="310" y="120" width="130" height="56" rx="12" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/><text x="375" y="144" font-size="15" text-anchor="middle" font-weight="700">🍌 Objetos</text><text x="375" y="164" font-size="11" text-anchor="middle">bananas y juguetes</text></a>
+      <a href="juguetes.html"><rect x="460" y="120" width="130" height="56" rx="12" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/><text x="525" y="144" font-size="15" text-anchor="middle" font-weight="700">⚽ Juguetes</text><text x="525" y="164" font-size="11" text-anchor="middle">lanzar y batear</text></a>
+      <path d="M75 118 L250 68" stroke="#333" stroke-width="2" marker-end="url(#fe)"/>
+      <path d="M225 118 L285 68" stroke="#333" stroke-width="2" marker-end="url(#fe)"/>
+      <path d="M375 118 L315 68" stroke="#333" stroke-width="2" marker-end="url(#fe)"/>
+    </svg>
+  </div>
+  <p>Cuando un gusano te toca, el script Gusanos <b>no decide</b> qué pasa: le avisa a <a href="partida.html">Partida</a> con <code>Partida.atrapar(jugador)</code>. Partida se fija si tenés armadura. ¡Cada script hace su trabajo! 👷</p>
+<pre>local Partida = require(script.Parent:WaitForChild("Partida"))</pre>
+  <p><code>require</code> = "traeme las funciones de ese otro script". Partida es un <b>ModuleScript</b>: un script que <b>presta</b> sus funciones a otros.</p>
+
+  <h3>Parte 1: los números que podés cambiar 🎚️</h3>
+<pre>local MINIMO_EXTRA = 1     <span class="c">-- gusanos de los hoyos: al menos 1 (+ el grande = 2)</span>
+local MAXIMO_EXTRA = 2     <span class="c">-- como mucho 2 (+ el grande = 3)</span>
+local RECORRIDO = 24       <span class="c">-- cuántos escalones sube un gusano de hoyo antes de esconderse</span>
+local DORMIDO = -6         <span class="c">-- dónde aparece el grande (abajo del inicio)</span>
+local TIPOS = {"GusanoLoco", "GusanoForzudo", "GusanoLargo", "GusanoCortito"}</pre>
+
+  <h3>Parte 2: el camino</h3>
+<pre>local puntos = {}
+for k = 1, #escalones:GetChildren() do
+    puntos[k] = escalones:WaitForChild("Escalon" .. k).Position + Vector3.new(0, 2.5, 0)
+end
+
+local function camino(t)
+    local k = math.floor(t)
+    return puntos[k]:Lerp(puntos[k + 1], t - k)   <span class="c">-- un punto entre dos escalones</span>
+end</pre>
+  <p>Cada gusano tiene un número <code>t</code> = <b>por qué escalón va</b>. Si <code>t = 10.5</code>, está entre el 10 y el 11. <code>Lerp</code> = "un punto en el medio del camino".</p>
+
+  <h3>Parte 3: sacar un gusano del molde</h3>
+<pre>local function nuevoGusano(nombre, t, hoyo)
+    local modelo = moldes[nombre]:Clone()      <span class="c">-- copia del molde de ServerStorage</span>
+    local g = {
+        modelo = modelo, t = t, desde = t, hoyo = hoyo,
+        velocidad = modelo:GetAttribute("Velocidad"),
+        forma = modelo:GetAttribute("Forma"),
+        grande = (nombre == "GusanoGrande"),
+    }
+    modelo.Parent = activos                    <span class="c">-- ¡aparece en la torre!</span>
+    if hoyo then hoyo.Humo:Emit(30) end        <span class="c">-- ¡puf! humo del hoyo</span>
+    table.insert(lista, g)
+end</pre>
+  <ul>
+    <li><code>:Clone()</code> = "hacé una copia". El molde queda guardado para la próxima.</li>
+    <li><code>GetAttribute("Velocidad")</code> lee el atributo que le pusimos al gusano. Así cada gusano tiene su velocidad <b>sin cambiar el código</b>.</li>
+    <li>Las bolitas que todavía no salieron se quedan <b>adentro del hoyo</b>: parece que el gusano va saliendo de a poco.</li>
+  </ul>
+
+  <h3>Parte 4: repartir parejo 🎲</h3>
+<pre>local function elegirHoyo()
+    local cuenta = {}
+    for i = 1, #hoyos do cuenta[i] = 0 end
+    for _, g in ipairs(lista) do
+        local f = franja(g.t)          <span class="c">-- ¿cerca de qué hoyo está este gusano?</span>
+        cuenta[f] += 1
+    end
+    <span class="c">-- buscar los hoyos con MENOS gusanos y elegir uno de esos al azar</span>
+    ...
+    return candidatos[math.random(1, #candidatos)]
+end</pre>
+  <p>Cuenta cuántos gusanos hay cerca de cada <a href="../construir/hoyos.html">hoyo</a> y saca el nuevo del que tiene <b>menos</b>. Así hay gusanos en <b>toda la torre</b>. <code>math.random(1, 4)</code> = "un número al azar del 1 al 4", como tirar un dado 🎲.</p>
+<pre><span class="c">-- Cada 2 segundos: ¿hace falta otro gusano?</span>
+while true do
+    task.wait(2)
+    local n = cuantosExtra()
+    if n &lt; MINIMO_EXTRA or (n &lt; MAXIMO_EXTRA and math.random() &lt; 0.3) then
+        sacarDeUnHoyo()
+    end
+end</pre>
+  <p>Si hay menos de 1, saca uno <b>seguro</b>. Si hay 1, a veces (30%) saca otro. Nunca más de 2 (+ el grande = 3).</p>
+
+  <h3>Parte 5: el forzudo salta y golpea 💪</h3>
+<pre>local function saltar(g, dt, mareado)
+    if not mareado then g.reloj += dt end
+    if g.reloj >= VUELO + PAUSA then      <span class="c">-- terminó un salto: el próximo</span>
+        g.reloj = 0
+        g.escalon += 2                    <span class="c">-- ¡de a 2 escalones!</span>
+        g.golpeo = false
+    end
+    local a = math.min(g.reloj / VUELO, 1)          <span class="c">-- 0 = arranca, 1 = cae</span>
+    local p0, p1 = sobre(g.escalon), sobre(g.escalon + 2)
+    local lugar = p0:Lerp(p1, a) + Vector3.new(0, math.sin(a * math.pi) * 10, 0)
+    ...
+    if a >= 1 and not g.golpeo and not mareado then
+        g.golpeo = true
+        golpe(p1)                         <span class="c">-- ¡PUM! solo cuando cae</span>
+    end
+end</pre>
+  <ul>
+    <li><code>math.sin(a * math.pi) * 10</code> hace la <b>curva del salto</b>: sube hasta 10 en el medio y baja. 🌈</li>
+    <li>Solo golpea <b>cuando cae</b>, en el escalón donde cae. Si estás en el escalón que <b>salta por arriba</b>, ¡te salvaste!</li>
+    <li>El golpe hace una <b>onda roja</b> que se agranda (con <b>TweenService</b>, que cambia algo de a poquito).</li>
+  </ul>
+
+  <h3>Parte 6: cada cuadrito 💓</h3>
+<pre>RunService.Heartbeat:Connect(function(dt)
+    for i = #lista, 1, -1 do
+        local g = lista[i]
+        local mareado = ahora() &lt; (g.modelo:GetAttribute("MareadoHasta") or 0)
+        g.cabeza.Mareo.Enabled = mareado            <span class="c">-- cartel "💫 ¡Mareado!"</span>
+
+        if g.forma == "salta" then
+            saltar(g, dt, mareado)
+        else
+            if not mareado then g.t += g.velocidad * dt end   <span class="c">-- siempre igual</span>
+            dibujar(g, mareado)
+            if not mareado then tocar(g) end                   <span class="c">-- ¿tocó a alguien?</span>
+        end
+
+        if g.grande and g.t > N + 6 then
+            g.t = DORMIDO            <span class="c">-- el grande vuelve a empezar: ¡nunca se va!</span>
+        elseif not g.grande and (g.t > g.desde + RECORRIDO or g.t > N) then
+            sacar(g)                 <span class="c">-- los de los hoyos se esconden</span>
+        end
+    end
+end)</pre>
+  <ul>
+    <li><code>Heartbeat</code> = el "latido" del juego, unas <b>60 veces por segundo</b>.</li>
+    <li>Si el gusano está <b>mareado</b> (le pegaste con un <a href="juguetes.html">juguete</a>), no avanza y no toca a nadie. ¡Pasá rápido! 🏃</li>
+    <li><code>tocar(g)</code> mide la <b>distancia</b> (<code>.Magnitude</code>) entre vos y cada bolita. Si estás muy cerca → <code>Partida.atrapar(jugador)</code>.</li>
+  </ul>
+
+  <details><summary>🎯 Jueguito: quiero que siempre haya 4 gusanos (el grande + 3). ¿Qué cambio?</summary>
+    <p><code>local MAXIMO_EXTRA = 3</code> y <code>local MINIMO_EXTRA = 3</code>. 😈</p>
+  </details>
+  <details><summary>🎯 Jueguito: quiero que el gusano loco sea todavía más rápido.</summary>
+    <p>¡No hace falta tocar el código! Elegí <b>ServerStorage → Gusanos → GusanoLoco</b> y cambiá su atributo <code>Velocidad</code> a <code>3</code>.</p>
+  </details>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

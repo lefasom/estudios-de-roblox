@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 1 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="clases/clase-1.html">
+<div class="hoja">
+  <h2>🏫 Clase 1 — La Torre del Espacio y el gusano de lava</h2>
+  <p><b>Fecha:</b> 19 de noviembre de 2026</p>
+  <div class="bien">✅ <b>Lo que hicimos hoy</b> (tocá cada cosa para ver cómo se hace):
+    <ul>
+      <li>Nuestro juego se llama <a href="../construir/nombre-del-juego.html"><b>"Primer juego"</b></a>.</li>
+      <li>Inventamos un juego de <b>escalar una torre mientras un monstruo te persigue</b>. ¡Con nuestro propio monstruo!</li>
+      <li>Armamos la <a href="../construir/torre.html"><b>Torre del Espacio</b></a>: una columna con <b>96 escalones</b> en espiral, en 4 partes cada vez más difíciles (Fácil, Medio, Difícil y Experto).</li>
+      <li><b>Aparecés directo</b> en el inicio de la torre.</li>
+      <li>La rodeamos de <a href="../construir/espacio.html"><b>estrellas y planetas</b></a> 🪐, y se hace <a href="../codigo/cielo-espacio.html">de noche</a>.</li>
+      <li>Inventamos el <a href="../construir/gusano.html"><b>gusano de lava</b></a> 🔥🐛: cabeza de lava, ojos amarillos, dientes y 14 bolitas de cuerpo.</li>
+      <li>El gusano cuenta 5 segundos y <a href="../codigo/script-gusano.html"><b>te persigue</b></a>. ¡Es más rápido que vos! Cuando llega arriba, vuelve a salir.</li>
+      <li>Pusimos <a href="../construir/zona-segura.html"><b>🛡️ zonas seguras</b></a>: si te escondés ahí, el gusano no te atrapa.</li>
+      <li>Sacamos las cosas viejas (los obbies) para que quede <b>un solo juego</b>.</li>
+      <li>El juego tiene <a href="../codigo/shift-lock.html"><b>Shift Lock</b></a>: apretás Shift y la cámara queda fija atrás tuyo.</li>
+    </ul>
+  </div>
+
+  <div class="dibujo">
+    <svg width="520" height="220" viewBox="0 0 520 220" font-family="Segoe UI, Arial">
+      <text x="260" y="20" font-size="15" text-anchor="middle" font-weight="700">Cómo se juega</text>
+      <g font-size="13" text-anchor="middle">
+        <a href="../construir/torre.html"><rect x="10" y="40" width="110" height="70" rx="10" fill="#e6e6f0" stroke="#333"/><text x="65" y="72" font-size="22">⏰</text><text x="65" y="98">1. Aparecés: 5…</text></a>
+        <a href="../codigo/script-gusano.html"><rect x="140" y="40" width="110" height="70" rx="10" fill="#e0401a"/><text x="195" y="72" fill="#fff" font-size="22">🏃🔥</text><text x="195" y="98" fill="#fff">2. ¡Subí!</text></a>
+        <a href="../construir/zona-segura.html"><rect x="270" y="40" width="110" height="70" rx="10" fill="#28c85a"/><text x="325" y="72" fill="#fff" font-size="22">🛡️</text><text x="325" y="98" fill="#fff">3. ¡Escondete!</text></a>
+        <a href="../construir/torre.html"><rect x="400" y="40" width="110" height="70" rx="10" fill="#ffd73c" stroke="#333"/><text x="455" y="72" font-size="22">🏆</text><text x="455" y="98">4. Meta</text></a>
+      </g>
+      <text x="260" y="150" font-size="13" text-anchor="middle">Si te caés al agujero negro 🕳️ o el gusano te atrapa 😱 → volvés al inicio.</text>
+      <text x="260" y="175" font-size="13" text-anchor="middle">Cuando el gusano pasa de largo, salís de la zona segura y seguís subiendo.</text>
+    </svg>
+  </div>
+
+  <h3>Los scripts de esta clase</h3>
+  <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🧠</span><span><b>TorreEspacio</b> (Script, en ServerScriptService)<br>El gusano, las zonas seguras, la caída y la meta. (En la <b>Clase 2</b> lo cambiamos por varios scripts que trabajan en equipo.)</span></a>
+  <a class="enlace codigo" href="../codigo/cielo-espacio.html"><span class="emoji">🌙</span><span><b>CieloEspacio</b> (LocalScript, en StarterPlayerScripts)<br>Se hace de noche cerca de la torre.</span></a>
+  <a class="enlace codigo" href="../codigo/shift-lock.html"><span class="emoji">🔒</span><span><b>ShiftLock</b> (LocalScript, en StarterPlayerScripts)<br>La cámara fija con Shift.</span></a>
+
+  <div class="ojo">⚠️ <b>¡Cuidado con copiar!</b> Este tipo de juego (escalar una torre con un monstruo) existe en Roblox. Está bien hacer un juego <b>del mismo tipo</b>, pero el monstruo, la torre y los dibujos tienen que ser <b>inventados por vos</b>. Por eso nuestro gusano es de lava y la torre es del espacio. 🎨</div>
+
+  <h3>Desafíos para practicar 💪</h3>
+  <div class="reto">⭐ <b>Fácil:</b> Cambiale el color a algunos escalones.</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> Hacé una zona segura nueva cerca del escalón 90. (<a href="../construir/zona-segura.html">Ayuda</a>)</div>
+  <div class="reto">⭐⭐⭐ <b>Difícil:</b> Cambiá <code>VELOCIDAD</code> en el script <a href="../codigo/script-gusano.html">TorreEspacio</a> hasta que el juego quede justo: ni muy fácil, ni imposible.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

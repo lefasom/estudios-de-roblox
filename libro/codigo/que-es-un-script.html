@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Qué es un script? — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/que-es-un-script.html">
+<div class="hoja">
+  <h2>💻 ¿Qué es un script?</h2>
+  <p>Un <b>script</b> es una lista de órdenes para el juego, escrita en un idioma que se llama <b>Luau</b>. Es como una receta: el juego la lee de arriba para abajo y hace lo que dice.</p>
+  <div class="dibujo">
+    <svg width="560" height="110" viewBox="0 0 560 110" font-family="Segoe UI, Arial">
+      <defs><marker id="f2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <rect x="10" y="30" width="150" height="50" rx="10" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/><text x="85" y="60" font-size="14" text-anchor="middle">CUANDO pasa algo</text>
+      <text x="85" y="100" font-size="11" text-anchor="middle">(el gusano te toca)</text>
+      <path d="M165 55 L215 55" stroke="#333" stroke-width="3" marker-end="url(#f2)"/>
+      <rect x="220" y="30" width="150" height="50" rx="10" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/><text x="295" y="60" font-size="14" text-anchor="middle">SI se cumple algo</text>
+      <text x="295" y="100" font-size="11" text-anchor="middle">(sos un jugador)</text>
+      <path d="M375 55 L425 55" stroke="#333" stroke-width="3" marker-end="url(#f2)"/>
+      <rect x="430" y="30" width="120" height="50" rx="10" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/><text x="490" y="60" font-size="14" text-anchor="middle">HACÉ algo</text>
+      <text x="490" y="100" font-size="11" text-anchor="middle">(volver al inicio)</text>
+    </svg>
+  </div>
+  <p>¡Casi todos los scripts de un juego son así! <b>Cuando</b> pasa algo → <b>si</b> se cumple algo → <b>hacé</b> algo.</p>
+
+  <h3>Las palabras mágicas de Luau</h3>
+  <div class="tabla"><table>
+    <tr><th>Escribís…</th><th>Quiere decir…</th><th>Ejemplo</th></tr>
+    <tr><td><code>local</code></td><td>"Guardá esto en una cajita con nombre" (una <b>variable</b>).</td><td><code>local vidas = 3</code></td></tr>
+    <tr><td><code>--</code></td><td>Un <b>comentario</b>: nota para nosotros. El juego no la lee.</td><td><code>-- esto es una nota</code></td></tr>
+    <tr><td><code>if … then … end</code></td><td>"<b>Si</b> pasa esto, <b>entonces</b> hacé esto". <code>end</code> = fin.</td><td><code>if vidas == 0 then … end</code></td></tr>
+    <tr><td><code>function … end</code></td><td>Un <b>pedacito de receta</b> con nombre, para usar muchas veces.</td><td><code>local function saltar() … end</code></td></tr>
+    <tr><td><code>:Connect(…)</code></td><td>"<b>Cuando</b> pase esto, hacé esta función".</td><td><code>bloque.Touched:Connect(…)</code></td></tr>
+    <tr><td><code>for … do … end</code></td><td>"Repetí esto para cada uno".</td><td>Para cada bolita del gusano, …</td></tr>
+    <tr><td><code>print("hola")</code></td><td>Escribe un mensaje en la ventana <b>Output</b> (salida). Sirve para ver si el script anda.</td><td><code>print("¡Me tocaron!")</code></td></tr>
+  </table></div>
+
+  <h3>Hay dos tipos de script</h3>
+  <div class="dibujo">
+    <svg width="560" height="170" viewBox="0 0 560 170" font-family="Segoe UI, Arial">
+      <rect x="200" y="10" width="160" height="60" rx="12" fill="#1e1e2e"/><text x="280" y="38" font-size="14" text-anchor="middle" fill="#fff" font-weight="700">🖥️ SERVIDOR</text><text x="280" y="58" font-size="12" text-anchor="middle" fill="#8bd5a0">Script</text>
+      <rect x="20" y="110" width="130" height="50" rx="10" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/><text x="85" y="132" font-size="13" text-anchor="middle">💻 Tu compu</text><text x="85" y="150" font-size="12" text-anchor="middle" fill="#1b5fd6">LocalScript</text>
+      <rect x="215" y="110" width="130" height="50" rx="10" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/><text x="280" y="132" font-size="13" text-anchor="middle">💻 Amigo 1</text><text x="280" y="150" font-size="12" text-anchor="middle" fill="#1b5fd6">LocalScript</text>
+      <rect x="410" y="110" width="130" height="50" rx="10" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/><text x="475" y="132" font-size="13" text-anchor="middle">📱 Amigo 2</text><text x="475" y="150" font-size="12" text-anchor="middle" fill="#1b5fd6">LocalScript</text>
+      <line x1="230" y1="72" x2="90" y2="108" stroke="#999" stroke-width="2"/><line x1="280" y1="72" x2="280" y2="108" stroke="#999" stroke-width="2"/><line x1="330" y1="72" x2="470" y2="108" stroke="#999" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="tabla"><table>
+    <tr><th>Tipo</th><th>¿Dónde corre?</th><th>¿Para qué?</th><th>Ejemplo nuestro</th></tr>
+    <tr><td><b>Script</b></td><td>En el <b>servidor</b>: la compu de Roblox que maneja el juego para todos.</td><td>Cosas que pasan para <b>todos</b>.</td><td><a href="script-gusano.html">El gusano</a>.</td></tr>
+    <tr><td><b>LocalScript</b></td><td>En la compu <b>de cada jugador</b>.</td><td>Cosas de <b>un solo jugador</b>: su cámara, sus teclas, su pantalla.</td><td><a href="shift-lock.html">El Shift Lock</a>.</td></tr>
+  </table></div>
+
+  <h3>Cómo crear un script (a mano)</h3>
+  <ol>
+    <li>En la lista, pasá el mouse por arriba del lugar donde lo querés (por ejemplo <b>ServerScriptService</b>).</li>
+    <li>Apretá el <b>+</b> que aparece al lado.</li>
+    <li>Elegí <b>Script</b> (o <b>LocalScript</b>).</li>
+    <li>Se abre una hoja para escribir. Ya trae <code>print("Hello world!")</code>: borralo.</li>
+    <li>Cambiale el nombre (clic derecho → <span class="menu">Rename</span>) para saber qué hace.</li>
+    <li>Escribí el código y apretá <span class="menu">▶ Play</span> para probarlo.</li>
+  </ol>
+  <div class="tip">💡 Si algo no anda, mirá la ventana <b>Output</b> (<span class="menu">View</span> → <span class="menu">Output</span>). Ahí aparecen los errores en <b style="color:#e02424">rojo</b>, con el número de línea.</div>
+
+  <a class="enlace codigo" href="donde-y-como-se-encuentran.html"><span class="emoji">🔎</span><span><b>Siguiente: ¿dónde se guarda cada script?</b><br>Y cómo hace un script para encontrar un bloque.</span></a>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

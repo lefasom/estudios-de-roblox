@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script Objetos — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/objetos.html">
+<div class="hoja">
+  <h2>🍌 Script Objetos: juguetes flotando y bananas</h2>
+  <a class="enlace juego" href="../construir/juguetes.html"><span class="emoji">🎮</span><span><b>¿Dónde se ve en el juego?</b><br>Volver a juguetes, bate y bananas.</span></a>
+  <div class="tip">📍 <b>Dónde está:</b> <b>ServerScriptService → Objetos</b> (un Script). Pone las cosas en la carpeta <b>TorreEspacio → Objetos</b> cuando empieza el juego.</div>
+
+  <h3>Números que podés cambiar 🎚️</h3>
+<pre>local VUELVE_A_APARECER = 20   <span class="c">-- segundos hasta que aparece otro juguete</span>
+local MAXIMO_EN_LA_MANO = 3    <span class="c">-- cuántos juguetes podés llevar</span>
+local RESBALA = 3              <span class="c">-- cuántos escalones para atrás te manda la banana</span></pre>
+
+  <h3>Repartir parejo</h3>
+<pre><span class="c">-- Una pelota por cada vuelta de la torre (12 escalones)</span>
+for vuelta = 1, N / 12 do
+    juguete({"PelotaFutbol", "PelotaTenis", "PelotaRugby"}, (vuelta - 1) * 12 + 2, vuelta * 12 - 1)
+end
+<span class="c">-- Pocos bates: uno cada 32 escalones</span>
+for parte = 1, 3 do
+    juguete({"BateJuguete"}, (parte - 1) * 32 + 4, parte * 32 - 2)
+end
+<span class="c">-- Una banana cada 8 escalones</span>
+for i = 1, N / 8 do
+    banana(math.max(5, (i - 1) * 8 + 1), i * 8)
+end</pre>
+  <p>La torre se divide en pedazos iguales y en <b>cada pedazo</b> va una cosa, en un escalón <b>al azar</b> (<code>math.random(desde, hasta)</code>). Así nunca quedan todas juntas.</p>
+
+  <h3>Agarrar un juguete</h3>
+<pre>muestra.Touched:Connect(function(golpe)
+    local jugador = jugadorDe(golpe)
+    if not jugador or muestra.Transparency > 0 then return end
+    if cuantosJuguetes(jugador) >= MAXIMO_EN_LA_MANO then return end
+    juguetes[nombre]:Clone().Parent = jugador.Backpack   <span class="c">-- ¡a tu mochila!</span>
+    muestra.Transparency = 1                             <span class="c">-- desaparece</span>
+    task.delay(VUELVE_A_APARECER, function()
+        ...                                              <span class="c">-- y vuelve en otro escalón</span>
+    end)
+end)</pre>
+  <ul>
+    <li><code>jugador.Backpack</code> = la <b>mochila</b> del jugador. Lo que pongas ahí aparece abajo en la pantalla.</li>
+    <li><code>task.delay(20, …)</code> = "dentro de 20 segundos, hacé esto".</li>
+  </ul>
+
+  <h3>Resbalar con la banana 🍌</h3>
+<pre>local function resbalar(jugador, k)
+    local atras = math.max(1, k - RESBALA)          <span class="c">-- 3 escalones para atrás</span>
+    humanoide.PlatformStand = true                  <span class="c">-- se cae de cola</span>
+    personaje:PivotTo(CFrame.new(arribaDe(atras, 3.5)) * CFrame.Angles(math.rad(-80), 0, 0))
+    Partida.mensaje(jugador, "🍌 ¡Resbalaste!\nVolviste " .. RESBALA .. " escalones")
+    task.delay(0.8, function()
+        humanoide.PlatformStand = false             <span class="c">-- se levanta</span>
+    end)
+end</pre>
+  <ul>
+    <li><code>PlatformStand = true</code> = el personaje queda <b>tirado</b>, sin poder caminar.</li>
+    <li><code>CFrame.Angles(math.rad(-80), 0, 0)</code> = lo acuesta para atrás. ¡Pum! 🤕</li>
+    <li><code>math.max(1, …)</code>: si estás en el escalón 2, no podés ir al −1. Vas al 1. ¡Nunca te caés del mapa!</li>
+  </ul>
+
+  <div class="reto">⭐⭐ <b>Desafío:</b> ¿Hiciste la pelota de básquet? Agregá <code>"PelotaBasquet"</code> a la lista <code>{"PelotaFutbol", "PelotaTenis", "PelotaRugby"}</code> para que aparezca en la torre.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

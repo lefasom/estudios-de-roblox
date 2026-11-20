@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 2 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="clases/clase-2.html">
+<div class="hoja">
+  <h2>🏫 Clase 2 — Muchos gusanos, juguetes y armadura</h2>
+  <p><b>Fecha:</b> 19 de noviembre de 2026</p>
+  <div class="bien">✅ <b>Lo que hicimos hoy</b> (tocá cada cosa para ver cómo se hace):
+    <ul>
+      <li>La torre ahora tiene <a href="../construir/torre.html"><b>96 escalones</b></a> (8 vueltas), cada vez más difíciles, y <a href="../construir/zona-segura.html"><b>7 zonas seguras</b></a> 🛡️.</li>
+      <li><b>Aparecés directo</b> en la torre y <b>no hay cuenta regresiva</b>: los gusanos son los mismos para todos los jugadores.</li>
+      <li>Inventamos <a href="../construir/gusano.html"><b>4 gusanos nuevos</b></a>: el <b>Loco</b> 😠 (rápido), el <b>Forzudo</b> 💪 (salta y golpea), el <b>Largo</b> y el <b>Cortito</b>.</li>
+      <li>El <b>gusano grande</b> nunca se va: cuando llega arriba, vuelve a salir abajo.</li>
+      <li>Pusimos <a href="../construir/hoyos.html"><b>4 hoyos</b></a> 🕳️ en la columna. Los gusanos salen al azar, <b>repartidos parejo</b> en toda la torre. Siempre hay 2 o 3.</li>
+      <li>Hay <a href="../construir/juguetes.html"><b>juguetes</b></a> flotando: pelotas ⚽🎾🏉 para lanzar y un <b>bate</b> 🏏. Si le pegás a un gusano, queda <b>mareado</b> 💫.</li>
+      <li>Hay <a href="../construir/juguetes.html"><b>cáscaras de banana</b></a> 🍌: si las pisás, caés 3 escalones para atrás.</li>
+      <li>Cada vez que llegás arriba, ganás <a href="../codigo/partida.html"><b>puntos</b></a> (más si subís rápido) y una <b>pieza de armadura</b> 🛡️. ¡Son 7!</li>
+      <li>Si un gusano te toca, se te cae una pieza. Sin armadura, o si te caés, ¡perdiste!</li>
+      <li>Con las 7 piezas sos <b>CAMPEÓN</b> 👑 y ganás el <b>Lanzapelotas Dorado</b>.</li>
+      <li>En la cima hay una <b>tabla de puntajes</b> 🏆, y arriba de la pantalla ves tu <a href="../codigo/pantalla.html">tiempo</a>.</li>
+    </ul>
+  </div>
+
+  <div class="dibujo">
+    <svg width="560" height="250" viewBox="0 0 560 250" font-family="Segoe UI, Arial">
+      <text x="280" y="20" font-size="15" text-anchor="middle" font-weight="700">Cómo se juega</text>
+      <g font-size="12" text-anchor="middle">
+        <a href="../construir/torre.html"><rect x="10" y="35" width="100" height="70" rx="10" fill="#50c8ff"/><text x="60" y="65" font-size="22">🏃</text><text x="60" y="92">1. ¡Subí!</text></a>
+        <a href="../construir/zona-segura.html"><rect x="120" y="35" width="100" height="70" rx="10" fill="#28c85a"/><text x="170" y="65" font-size="22">🛡️</text><text x="170" y="92" fill="#fff">2. Escondete</text></a>
+        <a href="../construir/juguetes.html"><rect x="230" y="35" width="100" height="70" rx="10" fill="#d2ff28"/><text x="280" y="65" font-size="22">⚽</text><text x="280" y="92">3. ¡Mareálos!</text></a>
+        <a href="../codigo/partida.html"><rect x="340" y="35" width="100" height="70" rx="10" fill="#ffd73c"/><text x="390" y="65" font-size="22">🏆</text><text x="390" y="92">4. Puntos</text></a>
+        <a href="../codigo/partida.html"><rect x="450" y="35" width="100" height="70" rx="10" fill="#c0c8e0"/><text x="500" y="65" font-size="22">🛡️+1</text><text x="500" y="92">5. ¡Otra vez!</text></a>
+      </g>
+      <text x="280" y="140" font-size="13" text-anchor="middle">Cada vuelta te da una pieza de armadura. Cada pieza: +10% de puntos.</text>
+      <text x="280" y="165" font-size="13" text-anchor="middle">🐛 Si te toca un gusano → se te cae una pieza.</text>
+      <text x="280" y="190" font-size="13" text-anchor="middle">😵 Sin armadura, o si te caés al agujero negro → empezás de cero.</text>
+      <text x="280" y="215" font-size="13" text-anchor="middle">👑 7 piezas → ¡CAMPEÓN!</text>
+    </svg>
+  </div>
+
+  <h3>Los scripts de esta clase</h3>
+  <p>¡Ahora los scripts trabajan en equipo! Cada uno hace una sola cosa:</p>
+  <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🐛</span><span><b>Gusanos</b> (Script, ServerScriptService)<br>Saca gusanos de los hoyos, los mueve y avisa si tocaron a alguien.</span></a>
+  <a class="enlace codigo" href="../codigo/partida.html"><span class="emoji">📋</span><span><b>Partida</b> (ModuleScript) y <b>Reglas</b> (Script)<br>Armadura, puntos, tabla, caída y meta.</span></a>
+  <a class="enlace codigo" href="../codigo/juguetes.html"><span class="emoji">⚽</span><span><b>Juguetes</b> (ModuleScript) + <b>AlHacerClic</b> (adentro de cada juguete)<br>Lanzar pelotas y batear.</span></a>
+  <a class="enlace codigo" href="../codigo/objetos.html"><span class="emoji">🍌</span><span><b>Objetos</b> (Script)<br>Juguetes flotando y bananas, repartidos parejo.</span></a>
+  <a class="enlace codigo" href="../codigo/pantalla.html"><span class="emoji">⏱️</span><span><b>Pantalla</b> (LocalScript)<br>Tu tiempo, tu armadura, tus puntos y los mensajes.</span></a>
+
+  <h3>Palabras nuevas</h3>
+  <ul>
+    <li><b>ServerStorage</b>: un depósito escondido. Ahí guardamos los <b>moldes</b> de los gusanos y los juguetes.</li>
+    <li><b>Clone</b>: hacer una copia de algo.</li>
+    <li><b>ModuleScript</b>: un script que le presta sus funciones a otros (con <code>require</code>).</li>
+    <li><b>Tool</b>: una herramienta que el personaje lleva en la mano. Su parte principal se llama <b>Handle</b>.</li>
+    <li><b>leaderstats</b>: la carpeta que hace aparecer tus puntos en la lista de jugadores.</li>
+  </ul>
+
+  <h3>Desafíos para practicar 💪</h3>
+  <div class="reto">⭐ <b>Fácil:</b> Cambiale la <code>Velocidad</code> al GusanoLoco (es un atributo, ¡no hace falta tocar código!).</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> Hacé una pelota de básquet 🏀. (<a href="../construir/juguetes.html">Ayuda</a>)</div>
+  <div class="reto">⭐⭐⭐ <b>Difícil:</b> Inventá un gusano nuevo y agregalo a la lista <code>TIPOS</code>. (<a href="../construir/gusano.html">Ayuda</a>)</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>
