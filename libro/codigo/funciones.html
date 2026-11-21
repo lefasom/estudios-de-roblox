@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funciones 1 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/funciones.html">
+<div class="hoja">
+  <h2>⚙️ Funciones 1: máquinas que hacen algo</h2>
+  <p>Una <b>función</b> es una <b>máquina con nombre</b>. Adentro tiene una lista de pasos. Cuando la usás, <b>hace un trabajo</b> (un <b>proceso</b>).</p>
+  <p>Es como el <b>lavarropas</b> 🧺: vos solo apretás el botón. Adentro, él hace todos los pasos: llenar de agua, girar, enjuagar, centrifugar.</p>
+
+  <div class="dibujo">
+    <svg width="620" height="220" viewBox="0 0 620 220" font-family="Segoe UI, Arial">
+      <defs><marker id="m1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <circle cx="70" cy="110" r="44" fill="#e3f9e5" stroke="#17a34a" stroke-width="3"/><text x="70" y="106" font-size="26" text-anchor="middle">👆</text><text x="70" y="130" font-size="12" text-anchor="middle" font-weight="700">la usás</text>
+      <path d="M118 110 L168 110" stroke="#333" stroke-width="4" marker-end="url(#m1)"/>
+      <rect x="174" y="20" width="290" height="180" rx="18" fill="#1e1e2e" stroke="#5fd3ff" stroke-width="4"/>
+      <text x="319" y="50" font-size="17" text-anchor="middle" fill="#5fd3ff" font-weight="700">⚙️ volverAlInicio</text>
+      <g font-size="13" fill="#fff">
+        <text x="196" y="82">1. buscar el bloque Inicio</text>
+        <text x="196" y="106">2. llevar al jugador arriba de él</text>
+        <text x="196" y="130">3. poner el tiempo en 0</text>
+        <text x="196" y="154">4. mostrar un mensaje</text>
+      </g>
+      <text x="319" y="186" font-size="11" text-anchor="middle" fill="#8bd5a0">(los pasos están ADENTRO)</text>
+      <path d="M468 110 L518 110" stroke="#333" stroke-width="4" marker-end="url(#m1)"/>
+      <circle cx="560" cy="110" r="46" fill="#fff8d6" stroke="#f2b600" stroke-width="3"/><text x="560" y="106" font-size="26" text-anchor="middle">✅</text><text x="560" y="130" font-size="12" text-anchor="middle" font-weight="700">¡hecho!</text>
+    </svg>
+  </div>
+
+  <h3>¿Para qué sirven? 🤔</h3>
+  <ul>
+    <li><b>Para no repetir.</b> Escribís los pasos <b>una vez</b> y los usás <b>muchas veces</b>.</li>
+    <li><b>Para ordenar.</b> Cada función hace <b>un solo trabajo</b>, con un nombre que lo dice.</li>
+    <li><b>Para arreglar fácil.</b> Si hay un error, sabés en qué máquina buscar.</li>
+  </ul>
+
+  <h3>Dos momentos: ARMAR y USAR</h3>
+  <p>Con las funciones hay <b>dos</b> cosas distintas. ¡Es lo más importante de esta página!</p>
+  <div class="tabla"><table>
+    <tr><th>🔧 1. Armar la máquina</th><th>👆 2. Usar la máquina</th></tr>
+    <tr><td>Escribís los pasos. <b>Todavía no pasa nada.</b></td><td>Escribís el nombre con <code>()</code>. <b>¡Ahora sí hace el trabajo!</b></td></tr>
+    <tr><td>
+<pre>local function saludar()
+    print("¡Hola!")
+    print("¡Bienvenido a la torre!")
+end</pre></td><td>
+<pre>saludar()</pre></td></tr>
+    <tr><td>En inglés: <b>definir</b> la función.</td><td>En inglés: <b>llamar</b> a la función (como llamar a alguien por su nombre).</td></tr>
+  </table></div>
+
+  <h3>Las partes de una función</h3>
+  <div class="dibujo">
+    <svg width="600" height="190" viewBox="0 0 600 190" font-family="Consolas, monospace">
+      <rect x="10" y="40" width="580" height="110" rx="10" fill="#1e1e2e"/>
+      <text x="26" y="72" font-size="18"><tspan fill="#ff7ab8" font-weight="700">local function</tspan><tspan fill="#5fd3ff" font-weight="700"> saludar</tspan><tspan fill="#fff">()</tspan></text>
+      <text x="26" y="102" font-size="18"><tspan fill="#fff">    </tspan><tspan fill="#5fd3ff" font-weight="700">print</tspan><tspan fill="#fff">(</tspan><tspan fill="#ffd166">"¡Hola!"</tspan><tspan fill="#fff">)</tspan></text>
+      <text x="26" y="132" font-size="18" fill="#ff7ab8" font-weight="700">end</text>
+      <g font-family="Segoe UI, Arial" font-size="13" font-weight="700">
+        <path d="M90 38 L90 22" stroke="#ff7ab8" stroke-width="2"/><text x="20" y="16" fill="#ff7ab8">① "acá armo una máquina"</text>
+        <path d="M275 38 L300 22" stroke="#5fd3ff" stroke-width="2"/><text x="250" y="16" fill="#0b6fa8">② su nombre</text>
+        <path d="M335 60 L410 40" stroke="#c49bff" stroke-width="2"/><text x="390" y="34" fill="#9333ea">③ paréntesis</text>
+        <path d="M250 98 L400 92" stroke="#7fd18b" stroke-width="2"/><text x="405" y="96" fill="#17a34a">④ los pasos (con sangría)</text>
+        <path d="M60 140 L60 170" stroke="#ff7ab8" stroke-width="2"/><text x="20" y="184" fill="#ff7ab8">⑤ end = "acá termina la máquina"</text>
+      </g>
+    </svg>
+  </div>
+  <ol>
+    <li><code>local function</code> = "acá armo una máquina".</li>
+    <li>El <b>nombre</b>. Que diga lo que hace: <code>saludar</code>, <code>saltar</code>, <code>volverAlInicio</code>.</li>
+    <li>Los <b>paréntesis</b> <code>()</code>. Ahí van las cosas que le das (lo vemos en <a href="funciones-con-datos.html">Funciones 2</a>).</li>
+    <li>Los <b>pasos</b>, corridos un poquito a la derecha (eso se llama <b>sangría</b>). Así se ve qué está adentro.</li>
+    <li><code>end</code> = fin de la máquina.</li>
+  </ol>
+
+  <h3>¿En qué orden lee el juego? 🚶</h3>
+  <p>El juego lee de arriba para abajo. Cuando ve una función que se <b>arma</b>, la <b>guarda</b> y sigue. Cuando ve que se <b>usa</b>, <b>salta</b> adentro, hace los pasos y <b>vuelve</b>.</p>
+  <div class="dibujo">
+    <svg width="620" height="300" viewBox="0 0 620 300" font-family="Consolas, monospace">
+      <defs><marker id="m2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#e02424"/></marker></defs>
+      <rect x="10" y="10" width="340" height="280" rx="10" fill="#1e1e2e"/>
+      <g font-size="14" fill="#777" text-anchor="end"><text x="34" y="40">1</text><text x="34" y="70">2</text><text x="34" y="100">3</text><text x="34" y="130">4</text><text x="34" y="160">5</text><text x="34" y="190">6</text><text x="34" y="220">7</text><text x="34" y="250">8</text></g>
+      <text x="46" y="40" font-size="14"><tspan fill="#ff7ab8" font-weight="700">local function</tspan><tspan fill="#5fd3ff" font-weight="700"> saludar</tspan><tspan fill="#fff">()</tspan></text>
+      <text x="46" y="70" font-size="14"><tspan fill="#fff">    </tspan><tspan fill="#5fd3ff" font-weight="700">print</tspan><tspan fill="#fff">(</tspan><tspan fill="#ffd166">"¡Hola!"</tspan><tspan fill="#fff">)</tspan></text>
+      <text x="46" y="100" font-size="14" fill="#ff7ab8" font-weight="700">end</text>
+      <text x="46" y="160" font-size="14"><tspan fill="#5fd3ff" font-weight="700">print</tspan><tspan fill="#fff">(</tspan><tspan fill="#ffd166">"Empieza"</tspan><tspan fill="#fff">)</tspan></text>
+      <text x="46" y="190" font-size="14"><tspan fill="#5fd3ff" font-weight="700">saludar</tspan><tspan fill="#fff">()</tspan></text>
+      <text x="46" y="220" font-size="14"><tspan fill="#5fd3ff" font-weight="700">saludar</tspan><tspan fill="#fff">()</tspan></text>
+      <text x="46" y="250" font-size="14"><tspan fill="#5fd3ff" font-weight="700">print</tspan><tspan fill="#fff">(</tspan><tspan fill="#ffd166">"Fin"</tspan><tspan fill="#fff">)</tspan></text>
+      <path d="M150 186 Q250 140 230 74" fill="none" stroke="#e02424" stroke-width="3" marker-end="url(#m2)"/>
+      <path d="M140 104 Q200 150 180 180" fill="none" stroke="#e02424" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#m2)"/>
+      <text x="250" y="130" font-size="12" fill="#ff9a9a" font-family="Segoe UI, Arial">salta adentro</text>
+      <text x="150" y="128" font-size="12" fill="#ff9a9a" font-family="Segoe UI, Arial">vuelve</text>
+      <rect x="370" y="10" width="240" height="280" rx="10" fill="#fff" stroke="#555" stroke-width="2"/>
+      <rect x="370" y="10" width="240" height="26" rx="8" fill="#555"/><text x="382" y="28" font-size="13" fill="#fff" font-weight="700" font-family="Segoe UI, Arial">Output (lo que sale)</text>
+      <g font-size="15" fill="#222"><text x="386" y="70">Empieza</text><text x="386" y="100">¡Hola!</text><text x="386" y="130">¡Hola!</text><text x="386" y="160">Fin</text></g>
+      <g font-size="12" fill="#888" font-family="Segoe UI, Arial"><text x="476" y="70">← línea 5</text><text x="476" y="100">← línea 6 (salta a la 2)</text><text x="476" y="130">← línea 7 (salta a la 2)</text><text x="476" y="160">← línea 8</text></g>
+    </svg>
+  </div>
+  <div class="ojo">⚠️ Las líneas 1, 2 y 3 <b>no escriben nada</b> cuando el juego pasa por ahí. ¡Solo arman la máquina! El "¡Hola!" sale recién cuando la <b>usamos</b> en la línea 6 y en la 7.</div>
+  <div class="tip">💡 Primero se <b>arma</b> la máquina, <b>después</b> se usa. Si escribís <code>saludar()</code> arriba de todo, antes de armarla… ¡error rojo! El juego todavía no la conoce.</div>
+
+  <h3>Funciones que ya vienen con Roblox 🎁</h3>
+  <p>¡No todas las tenemos que armar nosotros! Roblox trae muchas máquinas listas. Solo hay que <b>usarlas</b>:</p>
+  <div class="tabla"><table>
+    <tr><th>Función</th><th>¿Qué hace?</th><th>¿Dónde la usamos?</th></tr>
+    <tr><td><code>print("…")</code></td><td>Escribe en Output.</td><td>Para probar si un script anda.</td></tr>
+    <tr><td><code>molde:Clone()</code></td><td>Hace una copia.</td><td><a href="script-gusano.html">Gusanos</a>: copiar un gusano del molde.</td></tr>
+    <tr><td><code>bloque:Destroy()</code></td><td>Rompe (borra) algo. 💥</td><td><a href="juguetes.html">Juguetes</a>: la pelota se rompe cuando choca.</td></tr>
+    <tr><td><code>task.wait(2)</code></td><td>Espera 2 segundos.</td><td>Para hacer pausas.</td></tr>
+    <tr><td><code>math.random(1, 4)</code></td><td>Elige un número al azar. 🎲</td><td><a href="script-gusano.html">Gusanos</a>: elegir un hoyo.</td></tr>
+  </table></div>
+
+  <div class="reto">⭐ <b>Desafío 1:</b> armá una función <code>contarHasta3</code> que escriba 1, 2 y 3 en Output. Usala <b>dos veces</b>. ¿Cuántos números salen?</div>
+  <details><summary>👀 Ver la respuesta del desafío 1</summary>
+<pre>local function contarHasta3()
+    print(1)
+    print(2)
+    print(3)
+end
+
+contarHasta3()
+contarHasta3()   -- salen 6 números: 1 2 3 1 2 3</pre>
+  </details>
+  <details><summary>🎯 Jueguito: armé la función <code>bailar</code>, pero nunca escribí <code>bailar()</code>. ¿Baila?</summary>
+    <p><b>¡No!</b> La máquina está armada, pero nadie apretó el botón. Hay que <b>usarla</b>: <code>bailar()</code>. 💃</p>
+  </details>
+
+  <a class="enlace codigo" href="funciones-con-datos.html"><span class="emoji">📥</span><span><b>Funciones 2: le das cosas y te devuelve cosas</b><br>Máquinas que reciben ingredientes.</span></a>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

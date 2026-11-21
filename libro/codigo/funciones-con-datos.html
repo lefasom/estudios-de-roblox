@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funciones 2 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/funciones-con-datos.html">
+<div class="hoja">
+  <h2>📥 Funciones 2: le das cosas y te devuelve cosas</h2>
+  <p>Algunas máquinas necesitan <b>ingredientes</b>. Una licuadora 🥤: le das <b>frutas</b> y te devuelve un <b>licuado</b>.</p>
+  <ul>
+    <li>Lo que <b>entra</b> se llama <b>parámetro</b>. Va adentro de los paréntesis <code>( )</code>.</li>
+    <li>Lo que <b>sale</b> se devuelve con la palabra <code>return</code> (quiere decir <b>devolver</b>).</li>
+  </ul>
+
+  <div class="dibujo">
+    <svg width="620" height="230" viewBox="0 0 620 230" font-family="Segoe UI, Arial">
+      <defs><marker id="m3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <text x="80" y="40" font-size="14" text-anchor="middle" font-weight="700" fill="#9333ea">ENTRA 📥</text>
+      <rect x="20" y="55" width="120" height="44" rx="10" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/><text x="80" y="83" font-size="15" text-anchor="middle">🍌 banana</text>
+      <rect x="20" y="110" width="120" height="44" rx="10" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/><text x="80" y="138" font-size="15" text-anchor="middle">🍓 frutilla</text>
+      <path d="M144 100 L194 110" stroke="#333" stroke-width="4" marker-end="url(#m3)"/>
+      <rect x="200" y="30" width="220" height="170" rx="18" fill="#1e1e2e" stroke="#5fd3ff" stroke-width="4"/>
+      <text x="310" y="64" font-size="17" text-anchor="middle" fill="#5fd3ff" font-weight="700">⚙️ licuar</text>
+      <text x="310" y="112" font-size="40" text-anchor="middle">🌀</text>
+      <text x="310" y="150" font-size="13" text-anchor="middle" fill="#fff">pica, mezcla,</text>
+      <text x="310" y="170" font-size="13" text-anchor="middle" fill="#fff">agrega leche…</text>
+      <path d="M424 115 L474 115" stroke="#333" stroke-width="4" marker-end="url(#m3)"/>
+      <text x="540" y="70" font-size="14" text-anchor="middle" font-weight="700" fill="#17a34a">SALE 📤</text>
+      <rect x="480" y="88" width="120" height="54" rx="10" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/><text x="540" y="121" font-size="15" text-anchor="middle">🥤 licuado</text>
+      <text x="80" y="185" font-size="12" text-anchor="middle" fill="#9333ea">parámetros</text>
+      <text x="540" y="165" font-size="12" text-anchor="middle" fill="#17a34a">return</text>
+    </svg>
+  </div>
+
+  <h3>Paso 1: solo lo que entra (parámetros)</h3>
+  <p>Esta máquina saluda <b>a quien le digas</b>:</p>
+<pre>local function saludar(nombre)
+    print("¡Hola, " .. nombre .. "!")
+end
+
+saludar("Dylan")     -- sale: ¡Hola, Dylan!
+saludar("tío")       -- sale: ¡Hola, tío!</pre>
+  <ul>
+    <li><code>nombre</code> es una <b>cajita vacía</b> 📦. Cada vez que usás la máquina, le ponés algo adentro.</li>
+    <li>La primera vez, <code>nombre</code> = <code>"Dylan"</code>. La segunda, <code>nombre</code> = <code>"tío"</code>.</li>
+    <li><code>..</code> (dos puntitos) <b>pega</b> textos: <code>"¡Hola, " .. "Dylan"</code> = <code>"¡Hola, Dylan"</code>.</li>
+  </ul>
+
+  <h3>Paso 2: muchas cosas que entran</h3>
+  <p>Separadas con <b>comas</b>. Entran <b>en el mismo orden</b> en que las escribís:</p>
+<pre>local function marear(gusano, segundos)
+    print(gusano .. " queda mareado " .. segundos .. " segundos 😵")
+end
+
+marear("GusanoLoco", 3)     -- pelota: 3 segundos
+marear("GusanoLargo", 5)    -- bate: 5 segundos</pre>
+  <div class="dibujo">
+    <svg width="560" height="120" viewBox="0 0 560 120" font-family="Consolas, monospace">
+      <defs><marker id="m4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#e02424"/></marker></defs>
+      <text x="20" y="30" font-size="16"><tspan fill="#5fd3ff" font-weight="700">marear</tspan>(<tspan fill="#ffd166" font-weight="700">"GusanoLoco"</tspan>, <tspan fill="#9333ea" font-weight="700">3</tspan>)</text>
+      <text x="20" y="100" font-size="16"><tspan fill="#ff7ab8" font-weight="700">function</tspan> <tspan fill="#0b6fa8" font-weight="700">marear</tspan>(<tspan font-weight="700">gusano</tspan>, <tspan font-weight="700">segundos</tspan>)</text>
+      <path d="M130 36 L160 80" stroke="#e02424" stroke-width="3" marker-end="url(#m4)"/>
+      <path d="M240 36 L260 80" stroke="#e02424" stroke-width="3" marker-end="url(#m4)"/>
+      <text x="330" y="56" font-size="13" fill="#e02424" font-family="Segoe UI, Arial">el 1º va al 1º, el 2º al 2º</text>
+    </svg>
+  </div>
+
+  <h3>Paso 3: lo que sale (return)</h3>
+  <p>Con <code>return</code> la máquina te <b>devuelve</b> una respuesta. Vos la guardás en una variable:</p>
+<pre>local function doble(numero)
+    return numero * 2
+end
+
+local resultado = doble(5)
+print(resultado)            -- sale: 10</pre>
+  <ol>
+    <li>Entra el <code>5</code>. Adentro, <code>numero</code> = 5.</li>
+    <li>Hace la cuenta: 5 × 2 = 10.</li>
+    <li><code>return</code> devuelve el <b>10</b>.</li>
+    <li>El 10 cae en la cajita <code>resultado</code>. 📦</li>
+  </ol>
+  <div class="tip">💡 Cuando la máquina llega a <code>return</code>, <b>termina</b>. Lo que está abajo del <code>return</code> no se hace.</div>
+
+  <h3>¡Una función de verdad de mi juego! 🏆</h3>
+  <p>Así calcula <a href="partida.html">Partida</a> tus puntos cuando llegás arriba. Entran <b>los segundos</b> que tardaste y <b>las piezas</b> de armadura que tenés. Sale <b>cuántos puntos</b> te ganaste:</p>
+<pre>local function calcularPuntos(segundos, piezas)
+    local base = math.max(100, 5000 - 15 * segundos)
+    return base * (1 + 0.1 * piezas)
+end
+
+print(calcularPuntos(120, 0))   -- 2 minutos, sin armadura: 3200
+print(calcularPuntos(120, 3))   -- 2 minutos, 3 piezas: 4160</pre>
+  <div class="dibujo">
+    <svg width="600" height="170" viewBox="0 0 600 170" font-family="Segoe UI, Arial">
+      <defs><marker id="m5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <rect x="10" y="30" width="120" height="44" rx="10" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/><text x="70" y="58" font-size="14" text-anchor="middle">⏱️ 120 seg</text>
+      <rect x="10" y="90" width="120" height="44" rx="10" fill="#f3e8ff" stroke="#9333ea" stroke-width="2"/><text x="70" y="118" font-size="14" text-anchor="middle">🛡️ 3 piezas</text>
+      <path d="M134 82 L174 82" stroke="#333" stroke-width="4" marker-end="url(#m5)"/>
+      <rect x="180" y="10" width="250" height="150" rx="16" fill="#1e1e2e" stroke="#5fd3ff" stroke-width="4"/>
+      <text x="305" y="40" font-size="15" text-anchor="middle" fill="#5fd3ff" font-weight="700">⚙️ calcularPuntos</text>
+      <text x="305" y="75" font-size="13" text-anchor="middle" fill="#fff">5000 − 15 × 120 = 3200</text>
+      <text x="305" y="100" font-size="13" text-anchor="middle" fill="#fff">3200 × 1.3 = 4160</text>
+      <text x="305" y="135" font-size="12" text-anchor="middle" fill="#8bd5a0">(cada pieza suma 10% más)</text>
+      <path d="M434 82 L474 82" stroke="#333" stroke-width="4" marker-end="url(#m5)"/>
+      <rect x="480" y="56" width="110" height="54" rx="10" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/><text x="535" y="90" font-size="16" text-anchor="middle" font-weight="700">⭐ 4160</text>
+    </svg>
+  </div>
+  <p class="pista">En el script de verdad está mezclada con otras cosas, pero hace esta misma cuenta.</p>
+
+  <div class="reto">⭐ <b>Desafío 2:</b> usá la máquina <code>calcularPuntos</code>. ¿Cuántos puntos da si tardás <b>60</b> segundos y tenés <b>7</b> piezas?</div>
+  <details><summary>👀 Ver la respuesta</summary>
+    <p>5000 − 15 × 60 = 5000 − 900 = <b>4100</b>. Con 7 piezas: 4100 × 1.7 = <b>6970 puntos</b>. ¡Un campeón! 🏆</p>
+  </details>
+  <div class="reto">⭐ <b>Desafío 3:</b> armá una función <code>sumar(a, b)</code> que devuelva <code>a + b</code>. Probala con <code>print(sumar(3, 4))</code>.</div>
+  <details><summary>👀 Ver la respuesta</summary>
+<pre>local function sumar(a, b)
+    return a + b
+end
+
+print(sumar(3, 4))   -- sale: 7</pre>
+  </details>
+
+  <a class="enlace codigo" href="funciones-y-eventos.html"><span class="emoji">🔔</span><span><b>Funciones 3: funciones que esperan</b><br>Máquinas que se prenden solas cuando pasa algo.</span></a>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

@@ -9,6 +9,7 @@
 <body data-pagina="codigo/partida.html">
 <div class="hoja">
   <h2>🛡️ Script Partida: armadura y puntos</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="funciones.html">Funciones 1</a>, <a href="funciones-con-datos.html">Funciones 2</a> y <a href="funciones-y-eventos.html">Funciones 3 (eventos)</a>.</div>
   <div class="tip">📍 <b>Dónde está:</b> <b>ServerScriptService → Partida</b>. Es un <b>ModuleScript</b>: no hace nada solo, pero <b>presta</b> sus funciones a los otros scripts (<a href="script-gusano.html">Gusanos</a>, <a href="objetos.html">Objetos</a> y <b>Reglas</b>).</div>
 
   <h3>Las reglas del juego</h3>
@@ -56,22 +57,27 @@ local puntos = math.floor(base * multiplica)</pre>
   <p><code>#d.piezas</code> = <b>cuántas piezas tenés</b> (el <code>#</code> cuenta las cosas de una lista). <code>math.max</code> = "el más grande de los dos": así nunca te dan menos de 100.</p>
 
   <h3>Te toca un gusano</h3>
-<pre>function Partida.atrapar(jugador)
+<pre>function Partida.atrapar(jugador, cuantas)
+    cuantas = cuantas or 1                      -- si no dicen cuántas, es 1
     local d = datos[jugador]
     if not d or d.llego or ahora() &lt; d.invencibleHasta then return end
     local raiz = jugador.Character and jugador.Character:FindFirstChild("HumanoidRootPart")
-    if not raiz or Partida.estaASalvo(raiz) then return end   <span class="c">-- 🛡️ zona segura</span>
+    if not raiz or Partida.estaASalvo(raiz) then return end   -- 🛡️ zona segura
 
-    if #d.piezas > 0 then
-        local pieza = table.remove(d.piezas)     <span class="c">-- se te cae la última pieza</span>
-        soltarPieza(jugador.Character, pieza)
+    if #d.piezas >= cuantas then                -- ¿te alcanzan las piezas?
+        for _ = 1, cuantas do
+            local pieza = table.remove(d.piezas)  -- se te cae la última pieza
+            soltarPieza(jugador.Character, pieza)
+        end
         d.invencibleHasta = ahora() + INVENCIBLE
-        Partida.mensaje(jugador, "😱 ¡Te tocó un gusano!\nSe te cayó: " .. NOMBRES[pieza])
+        Partida.mensaje(jugador, "😱 ¡Te tocó un gusano!")
     else
         Partida.perder(jugador, "😵 ¡Te atrapó un gusano!")
     end
 end</pre>
   <ul>
+    <li><code>cuantas</code> es un <a href="funciones-con-datos.html">parámetro</a>: cuántas piezas te saca. Los gusanos comunes no dicen nada (= 1). El <b>Forzudo</b> 💪 dice <code>2</code>.</li>
+    <li>Si tenés 7 piezas y te golpea el Forzudo, te quedan 5. Si tenés <b>1 sola</b>, no te alcanza… ¡perdiste!</li>
     <li><code>table.remove(lista)</code> = "sacá el último de la lista".</li>
     <li><code>soltarPieza</code> le saca la <b>soldadura</b> a la pieza: ¡se cae del personaje y desaparece! 💥</li>
   </ul>

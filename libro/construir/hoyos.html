@@ -8,31 +8,39 @@
 </head>
 <body data-pagina="construir/hoyos.html">
 <div class="hoja">
-  <h2>🕳️ Los hoyos de los gusanos</h2>
-  <p>En la columna de la torre hay <b>4 hoyos</b> negros con borde de fuego. De ahí salen los gusanos, <b>al azar</b>. ¡Cuidado cuando pasás al lado! 😱</p>
+  <h2>🕳️ Los hoyos: luz y cuenta 3, 2, 1</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="../antes/la-lista.html">la lista (Explorer)</a> y <a href="../antes/las-caracteristicas.html#atributos">los atributos</a>.</div>
+  <p>En la columna de la torre hay <b>4 hoyos</b> negros con <b>luz amarilla</b> 🟡. De ahí salen los gusanos, <b>al azar</b>. ¡Pero ahora te <b>avisan</b>! 😱</p>
+  <ol class="camino">
+    <li>El hoyo está <b>tranquilo</b>: borde y luz <b style="color:#b08900">amarillos</b>.</li>
+    <li>Va a salir un gusano: arriba del hoyo aparece un número que cuenta <b>3… 2…</b> (amarillo).</li>
+    <li>En el <b>1</b>, el hoyo se pone <b style="color:#e02424">ROJO</b> 🔴.</li>
+    <li>¡Pum! El número desaparece y <b>sale el gusano</b>. Mientras sale, si te toca, ¡<a href="../codigo/paraguas.html">te empuja</a> para el costado! 💨</li>
+    <li>Cuando el gusano salió <b>entero</b>, el hoyo vuelve a <b style="color:#b08900">amarillo</b>. Ahora el gusano sí te atrapa.</li>
+  </ol>
   <div class="dibujo">
     <svg width="560" height="360" viewBox="0 0 560 360" font-family="Segoe UI, Arial">
-      <rect x="0" y="0" width="560" height="360" rx="12" fill="#140f33"/>
-      <rect x="230" y="20" width="70" height="330" fill="#231e3c" stroke="#7850ff" stroke-width="2"/>
+      <rect x="0" y="0" width="560" height="360" rx="12" fill="#8fd0ff"/>
+      <rect x="230" y="20" width="70" height="330" fill="#cd9f5f" stroke="#8a6d3b" stroke-width="2"/>
       <g>
         <a href="../codigo/script-gusano.html">
-        <circle cx="265" cy="300" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
-        <circle cx="265" cy="220" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
-        <circle cx="265" cy="140" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
-        <circle cx="265" cy="60" r="16" fill="#0a0000" stroke="#ff5a00" stroke-width="4"/>
+        <circle cx="265" cy="300" r="16" fill="#0a0000" stroke="#ffd728" stroke-width="4"/>
+        <circle cx="265" cy="220" r="16" fill="#0a0000" stroke="#ff2a1e" stroke-width="4"/>
+        <circle cx="265" cy="140" r="16" fill="#0a0000" stroke="#ffd728" stroke-width="4"/>
+        <circle cx="265" cy="60" r="16" fill="#0a0000" stroke="#ffd728" stroke-width="4"/>
         </a>
       </g>
-      <g font-size="13" fill="#fff">
+      <g font-size="13" fill="#1e1e2e">
         <text x="320" y="305">Hoyo1 — escalón 7</text>
-        <text x="320" y="225">Hoyo2 — escalón 31</text>
-        <text x="320" y="145">Hoyo3 — escalón 55</text>
+        <text x="320" y="225">Hoyo2 — escalón 31 🔴 ¡saliendo!</text>
+        <text x="320" y="145">Hoyo3 — escalón 55</text><text x="265" y="108" font-size="22" text-anchor="middle" font-weight="700" fill="#d4a400">2</text>
         <text x="320" y="65">Hoyo4 — escalón 79</text>
       </g>
-      <g font-size="12" fill="#ffb070" text-anchor="end">
+      <g font-size="12" fill="#8a3b00" text-anchor="end">
         <text x="215" y="265">24 escalones</text><text x="215" y="185">24 escalones</text><text x="215" y="105">24 escalones</text>
       </g>
       <circle cx="285" cy="215" r="7" fill="#aaff28"/><circle cx="296" cy="208" r="5" fill="#96ff00"/>
-      <text x="120" y="30" font-size="13" fill="#78ffa0" text-anchor="middle">¡Repartidos parejo!</text>
+      <text x="120" y="30" font-size="13" fill="#17632e" text-anchor="middle" font-weight="700">¡Repartidos parejo!</text>
     </svg>
   </div>
   <p class="pista">👆 Tocá un hoyo para ver cómo elige el script de cuál sale el gusano.</p>
@@ -46,14 +54,19 @@
     <li>Hacé un cilindro (<b>Shape → Cylinder</b>), Size <code>0.6, 9, 9</code>: es un disco.</li>
     <li>Color casi negro. <b>Anchored</b> ☑, <b>CanCollide</b> ☐.</li>
     <li>Pegalo en la columna, mirando para afuera, al lado de un escalón. Giralo con <b>Rotate</b>.</li>
-    <li><b>El borde de fuego</b>: otro cilindro un poquito más grande (<code>0.4, 10.5, 10.5</code>), Material <b>Neon</b> naranja, atrás del disco. Metelo adentro del hoyo.</li>
+    <li><b>El borde</b>: otro cilindro un poquito más grande (<code>0.4, 10.5, 10.5</code>), Material <b>Neon</b> amarillo, atrás del disco. Llamalo <b>Borde</b> y metelo adentro del hoyo.</li>
+    <li><b>La luz</b>: al Borde, <b>+</b> → <b>PointLight</b> (luz). Llamala <b>Luz</b>, color amarillo, Range <code>16</code>.</li>
+    <li><b>El contador</b>: al hoyo, <b>+</b> → <b>BillboardGui</b> (un <a href="cartel.html">cartel flotante</a>). Llamalo <b>Contador</b>. StudsOffsetWorldSpace <code>0, 8, 0</code> (8 más arriba). <b>Enabled</b> ☐ (apagado: lo prende el script). Adentro, un <b>TextLabel</b> llamado <b>Numero</b>, con letras grandes.</li>
     <li><b>El humo</b>: <b>+</b> → <b>ParticleEmitter</b> (chispitas). Llamalo <b>Humo</b>. Rate <code>0</code>: el script lo hace soltar humo cuando sale un gusano. ¡Puf! 💨</li>
     <li>Llamalo <b>Hoyo1</b>, <b>Hoyo2</b>… y agregale un atributo <code>Escalon</code> (número) con el escalón que tiene al lado.</li>
     <li>Metelo en la carpeta <b>TorreEspacio → Hoyos</b>.</li>
   </ol>
   <div class="bien">✅ Si hacés un <b>Hoyo5</b> con su atributo Escalon y lo ponés en la carpeta Hoyos, ¡el script lo usa solo!</div>
 
+  <div class="ojo">⚠️ Los nombres <b>Borde</b>, <b>Luz</b>, <b>Contador</b> y <b>Numero</b> (sin tilde) tienen que estar escritos igualito. ¡El script los busca así!</div>
+  <a class="enlace codigo" href="../codigo/script-gusano.html#cuenta"><span class="emoji">🔢</span><span><b>¿Cómo cuenta 3, 2, 1 y se pone rojo?</b><br>Ver la parte 7 del script Gusanos.</span></a>
   <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🎲</span><span><b>¿Cómo elige el hoyo?</b><br>Ver la parte <code>elegirHoyo</code> del script Gusanos.</span></a>
+  <a class="enlace codigo" href="../codigo/paraguas.html"><span class="emoji">☂️</span><span><b>¿Cómo te empuja y cómo flotás?</b><br>Ver los scripts Flotar y Paraguas.</span></a>
 </div>
 <script src="../nav.js"></script>
 </body>

@@ -24,8 +24,32 @@ code { background: #f1f1f6; border-radius: 4px; padding: 1px 5px; font-size: 15p
 .reto { background: #f3e8ff; border: 2px dashed var(--violeta); border-radius: 10px; padding: 8px 12px; margin: 12px 0; }
 
 pre { background: #1e1e2e; color: #e6e6e6; border-radius: 10px; padding: 12px 14px; font-size: 14px; line-height: 1.45; overflow-x: auto; white-space: pre; }
-pre .c { color: #8bd5a0; }
-pre .k { color: #f5a97f; }
+/* Colores del código (los pone nav.js) — ver codigo/colores-del-codigo.html */
+pre .c { color: #7fd18b; font-style: italic; }   /* comentario: verde */
+pre .k { color: #ff7ab8; font-weight: 700; }     /* palabra mágica: rosa */
+pre .s { color: #ffd166; }                       /* texto entre comillas: amarillo */
+pre .n { color: #c49bff; }                       /* número, true/false: violeta */
+pre .f { color: #5fd3ff; font-weight: 700; }     /* función: celeste */
+pre .r { color: #ffa94d; }                       /* lugar de Roblox (workspace, game…): naranja */
+pre .p { color: #b8e0ff; }                       /* algo de adentro (.Parent, .Position): celeste clarito */
+pre .o { color: #ff6b6b; }                       /* signos (= + - ..): rojo */
+pre.arbol { background: #f4f8ff; color: #1e1e2e; border: 2px solid var(--borde); }
+
+/* Etiquetas de colores para explicar el código en el texto */
+.col { border-radius: 5px; padding: 0 6px; font-family: Consolas, monospace; font-size: 15px; background: #1e1e2e; }
+.col.c { color: #7fd18b; } .col.k { color: #ff7ab8; } .col.s { color: #ffd166; } .col.n { color: #c49bff; }
+.col.f { color: #5fd3ff; } .col.r { color: #ffa94d; } .col.p { color: #b8e0ff; } .col.o { color: #ff6b6b; }
+
+/* "Antes de esto tenés que conocer…" */
+.necesitas { background: #e8f7ff; border: 3px solid #5fb3e6; border-radius: 12px; padding: 8px 12px; margin: 12px 0; }
+.necesitas b.t { color: #0b6fa8; }
+.necesitas a { font-weight: 700; }
+
+/* Pasos con número grande, uno debajo del otro, con flechita */
+.camino { list-style: none; margin: 10px 0; padding: 0; counter-reset: paso; }
+.camino > li { counter-increment: paso; position: relative; background: #f4f8ff; border: 2px solid var(--borde); border-radius: 12px; padding: 8px 12px 8px 54px; margin: 0 0 22px; }
+.camino > li::before { content: counter(paso); position: absolute; left: 10px; top: 8px; width: 32px; height: 32px; border-radius: 50%; background: var(--azul); color: #fff; font-weight: 700; text-align: center; line-height: 32px; }
+.camino > li:not(:last-child)::after { content: "⬇"; position: absolute; left: 50%; bottom: -22px; color: var(--azul); font-size: 18px; line-height: 22px; }
 
 table { border-collapse: collapse; width: 100%; margin: 8px 0; }
 th, td { border: 2px solid var(--borde); padding: 6px 8px; text-align: left; vertical-align: top; }
@@ -73,3 +97,6 @@ summary { cursor: pointer; font-weight: 700; color: var(--violeta); }
 .parte li { break-inside: avoid; }
 
 @media print { .barra, .pasos { display: none; } .hoja { box-shadow: none; } }
+
+/* Que los espacios del código dentro de los dibujos no se borren (sangría) */
+.dibujo svg text { white-space: pre; }

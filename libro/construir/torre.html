@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Torre del Espacio — Mi libro de Roblox</title>
+<title>La torre — Mi libro de Roblox</title>
 <link rel="stylesheet" href="../estilo.css">
 </head>
 <body data-pagina="construir/torre.html">
 <div class="hoja">
-  <h2>🚀 Armar la Torre del Espacio</h2>
-  <p>La torre es una <b>columna</b> gigante con <b>96 escalones</b> que suben dando vueltas, como un caracol 🐌. <b>Aparecés directo abajo</b>, en el inicio. Arriba de todo está la <b>meta</b>. Abajo hay un <b>agujero negro</b>: si te caés, volvés al inicio.</p>
+  <h2>🧱 Armar la torre</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="../antes/como-se-arma.html">el camino para armar</a>, <a href="../antes/pestanas.html#model">la pestaña Model (Group = Ctrl + G)</a> y <a href="../antes/la-lista.html">la lista (Explorer)</a>.</div>
+  <p>La torre es una <b>columna</b> gigante con <b>96 escalones</b> que suben dando vueltas, como un caracol 🐌. <b>Aparecés directo abajo</b>, en el inicio. Arriba de todo está la <b>meta</b>. Abajo hay un <b>lago</b> 💦: si te caés, volvés al inicio.</p>
+  <div class="tip">💡 Al principio era la <b>Torre del Espacio</b> (de noche, con neón). En la <a href="../clases/clase-3.html">Clase 3</a> la hicimos de <a href="ladrillos.html">ladrillos y de día</a>. El dibujo de abajo es de antes, pero los escalones, las zonas y los tamaños son los mismos.</div>
   <div class="dibujo">
     <svg width="560" height="400" viewBox="0 0 560 400" font-family="Segoe UI, Arial">
       <rect x="0" y="0" width="560" height="400" rx="12" fill="#140f33"/>
@@ -34,7 +36,7 @@
       <text x="330" y="250" font-size="13" fill="#c890ff" font-weight="700">Medio (25–48)</text>
       <text x="330" y="330" font-size="13" fill="#80d8ff" font-weight="700">Fácil (1–24)</text>
       <text x="145" y="358" font-size="11" text-anchor="middle" fill="#fff">Inicio + aparecés</text>
-      <text x="420" y="398" font-size="11" fill="#e0b0ff">Caida (agujero negro)</text>
+      <text x="420" y="398" font-size="11" fill="#e0b0ff">Caida (ahora: el lago)</text>
     </svg>
   </div>
   <p class="pista">👆 Tocá una zona verde para ver cómo se hace.</p>
@@ -44,12 +46,12 @@
     <li>Hacé un bloque y cambiale <b>Shape</b> (forma) a <b>Cylinder</b> (cilindro).</li>
     <li>El cilindro de Roblox está <b>acostado</b>. Para pararlo, en <b>Orientation</b> escribí <code>0, 0, 90</code>.</li>
     <li>Size: <code>474, 20, 20</code> (el primer número es el largo: ¡la altura de la torre!).</li>
-    <li>Material <b>Metal</b>, color violeta muy oscuro. Llamalo <b>Columna</b>.</li>
-    <li><b>Anillos de luz</b>: un cilindro igual pero finito (<code>1, 21, 21</code>), Material <b>Neon</b> violeta, CanCollide ☐. Copialo con <b>Ctrl + D</b> y subilo de a 30.</li>
+    <li>Material <b>Brick</b> (ladrillo), color ladrillo claro. Llamalo <b>Columna</b>.</li>
+    <li><b>Anillos</b> (se llaman <b>AnilloLuz</b>): un cilindro igual pero finito (<code>1, 21, 21</code>), Material <b>Brick</b> gris, CanCollide ☐. Copialo con <b>Ctrl + D</b> y subilo de a 30.</li>
   </ol>
 
   <h3>2. Los escalones en espiral (4 partes)</h3>
-  <p>Son <b>96</b> bloques, Material <b>Neon</b>. Cada 24 escalones empieza una parte <b>más difícil</b>, con otro color:</p>
+  <p>Son <b>96</b> bloques, Material <b>Brick</b>. Cada vuelta tiene su color de ladrillo (<a href="ladrillos.html">ver colores</a>). Cada 24 escalones empieza una parte <b>más difícil</b>:</p>
   <div class="tabla"><table>
     <tr><th>Parte</th><th>Escalones</th><th>Tamaño</th><th>Sube</th></tr>
     <tr><td style="color:#1b8fd6"><b>Fácil</b> (celeste)</td><td>1 a 24</td><td><code>6, 1, 7</code></td><td>3.5</td></tr>
@@ -84,16 +86,16 @@
 
   <h3>3. El inicio (¡acá aparecés!)</h3>
   <ol>
-    <li><b>Inicio</b>: un bloque <code>20, 1, 20</code>, Material <b>DiamondPlate</b>, abajo del primer escalón. Con un cartel flotante (<a href="cartel.html">BillboardGui</a>).</li>
+    <li><b>Inicio</b>: un bloque <code>20, 1, 20</code>, Material <b>Brick</b> gris clarito, abajo del primer escalón. Con un cartel flotante (<a href="cartel.html">BillboardGui</a>).</li>
     <li>Buscá el <b>SpawnLocation</b> (punto de aparición) en la lista y ponelo <b>arriba del Inicio</b>. Size <code>8, 1, 8</code>.</li>
   </ol>
   <div class="bien">✅ Así, cuando entrás al juego, ¡aparecés directo en la torre! Y el gusano empieza a contar. 🔥</div>
 
-  <h3>4. La meta y el agujero negro</h3>
+  <h3>4. La meta y el lago</h3>
   <ul>
     <li><b>Meta</b>: un cilindro acostado como plato (<code>1, 28, 28</code>, Orientation <code>0, 0, 90</code>), Material <b>Foil</b> dorado, arriba de todo, apenas más alto que el último escalón.</li>
     <li><b>TablaPuntajes</b>: un bloque <code>14, 10, 0.6</code> parado en el medio de la meta, con un <b>SurfaceGui</b> de cada lado (Face Front y Back). Muestra los mejores puntajes. 🏆 Cuando tocás la meta, a los 4 segundos volvés al inicio con tu premio. <a href="../codigo/partida.html">Ver cómo</a>.</li>
-    <li><b>Caida</b>: un bloque gigante (<code>700, 2, 700</code>) muy abajo, Neon violeta oscuro, CanCollide ☐. Es el agujero negro.</li>
+    <li><b>Caida</b>: un bloque gigante (<code>700, 2, 700</code>) muy abajo, celeste y un poco transparente, CanCollide ☐. Es el lago (antes era un agujero negro).</li>
   </ul>
   <div class="ojo">⚠️ Los nombres <b>Inicio</b>, <b>Meta</b>, <b>TablaPuntajes</b> y <b>Caida</b> tienen que estar escritos <b>igualito</b> (sin tilde en Caida). El script los busca así.</div>
   <div class="tip">💡 Todo va adentro de un grupo llamado <b>TorreEspacio</b>, en <code>6000, 0, 6000</code>. Para ir a verla mientras construís: elegila en la lista y apretá <b>F</b>.</div>

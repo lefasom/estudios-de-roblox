@@ -9,6 +9,7 @@
 <body data-pagina="codigo/script-gusano.html">
 <div class="hoja">
   <h2>🐛 Script Gusanos: cómo se mueven y atacan</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="funciones.html">Funciones 1</a>, <a href="funciones-con-datos.html">Funciones 2</a> y <a href="funciones-y-eventos.html">Funciones 3 (eventos)</a>.</div>
   <a class="enlace juego" href="../construir/gusano.html"><span class="emoji">🎮</span><span><b>¿Dónde se ve en el juego?</b><br>Volver a los 5 gusanos.</span></a>
   <div class="tip">📍 <b>Dónde está:</b> <b>ServerScriptService → Gusanos</b>. Es un <b>Script</b> (del servidor): así los gusanos son <b>los mismos para todos los jugadores</b>. Si vos ves al gusano en el escalón 20, tu amigo también lo ve ahí. ¡No hay cuenta regresiva para nadie!</div>
 
@@ -35,7 +36,10 @@
 local MAXIMO_EXTRA = 2     <span class="c">-- como mucho 2 (+ el grande = 3)</span>
 local RECORRIDO = 24       <span class="c">-- cuántos escalones sube un gusano de hoyo antes de esconderse</span>
 local DORMIDO = -6         <span class="c">-- dónde aparece el grande (abajo del inicio)</span>
-local TIPOS = {"GusanoLoco", "GusanoForzudo", "GusanoLargo", "GusanoCortito"}</pre>
+local TIPOS = {"GusanoLoco", "GusanoForzudo", "GusanoLargo", "GusanoCortito"}
+local CUENTA = 3           -- el hoyo cuenta 3, 2, 1 antes de que salga el gusano
+local FUERZA_EMPUJON = 45  -- qué tan fuerte te empuja un gusano que está saliendo
+local PIEZAS_FORZUDO = 2   -- cuántas piezas de armadura te saca el Forzudo</pre>
 
   <h3>Parte 2: el camino</h3>
 <pre>local puntos = {}
@@ -141,6 +145,39 @@ end)</pre>
     <li>Si el gusano está <b>mareado</b> (le pegaste con un <a href="juguetes.html">juguete</a>), no avanza y no toca a nadie. ¡Pasá rápido! 🏃</li>
     <li><code>tocar(g)</code> mide la <b>distancia</b> (<code>.Magnitude</code>) entre vos y cada bolita. Si estás muy cerca → <code>Partida.atrapar(jugador)</code>.</li>
   </ul>
+
+  <h3 id="cuenta">Parte 7: el hoyo avisa — 3, 2, 1 🔢</h3>
+<pre>local function sacarDeUnHoyo()
+    local hoyo = elegirHoyo()
+    if not hoyo then return end        -- todos los hoyos están ocupados
+    ocupado[hoyo] = true
+    task.spawn(function()
+        hoyo.Contador.Enabled = true
+        for n = CUENTA, 1, -1 do       -- 3, 2, 1
+            hoyo.Contador.Numero.Text = tostring(n)
+            if n == 1 then pintarHoyo(hoyo, ROJO) else pintarHoyo(hoyo, AMARILLO) end
+            task.wait(1)
+        end
+        hoyo.Contador.Enabled = false  -- ¡pum! se va el número…
+        local tipo = TIPOS[math.random(1, #TIPOS)]
+        nuevoGusano(tipo, hoyo:GetAttribute("Escalon"), hoyo)   -- …y sale el gusano
+    end)
+end</pre>
+  <ul>
+    <li><code>for n = CUENTA, 1, -1</code> = "contá desde 3 hasta 1, <b>para atrás</b>" (el <code>-1</code> es de a uno para abajo).</li>
+    <li><code>task.spawn</code> = "hacé esto <b>aparte</b>". Así, mientras el hoyo cuenta, ¡los otros gusanos se siguen moviendo!</li>
+    <li><code>pintarHoyo(hoyo, color)</code> es una función nuestra: pinta el borde, la luz y el número del mismo color.</li>
+    <li><code>ocupado[hoyo]</code>: mientras un hoyo cuenta o un gusano sale, no se puede elegir para otro.</li>
+  </ul>
+  <p>¿Cuándo vuelve a amarillo? En cada latido, el script se fija si el gusano ya salió <b>entero</b>:</p>
+<pre>local function yaSalio(g)
+    if g.forma == "salta" then
+        return g.escalon > g.desde                         -- ya dio su primer salto
+    end
+    return g.t - #g.partes * g.separacion >= g.desde    -- la cola ya está afuera
+end</pre>
+  <p>Mientras no salió entero, <code>g.saliendo</code> es <code>true</code> y si te toca… ¡te <a href="paraguas.html">empuja</a>! 💨 Cuando sale entero, el hoyo vuelve a amarillo y ahí sí te atrapa.</p>
+  <p>Y el Forzudo, cuando cae, llama a <code>Partida.atrapar(jugador, PIEZAS_FORZUDO)</code>: ¡te saca 2 piezas! 💪 (<a href="partida.html">ver Partida</a>)</p>
 
   <details><summary>🎯 Jueguito: quiero que siempre haya 4 gusanos (el grande + 3). ¿Qué cambio?</summary>
     <p><code>local MAXIMO_EXTRA = 3</code> y <code>local MINIMO_EXTRA = 3</code>. 😈</p>

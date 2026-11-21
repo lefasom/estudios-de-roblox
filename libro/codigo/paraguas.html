@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Empujón y paraguas — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/paraguas.html">
+<div class="hoja">
+  <h2>☂️ Scripts Flotar y Paraguas: el empujón y el paraguas</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="funciones-y-eventos.html">Funciones 3 (eventos)</a> y <a href="que-es-un-script.html">los dos tipos de script</a>.</div>
+  <a class="enlace juego" href="../construir/hoyos.html"><span class="emoji">🎮</span><span><b>¿Dónde se ve en el juego?</b><br>Cuando un gusano está saliendo de un hoyo.</span></a>
+
+  <h3>Qué pasa en el juego</h3>
+  <ol class="camino">
+    <li>Un gusano está <b>saliendo</b> del hoyo (el hoyo está <b style="color:#e02424">rojo</b>). Todavía tiene parte del cuerpo adentro.</li>
+    <li>Te toca. <b>No te atrapa</b>: ¡te <b>empuja</b> para afuera de la escalera! 💨</li>
+    <li>Te caés. Aparece el cartel: <b>"☂️ ¡Doble clic para abrir el paraguas!"</b></li>
+    <li>Hacés <b>doble clic</b> (o doble toque en el celular). ¡Se abre el paraguas! Bajás <b>despacito</b>.</li>
+    <li>Con <b>W A S D</b> (o el joystick) te movés en el aire para caer arriba de un escalón de abajo. 🎯</li>
+    <li>Cuando tocás el piso, el paraguas se cierra solo.</li>
+  </ol>
+  <div class="tip">💡 El paraguas también sirve si te caés solo, sin que te empujen. ¡Siempre que estés en el aire!</div>
+  <div class="ojo">⚠️ Si el gusano ya salió <b>entero</b> del hoyo, ese sí te <b>atrapa</b>, como siempre.</div>
+
+  <h3>Tres scripts trabajan juntos 📞</h3>
+  <div class="dibujo">
+    <svg width="620" height="260" viewBox="0 0 620 260" font-family="Segoe UI, Arial">
+      <defs><marker id="fpq" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <rect x="10" y="10" width="290" height="110" rx="14" fill="#1e1e2e"/>
+      <text x="155" y="34" font-size="13" text-anchor="middle" fill="#8bd5a0" font-weight="700">🖥️ SERVIDOR (para todos)</text>
+      <a href="script-gusano.html"><rect x="22" y="46" width="125" height="60" rx="10" fill="#ffe4e4"/><text x="84" y="72" font-size="14" text-anchor="middle" font-weight="700">🐛 Gusanos</text><text x="84" y="92" font-size="11" text-anchor="middle">"¡empujá a este!"</text></a>
+      <rect x="160" y="46" width="128" height="60" rx="10" fill="#f3e8ff"/><text x="224" y="72" font-size="14" text-anchor="middle" font-weight="700">☂️ Paraguas</text><text x="224" y="92" font-size="11" text-anchor="middle">dibuja el paraguas</text>
+      <rect x="320" y="140" width="290" height="110" rx="14" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/>
+      <text x="465" y="164" font-size="13" text-anchor="middle" fill="#1b5fd6" font-weight="700">💻 TU COMPU (solo vos)</text>
+      <rect x="380" y="176" width="170" height="60" rx="10" fill="#fff" stroke="#1b5fd6"/><text x="465" y="202" font-size="14" text-anchor="middle" font-weight="700">🪂 Flotar</text><text x="465" y="222" font-size="11" text-anchor="middle">mueve TU personaje</text>
+      <path d="M84 108 Q120 200 374 200" fill="none" stroke="#e02424" stroke-width="3" marker-end="url(#fpq)"/>
+      <text x="150" y="190" font-size="12" fill="#e02424" font-weight="700">📞 Empujon</text>
+      <path d="M465 174 Q465 90 292 76" fill="none" stroke="#9333ea" stroke-width="3" marker-end="url(#fpq)"/>
+      <text x="470" y="110" font-size="12" fill="#9333ea" font-weight="700">📞 Paraguas</text>
+      <text x="470" y="126" font-size="11" fill="#9333ea">"¡abrilo!" / "¡cerralo!"</text>
+    </svg>
+  </div>
+  <p>¿Por qué tantos? Porque <b>tu personaje lo mueve tu compu</b>. El servidor no lo puede empujar bien. Entonces <b>le avisa</b> a tu compu: "¡empujate!". Y tu compu le avisa al servidor: "¡dibujá mi paraguas!", así <b>todos</b> lo ven. ☂️</p>
+
+  <h3>El teléfono: RemoteEvent 📞</h3>
+  <p>Un <b>RemoteEvent</b> (evento remoto, o sea "a distancia") es un <b>teléfono</b> entre el servidor y la compu de cada jugador. Los nuestros están en <b>ReplicatedStorage → Eventos</b> (ReplicatedStorage = un cuarto que ven <b>los dos</b>: el servidor y los jugadores).</p>
+  <div class="tabla"><table>
+    <tr><th>Quién llama</th><th>Cómo llama</th><th>Quién atiende</th></tr>
+    <tr><td>🖥️ Servidor</td><td><code>evento:FireClient(jugador, …)</code></td><td>💻 <code>evento.OnClientEvent:Connect(…)</code></td></tr>
+    <tr><td>💻 Jugador</td><td><code>evento:FireServer(…)</code></td><td>🖥️ <code>evento.OnServerEvent:Connect(…)</code></td></tr>
+  </table></div>
+  <p><code>Fire</code> = <b>disparar</b> (llamar). ¡Es un evento como <code>Touched</code>! Le conectás una función y espera la llamada. 🔔</p>
+
+  <h3>Parte 1 (Gusanos): ¿empujar o atrapar?</h3>
+<pre>if toca then
+    if g.saliendo then
+        empujar(jugador, raiz)     -- todavía está en el hoyo: te empuja
+    else
+        Partida.atrapar(jugador)   -- ya salió entero: ¡te atrapa!
+    end
+end</pre>
+<pre>local function empujar(jugador, raiz)
+    local afuera = raiz.Position - CENTRO
+    local direccion = Vector3.new(afuera.X, 0, afuera.Z).Unit   -- para afuera de la torre
+    empujon:FireClient(jugador, direccion * FUERZA_EMPUJON)       -- 📞 ¡llamar a su compu!
+end</pre>
+  <ul>
+    <li><code>g.saliendo</code> es <code>true</code> mientras el gusano tiene parte del cuerpo <b>adentro del hoyo</b>.</li>
+    <li><code>.Unit</code> = una flecha de largo 1 que apunta para <b>afuera</b> de la torre. Por 45 = ¡empujón fuerte!</li>
+  </ul>
+
+  <h3>Parte 2 (Flotar): atender el empujón</h3>
+<pre>empujon.OnClientEvent:Connect(function(fuerza)
+    humanoide:ChangeState(Enum.HumanoidStateType.Jumping)
+    raiz.AssemblyLinearVelocity = fuerza + Vector3.new(0, 30, 0)   -- al costado y para arriba
+end)</pre>
+  <p><code>AssemblyLinearVelocity</code> = la <b>velocidad</b> del personaje: para dónde va y qué tan rápido. 🏃💨</p>
+
+  <h3>Parte 3 (Flotar): el doble clic 🖱️🖱️</h3>
+<pre>UserInputService.InputBegan:Connect(function(input, ocupado)
+    if not enElAire(humanoide) then return end      -- solo en el aire
+    local t = os.clock()
+    if t - ultimoClic &lt; DOBLE_CLIC then              -- ¿el clic anterior fue hace poquito?
+        abrir(not abierto)                          -- ¡doble clic! abrir o cerrar
+        ultimoClic = 0
+    else
+        ultimoClic = t                              -- primer clic: me acuerdo la hora
+    end
+end)</pre>
+  <p><code>os.clock()</code> = la <b>hora</b> del reloj de la compu, en segundos. Si entre un clic y otro pasaron menos de <code>0.4</code> segundos… ¡es un doble clic!</p>
+
+  <h3>Parte 4 (Flotar): bajar despacito</h3>
+<pre>if abierto then
+    local v = raiz.AssemblyLinearVelocity
+    local mover = humanoide.MoveDirection * VELOCIDAD_AIRE        -- para donde apretás
+    raiz.AssemblyLinearVelocity = Vector3.new(mover.X, math.max(v.Y, -BAJADA), mover.Z)
+end</pre>
+  <ul>
+    <li><code>MoveDirection</code> = para dónde estás apretando (W A S D o el joystick).</li>
+    <li><code>math.max(v.Y, -BAJADA)</code> = "nunca caigas más rápido que 7". ¡Eso hace el paraguas! 🪶</li>
+    <li>Esto pasa <b>en cada latido</b> (Heartbeat), muchas veces por segundo.</li>
+  </ul>
+
+  <h3>Parte 5 (Paraguas): dibujarlo para todos</h3>
+<pre>evento.OnServerEvent:Connect(function(jugador, abrir)
+    local viejo = jugador.Character:FindFirstChild("Paraguas")
+    if viejo then viejo:Destroy() end                       -- cerrar
+    if abrir == true then hacerParaguas(jugador.Character) end   -- abrir
+end)</pre>
+  <p><code>hacerParaguas</code> arma 3 bloques: la <b>tela</b> (una pelota aplastada, de un color al azar), el <b>palo</b> y la <b>bolita</b> de arriba. Los pega a la cabeza con <b>WeldConstraint</b> (soldadura).</p>
+
+  <h3>🎚️ Números que podés cambiar (en Flotar)</h3>
+  <div class="tabla"><table>
+    <tr><th>Número</th><th>Qué hace</th></tr>
+    <tr><td><code>DOBLE_CLIC = 0.4</code></td><td>Cuánto tiempo puede pasar entre los dos clics.</td></tr>
+    <tr><td><code>BAJADA = 7</code></td><td>Qué tan rápido bajás con el paraguas. Más chico = más lento.</td></tr>
+    <tr><td><code>VELOCIDAD_AIRE = 20</code></td><td>Qué tan rápido te movés flotando.</td></tr>
+  </table></div>
+  <p>Y en <a href="script-gusano.html">Gusanos</a>: <code>FUERZA_EMPUJON = 45</code> (qué tan fuerte te empuja).</p>
+
+  <div class="reto">⭐ <b>Desafío:</b> cambiá <code>BAJADA</code> a <code>3</code>. ¿Bajás más rápido o más lento? ¿Es más fácil caer en un escalón?</div>
+  <details><summary>🎯 Jueguito: ¿por qué el paraguas lo dibuja el servidor y no tu compu?</summary>
+    <p>Porque lo que hace tu compu (un LocalScript) <b>solo lo ves vos</b>. Si lo dibuja el servidor, ¡lo ven <b>todos</b> los jugadores! ☂️</p>
+  </details>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

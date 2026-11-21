@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ladrillos y cielo de día — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="construir/ladrillos.html">
+<div class="hoja">
+  <h2>🧱 Ladrillos y cielo de día</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="../antes/las-caracteristicas.html">las características (Properties)</a> y <a href="../antes/la-lista.html">la lista (Explorer)</a>.</div>
+  <p>Al principio la torre era del <b>espacio</b>: de noche, con estrellas y luces de neón. Pero los gusanos <b>no se veían bien</b>. 😕</p>
+  <p>En la <a href="../clases/clase-3.html">Clase 3</a> la cambiamos: ahora es una <b>torre de ladrillos</b>, <b>de día</b>. ☀️</p>
+
+  <div class="dibujo">
+    <svg width="600" height="300" viewBox="0 0 600 300" font-family="Segoe UI, Arial">
+      <defs><marker id="fla" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <rect x="10" y="10" width="250" height="250" rx="12" fill="#140f33"/>
+      <circle cx="40" cy="40" r="2" fill="#fff"/><circle cx="220" cy="60" r="2" fill="#fff"/><circle cx="60" cy="200" r="2" fill="#fff"/><circle cx="230" cy="190" r="2" fill="#fff"/>
+      <rect x="115" y="30" width="40" height="210" fill="#231e3c" stroke="#7850ff" stroke-width="2"/>
+      <g fill="#50c8ff"><rect x="95" y="210" width="20" height="6"/><rect x="155" y="180" width="20" height="6"/><rect x="95" y="150" width="20" height="6"/><rect x="155" y="120" width="20" height="6"/><rect x="95" y="90" width="20" height="6"/></g>
+      <text x="135" y="280" font-size="14" text-anchor="middle" font-weight="700">ANTES: espacio 🌙</text>
+      <path d="M268 135 L328 135" stroke="#333" stroke-width="4" marker-end="url(#fla)"/>
+      <rect x="340" y="10" width="250" height="250" rx="12" fill="#8fd0ff"/>
+      <circle cx="550" cy="45" r="18" fill="#ffd84a"/>
+      <rect x="340" y="225" width="250" height="35" rx="0" fill="#3c8cdc" opacity=".8"/>
+      <rect x="445" y="30" width="40" height="210" fill="#cd9f5f" stroke="#8a6d3b" stroke-width="2"/>
+      <g stroke="#a77d45" stroke-width="1"><line x1="445" y1="60" x2="485" y2="60"/><line x1="445" y1="90" x2="485" y2="90"/><line x1="445" y1="120" x2="485" y2="120"/><line x1="445" y1="150" x2="485" y2="150"/><line x1="445" y1="180" x2="485" y2="180"/><line x1="445" y1="210" x2="485" y2="210"/></g>
+      <rect x="425" y="210" width="20" height="6" fill="#f5c83c"/><rect x="485" y="180" width="20" height="6" fill="#f5c83c"/><rect x="425" y="150" width="20" height="6" fill="#969699"/><rect x="485" y="120" width="20" height="6" fill="#969699"/><rect x="425" y="90" width="20" height="6" fill="#e1be82"/>
+      <circle cx="465" cy="165" r="6" fill="#000" stroke="#ffd728" stroke-width="3"/>
+      <text x="465" y="280" font-size="14" text-anchor="middle" font-weight="700">AHORA: ladrillos ☀️</text>
+    </svg>
+  </div>
+
+  <h3>1. Los ladrillos (Material Brick)</h3>
+  <ol>
+    <li>Elegí un escalón en la lista (por ejemplo <b>Escalon1</b>).</li>
+    <li>En las características, <b>Material</b> → <b>Brick</b> (quiere decir <b>ladrillo</b>).</li>
+    <li>Cambiale el <b>Color</b>. Cada vuelta de la torre (12 escalones) tiene su ladrillo:</li>
+  </ol>
+  <div class="tabla"><table>
+    <tr><th>Vueltas</th><th>Escalones</th><th>Ladrillo</th></tr>
+    <tr><td>1 y 5</td><td>1–12 y 49–60</td><td><span style="background:#f5c83c;padding:0 10px">&nbsp;</span> amarillo</td></tr>
+    <tr><td>2 y 6</td><td>13–24 y 61–72</td><td><span style="background:#969699;padding:0 10px">&nbsp;</span> gris</td></tr>
+    <tr><td>3 y 7</td><td>25–36 y 73–84</td><td><span style="background:#e1be82;padding:0 10px">&nbsp;</span> arena</td></tr>
+    <tr><td>4 y 8</td><td>37–48 y 85–96</td><td><span style="background:#6e6e76;padding:0 10px">&nbsp;</span> gris oscuro</td></tr>
+  </table></div>
+  <ul>
+    <li>La <b>Columna</b>: Brick, color ladrillo claro.</li>
+    <li>Los <b>AnilloLuz</b> (los aros de la columna): Brick gris. ¡Ya no son luces!</li>
+    <li>El <b>Inicio</b>: Brick gris clarito.</li>
+  </ul>
+  <div class="tip">💡 Para cambiar muchos escalones juntos: elegí uno, apretá <b>Ctrl</b> y hacé clic en los otros. Después cambiás el color una sola vez.</div>
+
+  <h3>2. El lago 💦</h3>
+  <p>El <b>agujero negro</b> de abajo ahora es un <b>lago</b>. Es el mismo bloque <b>Caida</b>: solo le cambiamos cómo se ve.</p>
+  <ul>
+    <li>Material <b>SmoothPlastic</b> (plástico liso), color celeste.</li>
+    <li><b>Transparency</b> <code>0.25</code>: un poquito transparente, como el agua.</li>
+  </ul>
+  <p>¡Sigue siendo peligroso! Si te caés al lago, empezás de nuevo.</p>
+  <a class="enlace codigo" href="../codigo/partida.html"><span class="emoji">💦</span><span><b>¿Cómo sabe el juego que te caíste?</b><br>Ver el script Reglas, en la página de Partida.</span></a>
+
+  <h3>3. El cielo de día ☀️</h3>
+  <p>La luz y el cielo se cambian en <b>Lighting</b> (quiere decir <b>iluminación</b>), en <a href="../antes/la-lista.html#otros">la lista</a>.</p>
+  <ol>
+    <li>Elegí <b>Lighting</b> en la lista.</li>
+    <li>En las características, <b>ClockTime</b> (la hora del reloj) = <code>14</code>. ¡Las 2 de la tarde! 🕑</li>
+    <li>Adentro de Lighting hay un <b>Sky</b> (cielo). Pusimos uno nuevo, el común de Roblox, con nubes.</li>
+  </ol>
+  <div class="bien">✅ Antes había un LocalScript, <b>CieloEspacio</b>, que hacía de noche cerca de la torre. Lo <b>sacamos</b>: ya no hace falta.</div>
+
+  <h3>4. ¿Dónde quedaron las estrellas?</h3>
+  <p>¡No las tiramos! Las guardamos en el <b>depósito</b>, por si algún día las queremos de nuevo:</p>
+<pre class="arbol">▾ ServerStorage
+    ▸ DecoracionEspacioVieja   (260 estrellas y 5 planetas)
+    ▸ CieloEspacioViejo        (el cielo de noche)</pre>
+  <div class="tip">💡 El grupo de la torre se sigue llamando <b>TorreEspacio</b> en la lista. ¡No le cambiamos el nombre! Si se lo cambiamos, los scripts no la encuentran (buscan ese nombre).</div>
+
+  <div class="reto">⭐ <b>Desafío:</b> cambiá <b>ClockTime</b> a <code>18</code>. ¿Qué pasa con el cielo? Después volvelo a <code>14</code>.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

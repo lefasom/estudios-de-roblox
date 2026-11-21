@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La lista (Explorer) — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="antes/la-lista.html">
+<div class="hoja">
+  <h2>📋 La lista (Explorer): la casa del juego</h2>
+  <p>La <b>lista</b> (en inglés <b>Explorer</b>, que quiere decir <b>explorador</b>) muestra <b>todas</b> las cosas del juego.</p>
+  <p>Pensalo como una <b>casa</b> 🏠. Cada <b>cuarto</b> sirve para algo distinto. ¡Hay que guardar cada cosa en su cuarto!</p>
+
+  <div class="dibujo">
+    <svg width="640" height="360" viewBox="0 0 640 360" font-family="Segoe UI, Arial">
+      <polygon points="320,8 630,90 10,90" fill="#c2410c"/>
+      <text x="320" y="70" font-size="18" text-anchor="middle" fill="#fff" font-weight="700">🏠 La casa de "Primer juego"</text>
+      <rect x="10" y="90" width="620" height="262" fill="#fff8ee" stroke="#c2410c" stroke-width="3"/>
+      <a href="#workspace"><rect x="22" y="102" width="290" height="110" rx="10" fill="#9fc7ef" stroke="#1b5fd6" stroke-width="2"/>
+        <text x="167" y="128" font-size="16" text-anchor="middle" font-weight="700">🌍 Workspace</text>
+        <text x="167" y="148" font-size="13" text-anchor="middle">el mundo: lo que SE VE</text>
+        <text x="167" y="172" font-size="12" text-anchor="middle">TorreEspacio, SpawnLocation,</text>
+        <text x="167" y="190" font-size="12" text-anchor="middle">Baseplate…</text></a>
+      <a href="#sss"><rect x="328" y="102" width="290" height="110" rx="10" fill="#1e1e2e" stroke="#000" stroke-width="2"/>
+        <text x="473" y="128" font-size="16" text-anchor="middle" font-weight="700" fill="#fff">🧠 ServerScriptService</text>
+        <text x="473" y="148" font-size="13" text-anchor="middle" fill="#8bd5a0">los scripts del servidor</text>
+        <text x="473" y="172" font-size="12" text-anchor="middle" fill="#fff">Gusanos, Partida, Reglas,</text>
+        <text x="473" y="190" font-size="12" text-anchor="middle" fill="#fff">Juguetes, Objetos</text></a>
+      <a href="#ss"><rect x="22" y="224" width="190" height="116" rx="10" fill="#e6e1d6" stroke="#8a6d3b" stroke-width="2"/>
+        <text x="117" y="250" font-size="15" text-anchor="middle" font-weight="700">📦 ServerStorage</text>
+        <text x="117" y="270" font-size="12" text-anchor="middle">el depósito: escondido</text>
+        <text x="117" y="294" font-size="12" text-anchor="middle">moldes de Gusanos</text>
+        <text x="117" y="312" font-size="12" text-anchor="middle">y Juguetes</text></a>
+      <a href="#sp"><rect x="225" y="224" width="200" height="116" rx="10" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/>
+        <text x="325" y="250" font-size="15" text-anchor="middle" font-weight="700">🧍 StarterPlayer</text>
+        <text x="325" y="270" font-size="12" text-anchor="middle">lo que recibe cada jugador</text>
+        <text x="325" y="294" font-size="12" text-anchor="middle">Pantalla, Flotar,</text>
+        <text x="325" y="312" font-size="12" text-anchor="middle">ShiftLock</text></a>
+      <a href="#otros"><rect x="438" y="224" width="180" height="116" rx="10" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/>
+        <text x="528" y="250" font-size="15" text-anchor="middle" font-weight="700">💡 Lighting</text>
+        <text x="528" y="270" font-size="12" text-anchor="middle">la luz y el cielo</text>
+        <text x="528" y="300" font-size="15" text-anchor="middle" font-weight="700">👥 Players</text>
+        <text x="528" y="320" font-size="12" text-anchor="middle">los que están jugando</text></a>
+    </svg>
+  </div>
+  <p class="pista">👆 Tocá un cuarto para saber qué guarda.</p>
+
+  <h3 id="workspace">🌍 Workspace = el mundo</h3>
+  <p>Todo lo que está acá <b>se ve en el juego</b>. Si borrás algo de acá, desaparece del mundo.</p>
+  <p>En mi juego: la <a href="../construir/torre.html">Torre del Espacio</a>, el <b>SpawnLocation</b> (punto de aparición) y el <b>Baseplate</b> (el piso grande, lejos).</p>
+
+  <h3 id="sss">🧠 ServerScriptService = el cuarto de los cerebros</h3>
+  <p>Acá van los <b>Script</b> que manejan el juego <b>para todos</b>. No se ven en el mundo.</p>
+  <p>En mi juego: <a href="../codigo/script-gusano.html">Gusanos</a>, <a href="../codigo/partida.html">Partida</a>, <a href="../codigo/juguetes.html">Juguetes</a> y <a href="../codigo/objetos.html">Objetos</a>.</p>
+
+  <h3 id="ss">📦 ServerStorage = el depósito</h3>
+  <p>Un lugar <b>escondido</b>. Lo que está acá <b>no se ve</b>. Guardamos <b>moldes</b>: el script los <b>copia</b> (Clone) cuando los necesita.</p>
+  <p>En mi juego: los <a href="../construir/gusano.html">5 gusanos</a> y los <a href="../construir/juguetes.html">juguetes</a>.</p>
+
+  <h3 id="sp">🧍 StarterPlayer = lo que recibe cada jugador</h3>
+  <p>Adentro tiene <b>StarterPlayerScripts</b>. Ahí van los <b>LocalScript</b>: cada jugador recibe <b>su propia copia</b>, en su compu.</p>
+  <p>En mi juego: <a href="../codigo/pantalla.html">Pantalla</a>, <a href="../codigo/paraguas.html">Flotar</a> y <a href="../codigo/shift-lock.html">ShiftLock</a>.</p>
+
+  <h3 id="otros">💡 Lighting y 👥 Players</h3>
+  <ul>
+    <li><b>Lighting</b> (iluminación): la luz del sol, la hora del día, el cielo.</li>
+    <li><b>ReplicatedStorage</b>: un cuarto que ven <b>el servidor y los jugadores</b>. Ahí están los "teléfonos" (<a href="../codigo/paraguas.html">RemoteEvent</a>) del paraguas.</li>
+    <li><b>Players</b> (jugadores): cuando apretás Play, aparecés acá. Es una lista de los que están jugando.</li>
+  </ul>
+
+  <h3>Papás e hijos 👨‍👦</h3>
+  <p>En la lista, una cosa puede estar <b>adentro</b> de otra. La de afuera es el <b>papá</b> (en inglés <b>Parent</b>). La de adentro es el <b>hijo</b> (<b>Child</b>).</p>
+  <div class="dibujo">
+    <svg width="560" height="200" viewBox="0 0 560 200" font-family="Segoe UI, Arial">
+      <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1b5fd6"/></marker></defs>
+      <rect x="190" y="10" width="180" height="40" rx="10" fill="#9fc7ef" stroke="#1b5fd6" stroke-width="2"/><text x="280" y="36" font-size="15" text-anchor="middle" font-weight="700">🌍 Workspace</text>
+      <rect x="190" y="80" width="180" height="40" rx="10" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/><text x="280" y="106" font-size="15" text-anchor="middle" font-weight="700">🗼 TorreEspacio</text>
+      <rect x="20" y="150" width="150" height="40" rx="10" fill="#fff" stroke="#555" stroke-width="2"/><text x="95" y="176" font-size="14" text-anchor="middle">🏆 Meta</text>
+      <rect x="205" y="150" width="150" height="40" rx="10" fill="#fff" stroke="#555" stroke-width="2"/><text x="280" y="176" font-size="14" text-anchor="middle">📁 Escalones</text>
+      <rect x="390" y="150" width="150" height="40" rx="10" fill="#fff" stroke="#555" stroke-width="2"/><text x="465" y="176" font-size="14" text-anchor="middle">🕳️ Caida</text>
+      <path d="M280 52 L280 76" stroke="#1b5fd6" stroke-width="3" marker-end="url(#fl)"/>
+      <path d="M240 122 L110 146" stroke="#1b5fd6" stroke-width="3" marker-end="url(#fl)"/>
+      <path d="M280 122 L280 146" stroke="#1b5fd6" stroke-width="3" marker-end="url(#fl)"/>
+      <path d="M320 122 L450 146" stroke="#1b5fd6" stroke-width="3" marker-end="url(#fl)"/>
+      <text x="380" y="40" font-size="12" fill="#1b5fd6">papá ⬇ hijo</text>
+    </svg>
+  </div>
+  <p>La <b>Meta</b> es hija de <b>TorreEspacio</b>. TorreEspacio es hija de <b>Workspace</b>. Así la escribe un script:</p>
+<pre>workspace.TorreEspacio.Meta</pre>
+  <a class="enlace codigo" href="../codigo/donde-y-como-se-encuentran.html"><span class="emoji">🔎</span><span><b>¿Cómo la encuentra un script?</b><br>Siguiendo el camino de papás a hijos, con puntitos.</span></a>
+
+  <h3>Cosas que se hacen en la lista</h3>
+  <ol class="camino">
+    <li><b>Abrir y cerrar:</b> tocá la flechita <b>▸</b> para ver lo que hay adentro. Se vuelve <b>▾</b>.</li>
+    <li><b>Agregar algo adentro:</b> pasá el mouse por arriba y tocá el <b>+</b>. Elegí qué querés (Part, Folder, Script…).</li>
+    <li><b>Meter algo adentro de otra cosa:</b> agarralo con el mouse y <b>arrastralo</b> arriba de su nuevo papá.</li>
+    <li><b>Cambiar el nombre:</b> clic derecho → <span class="menu">Rename</span> (renombrar).</li>
+    <li><b>Buscar:</b> arriba de la lista hay un lugar para escribir. Escribí <code>Meta</code> y la encuentra. 🔍</li>
+  </ol>
+  <div class="tip">💡 Si tocás algo en la lista, también queda elegido en el mundo. Apretá <b>F</b> y la cámara vuela hasta ahí.</div>
+
+  <details><summary>🎯 Jueguito: hice un molde de gusano nuevo. ¿En qué cuarto lo guardo?</summary>
+    <p>En <b>ServerStorage</b> (el depósito), adentro de la carpeta <b>Gusanos</b>. Así no se ve hasta que el script lo copia. 📦</p>
+  </details>
+  <details><summary>🎯 Jueguito: quiero un script que mueva algo para todos. ¿Dónde va?</summary>
+    <p>En <b>ServerScriptService</b>, como un <b>Script</b>. 🧠</p>
+  </details>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

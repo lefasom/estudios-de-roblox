@@ -9,6 +9,7 @@
 <body data-pagina="codigo/que-es-un-script.html">
 <div class="hoja">
   <h2>💻 ¿Qué es un script?</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="../antes/la-lista.html">la lista (Explorer)</a>, <a href="../antes/editor-y-output.html">la hoja de scripts y Output</a> y <a href="colores-del-codigo.html">los colores del código</a>.</div>
   <p>Un <b>script</b> es una lista de órdenes para el juego, escrita en un idioma que se llama <b>Luau</b>. Es como una receta: el juego la lee de arriba para abajo y hace lo que dice.</p>
   <div class="dibujo">
     <svg width="560" height="110" viewBox="0 0 560 110" font-family="Segoe UI, Arial">
@@ -31,7 +32,7 @@
     <tr><td><code>local</code></td><td>"Guardá esto en una cajita con nombre" (una <b>variable</b>).</td><td><code>local vidas = 3</code></td></tr>
     <tr><td><code>--</code></td><td>Un <b>comentario</b>: nota para nosotros. El juego no la lee.</td><td><code>-- esto es una nota</code></td></tr>
     <tr><td><code>if … then … end</code></td><td>"<b>Si</b> pasa esto, <b>entonces</b> hacé esto". <code>end</code> = fin.</td><td><code>if vidas == 0 then … end</code></td></tr>
-    <tr><td><code>function … end</code></td><td>Un <b>pedacito de receta</b> con nombre, para usar muchas veces.</td><td><code>local function saltar() … end</code></td></tr>
+    <tr><td><code>function … end</code></td><td>Una <b>función</b>: una <b>máquina con nombre</b> que hace un trabajo. Se arma una vez y se usa muchas veces. <a href="funciones.html">Ver Funciones 1</a></td><td><code>local function saltar() … end</code></td></tr>
     <tr><td><code>:Connect(…)</code></td><td>"<b>Cuando</b> pase esto, hacé esta función".</td><td><code>bloque.Touched:Connect(…)</code></td></tr>
     <tr><td><code>for … do … end</code></td><td>"Repetí esto para cada uno".</td><td>Para cada bolita del gusano, …</td></tr>
     <tr><td><code>print("hola")</code></td><td>Escribe un mensaje en la ventana <b>Output</b> (salida). Sirve para ver si el script anda.</td><td><code>print("¡Me tocaron!")</code></td></tr>
@@ -64,6 +65,8 @@
   </ol>
   <div class="tip">💡 Si algo no anda, mirá la ventana <b>Output</b> (<span class="menu">View</span> → <span class="menu">Output</span>). Ahí aparecen los errores en <b style="color:#e02424">rojo</b>, con el número de línea.</div>
 
+  <a class="enlace codigo" href="colores-del-codigo.html"><span class="emoji">🌈</span><span><b>Los colores del código</b><br>Cada color es un tipo de palabra. ¡Aprendé a leerlos!</span></a>
+  <a class="enlace codigo" href="funciones.html"><span class="emoji">⚙️</span><span><b>Lo más importante: las funciones</b><br>Máquinas que hacen un trabajo. 4 páginas con dibujos y desafíos.</span></a>
   <a class="enlace codigo" href="donde-y-como-se-encuentran.html"><span class="emoji">🔎</span><span><b>Siguiente: ¿dónde se guarda cada script?</b><br>Y cómo hace un script para encontrar un bloque.</span></a>
 </div>
 <script src="../nav.js"></script>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Los colores del código — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/colores-del-codigo.html">
+<div class="hoja">
+  <h2>🌈 Los colores del código</h2>
+  <p>En este libro el código está <b>pintado de colores</b>. Cada color es <b>un tipo de palabra</b>. ¡Así se lee mucho más fácil!</p>
+  <p>(La hoja de scripts de Roblox Studio también pinta el código. Sus colores pueden ser un poco distintos, pero la idea es la misma.)</p>
+
+  <div class="tabla"><table>
+    <tr><th>Color</th><th>Qué es</th><th>Ejemplos</th></tr>
+    <tr><td><span class="col k">rosa</span></td><td><b>Palabras mágicas</b> de Luau. Siempre son las mismas. No se pueden usar como nombre.</td><td><span class="col k">local</span> <span class="col k">function</span> <span class="col k">if</span> <span class="col k">then</span> <span class="col k">end</span> <span class="col k">return</span></td></tr>
+    <tr><td><span class="col f">celeste</span></td><td><b>Funciones</b>: máquinas que <b>hacen algo</b>. Siempre van con paréntesis <code>( )</code>.</td><td><span class="col f">print</span>() <span class="col f">Clone</span>() <span class="col f">atrapar</span>()</td></tr>
+    <tr><td><span class="col s">amarillo</span></td><td><b>Texto</b>, entre comillas. El juego lo copia tal cual.</td><td><span class="col s">"¡Hola!"</span> <span class="col s">"Meta"</span></td></tr>
+    <tr><td><span class="col n">violeta</span></td><td><b>Números</b>, y también <b>sí / no</b> (true = sí, false = no) y nil (= nada).</td><td><span class="col n">24</span> <span class="col n">0.9</span> <span class="col n">true</span> <span class="col n">nil</span></td></tr>
+    <tr><td><span class="col r">naranja</span></td><td><b>Lugares de Roblox</b> que ya existen. Desde ahí empezás a buscar.</td><td><span class="col r">workspace</span> <span class="col r">game</span> <span class="col r">script</span> <span class="col r">math</span></td></tr>
+    <tr><td><span class="col p">celeste clarito</span></td><td>Algo que está <b>adentro</b> de otra cosa (después de un punto).</td><td>.<span class="col p">Parent</span> .<span class="col p">Position</span> .<span class="col p">Meta</span></td></tr>
+    <tr><td><span class="col o">rojo</span></td><td><b>Signos</b>: guardar, sumar, comparar, pegar textos.</td><td><span class="col o">=</span> <span class="col o">+</span> <span class="col o">==</span> <span class="col o">..</span></td></tr>
+    <tr><td><span class="col c">verde</span></td><td><b>Comentarios</b>: notas para nosotros. El juego no las lee.</td><td><span class="col c">-- esto es una nota</span></td></tr>
+    <tr><td><span class="col">blanco</span></td><td><b>Nombres que inventamos</b> nosotros (variables).</td><td><span class="col">vidas</span> <span class="col">meta</span> <span class="col">gusano</span></td></tr>
+  </table></div>
+
+  <h3>Un pedacito de mi juego, con colores</h3>
+<pre>-- Partida: ¿cuántos puntos te doy?
+local function calcularPuntos(segundos, piezas)
+    local puntos = math.max(100, 5000 - 15 * segundos)
+    return puntos * (1 + 0.1 * piezas)
+end
+
+print("Puntos: " .. calcularPuntos(120, 3))</pre>
+  <p>Leelo por colores:</p>
+  <ul>
+    <li><span class="col c">verde</span>: una nota que explica qué hace.</li>
+    <li><span class="col k">rosa</span>: <code>local function</code> = "acá armo una máquina". <code>return</code> = "devolvé esto". <code>end</code> = fin.</li>
+    <li><span class="col f">celeste</span>: <code>calcularPuntos</code>, <code>max</code> y <code>print</code> son <b>funciones</b>.</li>
+    <li><span class="col n">violeta</span>: los números de la cuenta.</li>
+    <li><span class="col s">amarillo</span>: el texto que se muestra.</li>
+  </ul>
+  <a class="enlace codigo" href="funciones.html"><span class="emoji">⚙️</span><span><b>¿Qué es una función?</b><br>Las máquinas celestes del código.</span></a>
+
+  <details><summary>🎯 Jueguito: ¿de qué color es <code>"Escalon"</code>? ¿Y <code>96</code>?</summary>
+    <p><code>"Escalon"</code> tiene comillas: es <b>texto</b>, <span class="col s">amarillo</span>. <code>96</code> es un <b>número</b>, <span class="col n">violeta</span>.</p>
+  </details>
+  <details><summary>🎯 Jueguito: en <code>bloque:Destroy()</code>, ¿qué color tiene <code>Destroy</code>? ¿Por qué?</summary>
+    <p><span class="col f">Celeste</span>, porque tiene paréntesis <code>()</code>: es una <b>función</b>. Hace algo: ¡rompe el bloque! 💥</p>
+  </details>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

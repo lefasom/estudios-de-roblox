@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 3 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="clases/clase-3.html">
+<div class="hoja">
+  <h2>🏫 Clase 3 — Torre de ladrillos, hoyos que avisan y paraguas</h2>
+  <p><b>Fecha:</b> 20 de noviembre de 2026</p>
+  <div class="bien">✅ <b>Lo que hicimos hoy</b> (tocá cada cosa para ver cómo se hace):
+    <ul>
+      <li>La torre ahora es de <a href="../construir/ladrillos.html"><b>ladrillos</b></a> 🧱 amarillos y grises, y es <b>de día</b> ☀️. ¡Ahora los gusanos se ven mucho mejor!</li>
+      <li>El agujero negro ahora es un <a href="../construir/ladrillos.html"><b>lago</b></a> 💦.</li>
+      <li>Los <a href="../construir/hoyos.html"><b>hoyos</b></a> tienen <b>luz amarilla</b>. Antes de que salga un gusano, cuentan <b>3, 2, 1</b>. En el 1 se ponen <b>rojos</b> 🔴 y sale el gusano. Cuando salió entero, vuelven a amarillo 🟡.</li>
+      <li>Si te toca un gusano que <b>todavía está saliendo</b> del hoyo, no te atrapa: ¡te <a href="../codigo/paraguas.html"><b>empuja</b></a> para el costado! 💨</li>
+      <li>Cuando estás en el aire, con <b>doble clic</b> abrís un <a href="../codigo/paraguas.html"><b>paraguas</b></a> ☂️ y bajás despacito. ¡Movete para caer en un escalón!</li>
+      <li>El <a href="../construir/gusano.html"><b>Forzudo</b></a> 💪 ahora es más fuerte: te saca <b>2 piezas</b> de armadura. Si tenés 1 sola, te la saca y… ¡perdiste!</li>
+    </ul>
+  </div>
+
+  <h3>Un hoyo, paso a paso 🕳️</h3>
+  <div class="dibujo">
+    <svg width="620" height="170" viewBox="0 0 620 170" font-family="Segoe UI, Arial">
+      <defs><marker id="fc3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <g font-size="12" text-anchor="middle">
+        <circle cx="50" cy="70" r="30" fill="#111" stroke="#ffd728" stroke-width="6"/><text x="50" y="125" font-weight="700">tranquilo</text><text x="50" y="142">🟡</text>
+        <path d="M86 70 L112 70" stroke="#333" stroke-width="3" marker-end="url(#fc3)"/>
+        <circle cx="150" cy="70" r="30" fill="#111" stroke="#ffd728" stroke-width="6"/><text x="150" y="26" font-size="24" font-weight="700" fill="#d4a400">3</text><text x="150" y="125" font-weight="700">cuenta</text>
+        <path d="M186 70 L212 70" stroke="#333" stroke-width="3" marker-end="url(#fc3)"/>
+        <circle cx="250" cy="70" r="30" fill="#111" stroke="#ffd728" stroke-width="6"/><text x="250" y="26" font-size="24" font-weight="700" fill="#d4a400">2</text><text x="250" y="125" font-weight="700">cuenta</text>
+        <path d="M286 70 L312 70" stroke="#333" stroke-width="3" marker-end="url(#fc3)"/>
+        <circle cx="350" cy="70" r="30" fill="#111" stroke="#ff2a1e" stroke-width="6"/><text x="350" y="26" font-size="24" font-weight="700" fill="#e02424">1</text><text x="350" y="125" font-weight="700">¡rojo!</text><text x="350" y="142">🔴</text>
+        <path d="M386 70 L412 70" stroke="#333" stroke-width="3" marker-end="url(#fc3)"/>
+        <circle cx="450" cy="70" r="30" fill="#111" stroke="#ff2a1e" stroke-width="6"/><circle cx="470" cy="55" r="12" fill="#aaff28"/><circle cx="458" cy="64" r="9" fill="#96ff00"/><text x="450" y="125" font-weight="700">sale el gusano</text><text x="450" y="142">te empuja 💨</text>
+        <path d="M486 70 L512 70" stroke="#333" stroke-width="3" marker-end="url(#fc3)"/>
+        <circle cx="560" cy="70" r="30" fill="#111" stroke="#ffd728" stroke-width="6"/><text x="560" y="125" font-weight="700">salió entero</text><text x="560" y="142">🟡 te atrapa 😱</text>
+      </g>
+    </svg>
+  </div>
+
+  <h3>Los scripts de esta clase</h3>
+  <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🐛</span><span><b>Gusanos</b> (Script) — cambió<br>La cuenta 3, 2, 1 de los hoyos, el empujón y el golpe del Forzudo.</span></a>
+  <a class="enlace codigo" href="../codigo/partida.html"><span class="emoji">📋</span><span><b>Partida</b> (ModuleScript) — cambió<br><code>atrapar(jugador, cuantas)</code>: el Forzudo saca 2 piezas. Y el lago.</span></a>
+  <a class="enlace codigo" href="../codigo/paraguas.html"><span class="emoji">☂️</span><span><b>Flotar</b> (LocalScript) y <b>Paraguas</b> (Script) — ¡nuevos!<br>El empujón, el doble clic y bajar despacito.</span></a>
+  <div class="ojo">🗑️ Sacamos el LocalScript <b>CieloEspacio</b> (hacía de noche). Las estrellas y el cielo de noche quedaron guardados en <b>ServerStorage</b>.</div>
+
+  <h3>Palabras nuevas</h3>
+  <ul>
+    <li><b>Brick</b>: ladrillo (un Material).</li>
+    <li><b>ClockTime</b>: la hora del día, en <b>Lighting</b>. 14 = las 2 de la tarde.</li>
+    <li><b>RemoteEvent</b>: un <b>teléfono</b> entre el servidor y la compu de cada jugador. 📞</li>
+    <li><b>ReplicatedStorage</b>: un cuarto que ven el servidor y los jugadores. Ahí están los teléfonos.</li>
+    <li><b>BillboardGui</b>: un cartel que flota y siempre te mira. Lo usamos para el número del hoyo.</li>
+  </ul>
+
+  <div class="tip">🏁 <b>¡El juego está terminado!</b> Desde ahora no le agregamos cosas nuevas. Ahora lo importante es <b>entender cómo funciona por dentro</b> y aprender a programar. Mirá <a href="../estudiar/recomendaciones.html">cómo estudiar</a>.</div>
+
+  <h3>Desafíos para practicar 💪</h3>
+  <div class="reto">⭐ <b>Fácil:</b> En el script Gusanos, cambiá <code>CUENTA = 3</code> por <code>CUENTA = 5</code>. Probá: ¿qué números muestra el hoyo?</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> En Flotar, cambiá <code>BAJADA</code>. Buscá el número que te parezca más divertido.</div>
+  <div class="reto">⭐⭐⭐ <b>Difícil:</b> Leé la función <code>sacarDeUnHoyo</code> y explicale al tío, con tus palabras, qué hace cada línea.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

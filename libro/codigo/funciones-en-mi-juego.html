@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funciones 4 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/funciones-en-mi-juego.html">
+<div class="hoja">
+  <h2>🗺️ Funciones 4: las funciones de mi juego</h2>
+  <p>¡La Torre del Espacio está llena de máquinas! Cada una hace <b>un trabajo</b>. Y se <b>usan entre ellas</b>, como una cadena. ⛓️</p>
+
+  <h3>Una cadena de máquinas: "¡me tocó un gusano!" 🐛</h3>
+  <p>Mirá qué pasa, paso a paso, cuando un gusano te toca. Seguí las flechas:</p>
+  <div class="dibujo">
+    <svg width="640" height="430" viewBox="0 0 640 430" font-family="Segoe UI, Arial">
+      <defs><marker id="m7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <a href="script-gusano.html"><rect x="20" y="10" width="290" height="64" rx="12" fill="#ffe4e4" stroke="#e02424" stroke-width="2"/>
+        <text x="165" y="36" font-size="15" text-anchor="middle" font-weight="700">💓 Heartbeat (Gusanos)</text>
+        <text x="165" y="58" font-size="12" text-anchor="middle">mueve al gusano… ¡está cerca de un jugador!</text></a>
+      <path d="M165 76 L165 100" stroke="#333" stroke-width="3" marker-end="url(#m7)"/>
+      <a href="partida.html"><rect x="20" y="104" width="290" height="64" rx="12" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/>
+        <text x="165" y="130" font-size="15" text-anchor="middle" font-weight="700">⚙️ Partida.atrapar(jugador)</text>
+        <text x="165" y="152" font-size="12" text-anchor="middle">¿está en zona segura? ¿tiene armadura?</text></a>
+      <path d="M165 170 L165 194" stroke="#333" stroke-width="3" marker-end="url(#m7)"/>
+      <a href="partida.html"><rect x="20" y="198" width="290" height="64" rx="12" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/>
+        <text x="165" y="224" font-size="15" text-anchor="middle" font-weight="700">⚙️ Partida.estaASalvo(raiz)</text>
+        <text x="165" y="246" font-size="12" text-anchor="middle">devuelve: sí 🛡️ o no</text></a>
+      <path d="M165 264 L165 290 L90 290 L90 310" stroke="#333" stroke-width="3" fill="none" marker-end="url(#m7)"/>
+      <path d="M165 290 L240 290 L240 310" stroke="#333" stroke-width="3" fill="none" marker-end="url(#m7)"/>
+      <text x="80" y="286" font-size="12" fill="#17a34a" font-weight="700">con armadura</text>
+      <text x="250" y="286" font-size="12" fill="#e02424" font-weight="700">sin armadura</text>
+      <rect x="10" y="314" width="160" height="70" rx="12" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/>
+      <text x="90" y="338" font-size="13" text-anchor="middle" font-weight="700">⚙️ soltarPieza(…)</text>
+      <text x="90" y="358" font-size="12" text-anchor="middle">se te cae una pieza</text>
+      <text x="90" y="374" font-size="12" text-anchor="middle">+ 2 seg invencible</text>
+      <rect x="180" y="314" width="140" height="70" rx="12" fill="#ffe4e4" stroke="#e02424" stroke-width="2"/>
+      <text x="250" y="338" font-size="13" text-anchor="middle" font-weight="700">⚙️ Partida.perder(…)</text>
+      <text x="250" y="358" font-size="12" text-anchor="middle">¡al inicio!</text>
+      <text x="250" y="374" font-size="12" text-anchor="middle">pierde todo</text>
+      <path d="M170 400 L320 400" stroke="#999" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="165" y="420" font-size="12" text-anchor="middle" fill="#666">las dos usan también ⚙️ Partida.mensaje(…) para avisarte</text>
+      <rect x="350" y="20" width="280" height="370" rx="14" fill="#f4f8ff" stroke="#1b5fd6" stroke-width="2"/>
+      <text x="490" y="50" font-size="15" text-anchor="middle" font-weight="700" fill="#1b5fd6">¿Por qué tantas máquinas?</text>
+      <g font-size="13"><text x="366" y="84">Cada una hace</text><text x="366" y="104"><tspan font-weight="700">UN solo trabajo.</tspan></text>
+      <text x="366" y="140">🐛 Gusanos solo sabe</text><text x="366" y="160">mover gusanos.</text>
+      <text x="366" y="196">📋 Partida sabe de</text><text x="366" y="216">armadura y puntos.</text>
+      <text x="366" y="252">Gusanos no decide nada:</text><text x="366" y="272">¡usa la máquina de Partida!</text>
+      <text x="366" y="308">Si quiero cambiar cómo</text><text x="366" y="328">se pierde la armadura,</text><text x="366" y="348">toco <tspan font-weight="700">una</tspan> sola máquina. 👍</text></g>
+    </svg>
+  </div>
+  <p class="pista">👆 Tocá una cajita para ir a su script.</p>
+
+  <h3>¿Por qué algunas tienen un punto? <code>Partida.atrapar</code></h3>
+  <p><b>Partida</b> es un <b>ModuleScript</b> (script ayudante). Guarda sus máquinas en una <b>caja de herramientas</b> 🧰 llamada <code>Partida</code>. Así otros scripts las pueden usar.</p>
+<pre>-- adentro de Partida (el que presta):
+function Partida.atrapar(jugador)
+    ...
+end
+
+-- adentro de Gusanos (el que la usa):
+local Partida = require(script.Parent.Partida)
+Partida.atrapar(jugador)</pre>
+  <ul>
+    <li><code>Partida.atrapar</code> = "la máquina <b>atrapar</b>, que está en la caja <b>Partida</b>".</li>
+    <li><code>require</code> = "traeme la caja de herramientas de ese script".</li>
+    <li>Las que dicen <code>local function</code> (sin punto) son <b>privadas</b>: solo las usa su propio script.</li>
+  </ul>
+
+  <h3>Todas las máquinas de mi juego 🔧</h3>
+  <div class="tabla"><table>
+    <tr><th>Script</th><th>Función</th><th>Entra 📥</th><th>Qué hace ⚙️</th></tr>
+    <tr><td rowspan="7"><a href="script-gusano.html">🐛 Gusanos</a></td><td><code>camino(t)</code></td><td>por qué escalón va</td><td>Devuelve un <b>punto</b> entre dos escalones.</td></tr>
+    <tr><td><code>nuevoGusano(nombre, t, hoyo)</code></td><td>qué gusano, dónde, de qué hoyo</td><td>Copia un gusano del molde y lo pone en la torre.</td></tr>
+    <tr><td><code>elegirHoyo()</code></td><td>nada</td><td>Devuelve el hoyo con <b>menos</b> gusanos cerca.</td></tr>
+    <tr><td><code>saltar(g, dt, mareado)</code></td><td>el gusano, el tiempo, si está mareado</td><td>Hace saltar al forzudo de a 2 escalones.</td></tr>
+    <tr><td><code>sacarDeUnHoyo()</code></td><td>nada</td><td>El hoyo cuenta 3, 2, 1 (en el 1 se pone rojo) y sale un gusano.</td></tr>
+    <tr><td><code>pintarHoyo(hoyo, color)</code></td><td>qué hoyo y qué color</td><td>Pinta el borde, la luz y el número.</td></tr>
+    <tr><td><code>empujar(jugador, raiz)</code></td><td>a quién</td><td>Llama por teléfono a su compu: "¡empujate para afuera!".</td></tr>
+    <tr><td rowspan="3"><a href="partida.html">📋 Partida</a></td><td><code>Partida.atrapar(jugador, cuantas)</code></td><td>el jugador tocado y cuántas piezas (el Forzudo: 2)</td><td>Le saca una pieza o lo hace perder.</td></tr>
+    <tr><td><code>Partida.llegarArriba(jugador)</code></td><td>el que llegó</td><td>Le da puntos y una pieza nueva.</td></tr>
+    <tr><td><code>Partida.mensaje(jugador, texto)</code></td><td>a quién y qué decir</td><td>Muestra un mensaje en su pantalla.</td></tr>
+    <tr><td><a href="juguetes.html">⚽ Juguetes</a></td><td><code>Juguetes.aturdir(gusano, segundos)</code></td><td>qué gusano y cuánto</td><td>Lo deja mareado. 😵</td></tr>
+    <tr><td><a href="objetos.html">🍌 Objetos</a></td><td><code>resbalar(jugador, k)</code></td><td>quién y en qué escalón</td><td>Lo tira 3 escalones para atrás.</td></tr>
+    <tr><td><a href="paraguas.html">🪂 Flotar</a></td><td><code>abrir(si)</code></td><td>true = abrir, false = cerrar</td><td>Le avisa al servidor que abra o cierre el paraguas.</td></tr>
+    <tr><td><a href="paraguas.html">☂️ Paraguas</a></td><td><code>hacerParaguas(personaje)</code></td><td>el personaje</td><td>Arma el paraguas arriba de la cabeza.</td></tr>
+    <tr><td rowspan="2"><a href="shift-lock.html">🔒 ShiftLock</a></td><td><code>cambiar()</code></td><td>nada</td><td>Prende o apaga el Shift Lock.</td></tr>
+    <tr><td><code>pintar()</code></td><td>nada</td><td>Pinta el botón según si está prendido.</td></tr>
+  </table></div>
+
+  <h3>🕵️ Juego de detective</h3>
+  <p>Cuando leas un script, buscá las máquinas así:</p>
+  <ol class="camino">
+    <li>Buscá la palabra <span class="col k">function</span>: ahí se <b>arma</b> una máquina.</li>
+    <li>Leé su <b>nombre</b> (<span class="col f">celeste</span>). ¿Qué te imaginás que hace?</li>
+    <li>Mirá qué <b>entra</b>: lo que está entre paréntesis.</li>
+    <li>Buscá si tiene <span class="col k">return</span>: eso es lo que <b>sale</b>.</li>
+    <li>Buscá dónde se <b>usa</b>: el nombre con <code>( )</code>, o adentro de un <code>Connect</code>.</li>
+  </ol>
+  <details><summary>🎯 Jueguito: ¿qué <b>entra</b> y qué <b>sale</b> de <code>elegirHoyo()</code>?</summary>
+    <p><b>No entra nada</b> (los paréntesis están vacíos). <b>Sale un hoyo</b>: con <code>return</code> devuelve el hoyo elegido. 🕳️</p>
+  </details>
+  <details><summary>🎯 Jueguito: la pelota marea 3 segundos y el bate 5. ¿Qué máquina usan los dos? ¿Qué le cambia?</summary>
+    <p>Los dos usan <code>Juguetes.aturdir(gusano, segundos)</code>. Le cambian lo que <b>entra</b>: la pelota le da <code>3</code> y el bate le da <code>5</code>. ¡La misma máquina sirve para los dos! ⚽🏏</p>
+  </details>
+  <div class="reto">⭐ <b>Desafío 5:</b> con el tío, abrí el script <b>Objetos</b> en Studio. Contá cuántas veces aparece la palabra <code>function</code>.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La hoja de scripts y Output — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="antes/editor-y-output.html">
+<div class="hoja">
+  <h2>📝 La hoja de scripts y la ventana Output</h2>
+  <p>Cuando hacés doble clic en un script de la lista, se abre una <b>hoja para escribir código</b>. Y abajo está la ventana <b>Output</b> (quiere decir <b>salida</b>): ahí el juego te <b>habla</b>.</p>
+
+  <div class="dibujo">
+    <svg width="640" height="330" viewBox="0 0 640 330" font-family="Consolas, monospace">
+      <rect x="2" y="2" width="636" height="200" rx="10" fill="#1e1e2e" stroke="#555" stroke-width="2"/>
+      <rect x="2" y="2" width="180" height="26" rx="8" fill="#2d2d44"/><text x="14" y="20" font-size="13" fill="#fff" font-family="Segoe UI, Arial">📜 Reglas   ✕</text>
+      <rect x="2" y="30" width="34" height="172" fill="#26263a"/>
+      <g font-size="13" fill="#777" text-anchor="end"><text x="28" y="52">1</text><text x="28" y="74">2</text><text x="28" y="96">3</text><text x="28" y="118">4</text><text x="28" y="140">5</text></g>
+      <text x="46" y="52" font-size="13" fill="#7fd18b" font-style="italic">-- cuando tocan la Meta, festejar</text>
+      <text x="46" y="74" font-size="13"><tspan fill="#ff7ab8" font-weight="700">local</tspan><tspan fill="#e6e6e6"> meta </tspan><tspan fill="#ff6b6b">=</tspan><tspan fill="#ffa94d"> workspace</tspan><tspan fill="#b8e0ff">.TorreEspacio.Meta</tspan></text>
+      <text x="46" y="96" font-size="13"><tspan fill="#e6e6e6">meta</tspan><tspan fill="#b8e0ff">.Touched</tspan><tspan fill="#e6e6e6">:</tspan><tspan fill="#5fd3ff" font-weight="700">Connect</tspan><tspan fill="#e6e6e6">(</tspan><tspan fill="#ff7ab8" font-weight="700">function</tspan><tspan fill="#e6e6e6">()</tspan></text>
+      <text x="46" y="118" font-size="13"><tspan fill="#e6e6e6">    </tspan><tspan fill="#5fd3ff" font-weight="700">print</tspan><tspan fill="#e6e6e6">(</tspan><tspan fill="#ffd166">"¡Llegaste! 🏆"</tspan><tspan fill="#e6e6e6">)</tspan></text>
+      <text x="46" y="140" font-size="13"><tspan fill="#ff7ab8" font-weight="700">end</tspan><tspan fill="#e6e6e6">)</tspan></text>
+      <circle cx="610" cy="30" r="14" fill="#1b5fd6"/><text x="610" y="35" font-size="15" text-anchor="middle" fill="#fff" font-weight="700" font-family="Segoe UI, Arial">1</text>
+      <text x="420" y="185" font-size="12" fill="#999" font-family="Segoe UI, Arial">← los números de línea</text>
+      <rect x="2" y="212" width="636" height="116" rx="10" fill="#fff" stroke="#555" stroke-width="2"/>
+      <rect x="2" y="212" width="636" height="24" rx="8" fill="#555"/><text x="14" y="229" font-size="13" fill="#fff" font-weight="700" font-family="Segoe UI, Arial">Output (los mensajes)</text>
+      <text x="14" y="260" font-size="13" fill="#222">¡Llegaste! 🏆        ← un print: mensaje común</text>
+      <text x="14" y="284" font-size="13" fill="#e8a200">⚠ Infinite yield possible…   ← aviso (amarillo)</text>
+      <text x="14" y="308" font-size="13" fill="#e02424">✖ Reglas:3: attempt to index nil   ← ERROR (rojo)</text>
+      <circle cx="610" cy="250" r="14" fill="#1b5fd6"/><text x="610" y="255" font-size="15" text-anchor="middle" fill="#fff" font-weight="700" font-family="Segoe UI, Arial">2</text>
+    </svg>
+  </div>
+
+  <h3>1. La hoja de scripts</h3>
+  <ul>
+    <li>Cada renglón tiene un <b>número de línea</b> a la izquierda. Sirve para encontrar los errores.</li>
+    <li>El código se pinta de <b>colores</b> solo. Cada color es un tipo de palabra. Mirá <a href="../codigo/colores-del-codigo.html">los colores del código</a>.</li>
+    <li>Mientras escribís, Studio te <b>sugiere</b> palabras. Apretá <b>Tab</b> o <b>Enter</b> para aceptar.</li>
+    <li>Si algo está mal escrito, aparece una <b>rayita roja</b> abajo, como en un dictado. 〰️</li>
+  </ul>
+
+  <h3>2. La ventana Output</h3>
+  <p>Se abre en <span class="menu">View</span> → <span class="menu">Output</span>. Muestra tres tipos de mensajes:</p>
+  <div class="tabla"><table>
+    <tr><th>Color</th><th>Qué es</th><th>¿Qué hago?</th></tr>
+    <tr><td>⬛ Negro o blanco</td><td>Un <code>print(...)</code> nuestro.</td><td>Nada, ¡el script anda!</td></tr>
+    <tr><td>🟨 Amarillo</td><td>Un <b>aviso</b>. Algo raro, pero no se rompió.</td><td>Leerlo con el tío.</td></tr>
+    <tr><td>🟥 Rojo</td><td>Un <b>error</b>. El script se frenó ahí.</td><td>Hacer clic: te lleva a la línea.</td></tr>
+  </table></div>
+  <p>El error dice <b>dónde</b> está: <code>Reglas:3</code> = <b>script Reglas, línea 3</b>.</p>
+
+  <h3>El ciclo de arreglar un error 🔁</h3>
+  <div class="dibujo">
+    <svg width="560" height="250" viewBox="0 0 560 250" font-family="Segoe UI, Arial">
+      <defs><marker id="fo" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <rect x="200" y="10" width="160" height="50" rx="12" fill="#eef4ff" stroke="#1b5fd6" stroke-width="2"/><text x="280" y="41" font-size="15" text-anchor="middle" font-weight="700">✍️ Escribo</text>
+      <rect x="400" y="100" width="150" height="50" rx="12" fill="#e3f9e5" stroke="#17a34a" stroke-width="2"/><text x="475" y="131" font-size="15" text-anchor="middle" font-weight="700">▶ Play</text>
+      <rect x="200" y="190" width="160" height="50" rx="12" fill="#fff8d6" stroke="#f2b600" stroke-width="2"/><text x="280" y="221" font-size="15" text-anchor="middle" font-weight="700">👀 Miro Output</text>
+      <rect x="10" y="100" width="150" height="50" rx="12" fill="#ffe4e4" stroke="#e02424" stroke-width="2"/><text x="85" y="122" font-size="15" text-anchor="middle" font-weight="700">■ Stop</text><text x="85" y="140" font-size="12" text-anchor="middle">y arreglo la línea</text>
+      <path d="M362 40 Q450 50 470 96" fill="none" stroke="#333" stroke-width="3" marker-end="url(#fo)"/>
+      <path d="M470 152 Q450 205 364 214" fill="none" stroke="#333" stroke-width="3" marker-end="url(#fo)"/>
+      <path d="M196 214 Q100 205 88 154" fill="none" stroke="#333" stroke-width="3" marker-end="url(#fo)"/>
+      <path d="M88 98 Q100 45 196 38" fill="none" stroke="#333" stroke-width="3" marker-end="url(#fo)"/>
+      <text x="110" y="190" font-size="12" fill="#e02424">¿rojo? 🟥</text>
+      <text x="370" y="240" font-size="12" fill="#17a34a">¿nada rojo? ¡listo! ✅</text>
+    </svg>
+  </div>
+  <div class="tip">💡 Equivocarse es <b>normal</b>. ¡Los programadores grandes ven errores rojos todos los días! Lo importante es leer qué dice.</div>
+  <div class="tip">💡 Truco: poné <code>print("llegué acá")</code> en el medio del código. Si no aparece en Output, el script no llegó hasta esa línea.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>
