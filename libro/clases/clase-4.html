@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 4 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="clases/clase-4.html">
+<div class="hoja">
+  <h2>🏫 Clase 4 — Lobby, niveles, clima y banana-portal</h2>
+  <p><b>Fecha:</b> 25 de noviembre de 2026</p>
+  <div class="bien">✅ <b>Lo que hicimos hoy</b> (tocá cada cosa para ver cómo se hace):
+    <ul>
+      <li>Un <a href="../construir/lobby.html"><b>lobby</b></a> 🏝️: una isla con árboles, fuente, faroles y un puente a la torre.</li>
+      <li>Dos <a href="../codigo/mejoras.html"><b>tablas</b></a>: arriba la de <b>este servidor</b>, abajo los <b>100 mejores del mundo</b> 🌎.</li>
+      <li>El <b>bate</b> 🏏 lo tenés siempre. Ahora marea <b>menos</b>, pero lo podés <a href="../codigo/mejoras.html"><b>mejorar</b></a>.</li>
+      <li>Menú <b>📊 Niveles</b>: Bate, Golpe, Salto y Globo. Subís comiendo 🥕🍬🍇🏏 o gastando 💰.</li>
+      <li>Ya no se tiran pelotas. Ahora hay <b>globos</b> 🎈 que dejás en un escalón: frenan a los gusanos y a los otros jugadores.</li>
+      <li>La <b>banana</b> 🍌 ahora es un <b>portal</b>: te manda 3 escalones atrás.</li>
+      <li>Menú <b>🌦️ Clima</b>: día, tarde o noche, lluvia, nieve, viento y temperatura.</li>
+      <li>Luces más realistas ☀️ y nubes.</li>
+      <li>Arreglos 🔧: el paraguas ya no da vueltas, la banana no te hace resbalar, y la zona segura es un poquito más grande.</li>
+    </ul>
+  </div>
+
+  <h3>Cómo subís de nivel 📊</h3>
+  <div class="dibujo">
+    <svg width="560" height="130" viewBox="0 0 560 130" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <defs><marker id="fc4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <a href="../codigo/mejoras.html"><text x="60" y="45" font-size="30">🥕</text><text x="60" y="80">comés</text></a>
+      <path d="M95 40 L150 60" stroke="#333" stroke-width="3" marker-end="url(#fc4)"/>
+      <a href="../codigo/mejoras.html"><text x="60" y="110" font-size="30">💰</text><text x="60" y="128">comprás</text></a>
+      <path d="M95 100 L150 75" stroke="#333" stroke-width="3" marker-end="url(#fc4)"/>
+      <rect x="160" y="45" width="130" height="40" rx="10" fill="#ffd728"/><text x="225" y="70" font-weight="700">⬆️ sube el nivel</text>
+      <path d="M295 65 L350 65" stroke="#333" stroke-width="3" marker-end="url(#fc4)"/>
+      <text x="440" y="60" font-size="16">🏏 mareo más largo</text><text x="440" y="82" font-size="16">🦘 salto más alto</text>
+    </svg>
+  </div>
+
+  <h3>Los scripts de esta clase</h3>
+  <a class="enlace codigo" href="../codigo/mejoras.html"><span class="emoji">📋</span><span><b>Partida</b> (ModuleScript) — cambió<br>Niveles, 💰 ahorro, guardar en Roblox, el lobby.</span></a>
+  <a class="enlace codigo" href="../codigo/mejoras.html"><span class="emoji">🏏</span><span><b>Juguetes</b> (ModuleScript) — cambió<br>El bate según tu nivel y el globo.</span></a>
+  <a class="enlace codigo" href="../codigo/mejoras.html"><span class="emoji">🍌</span><span><b>Objetos</b> (Script) — cambió<br>Comida que flota y bananas-portal.</span></a>
+  <a class="enlace codigo" href="../codigo/mejoras.html"><span class="emoji">🌦️</span><span><b>Menus</b> (LocalScript) y <b>TablaMundo</b> (Script) — ¡nuevos!<br>Los menús de Niveles y Clima, y la tabla del mundo.</span></a>
+  <div class="ojo">📦 Las pelotas y el Lanzapelotas Dorado quedaron guardados en <b>ServerStorage → JuguetesViejos</b>. Ahora el campeón gana <b>+1000 💰</b>.</div>
+
+  <h3>Palabras nuevas</h3>
+  <ul>
+    <li><b>Lobby</b>: sala de espera. El lugar donde aparecés.</li>
+    <li><b>DataStore</b>: un cajón de Roblox donde se guardan tus cosas aunque salgas del juego. 💾</li>
+    <li><b>OrderedDataStore</b>: un DataStore que está ordenado de mayor a menor. Sirve para la tabla del mundo.</li>
+    <li><b>ProximityPrompt</b>: el cartelito "apretá E" cuando estás cerca de algo.</li>
+    <li><b>ParticleEmitter</b>: una máquina de chispitas. La usamos para la lluvia, la nieve y la fuente.</li>
+  </ul>
+
+  <h3>Desafíos para practicar 💪</h3>
+  <div class="reto">⭐ <b>Fácil:</b> En Objetos, cambiá <code>RESBALA = 3</code> por <code>RESBALA = 5</code>. ¿Qué dice ahora el cartel de la banana?</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> En Partida, cambiá <code>PRECIO = 300</code>. ¿Cuánto cuesta ahora subir el bate a nivel 1?</div>
+  <div class="reto">⭐⭐⭐ <b>Difícil:</b> Leé la función <code>plantarGlobo</code> y explicale al tío por qué el globo no le hace nada al dueño.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

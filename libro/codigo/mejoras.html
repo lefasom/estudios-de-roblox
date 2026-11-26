@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niveles, globo, banana-portal, clima y tablas — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/mejoras.html">
+<div class="hoja">
+  <h2>📊 Niveles, globo, banana-portal, clima y tablas</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="funciones-con-datos.html">Funciones 2</a>, <a href="funciones-y-eventos.html">Funciones 3 (eventos)</a> y <a href="../antes/editor-y-output.html">El editor y el Output</a>.</div>
+  <a class="enlace juego" href="../construir/lobby.html"><span class="emoji">🎮</span><span><b>¿Dónde se ve en el juego?</b><br>El lobby, la torre y los botones de la izquierda.</span></a>
+
+  <h3>1. Los 4 niveles 📊</h3>
+  <p>Están en <b>ServerScriptService → Partida</b>. Cada nivel va de 0 a 10. Subís de 2 formas:</p>
+  <ol>
+    <li><b>Comiendo</b> en la torre: 3 comidas = 1 nivel.</li>
+    <li><b>Comprando</b> con 💰 en el menú 📊 Niveles. Cuesta 300 × (nivel + 1).</li>
+  </ol>
+  <table class="tabla">
+    <tr><th>Nivel</th><th>Se sube con</th><th>Qué hace</th></tr>
+    <tr><td>🏏 Bate</td><td>batecitos 🏏</td><td>el gusano queda mareado más tiempo (1,5 s → 5 s)</td></tr>
+    <tr><td>⚡ Golpe</td><td>caramelos 🍬</td><td>pegás más seguido</td></tr>
+    <tr><td>🦘 Salto</td><td>zanahorias 🥕</td><td>saltás más alto</td></tr>
+    <tr><td>🎈 Globo</td><td>uvas 🍇</td><td>tus globos frenan más tiempo</td></tr>
+  </table>
+<pre>function Partida.mareoBate(jugador)   return 1.5 + 0.35 * Partida.nivel(jugador, "Bate") end
+function Partida.altoSalto(jugador)   return 7.2 + 0.5 * Partida.nivel(jugador, "Salto") end</pre>
+  <div class="tip">💰 Los puntos que ganás al llegar arriba se suman a tu <b>Ahorro</b>. Con eso comprás mejoras. El menú le avisa al servidor por el teléfono <b>Eventos → Mejorar</b> (un RemoteEvent). El bate ahora lo tenés <b>siempre</b>.</div>
+
+  <h3>2. El globo 🎈</h3>
+  <p>Script: <b>ServerScriptService → Juguetes</b>, función <code>plantarGlobo</code>. Hacés clic y el globo queda <b>justo debajo tuyo</b>, aunque estés en la puntita del escalón. Si lo pisa un gusano u <b>otro</b> jugador, ¡PUM! Va lento unos segundos. A vos no te hace nada.</p>
+  <div class="dibujo">
+    <svg width="520" height="110" viewBox="0 0 520 110" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <defs><marker id="fg" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <text x="60" y="50" font-size="30">🖱️</text><text x="60" y="90">clic</text>
+      <path d="M95 45 L140 45" stroke="#333" stroke-width="3" marker-end="url(#fg)"/>
+      <text x="190" y="50" font-size="30">🎈</text><text x="190" y="90">queda puesto</text>
+      <path d="M225 45 L270 45" stroke="#333" stroke-width="3" marker-end="url(#fg)"/>
+      <text x="320" y="50" font-size="30">🐛</text><text x="320" y="90">lo pisa</text>
+      <path d="M355 45 L400 45" stroke="#333" stroke-width="3" marker-end="url(#fg)"/>
+      <text x="450" y="50" font-size="30">🐌</text><text x="450" y="90">¡va lento!</text>
+    </svg>
+  </div>
+
+  <h3>3. La banana-portal 🍌</h3>
+  <p>Script: <b>ServerScriptService → Objetos</b>. Ya no es una cáscara: es un <b>portal</b> amarillo con líneas que giran. Mide como mucho el 70% del ancho y del largo del escalón (menos de la mitad del piso), así la podés saltar. Si la tocás, te manda <b>3 escalones atrás</b>, como en el Juego de la Oca.</p>
+<pre>raiz.Anchored = true                      -- quieto: no te podés deslizar
+personaje:PivotTo(CFrame.lookAt(destino, destino + mira))
+task.delay(0.6, function() raiz.Anchored = false end)</pre>
+  <div class="bien">🔧 <b>Arreglo:</b> antes, al volver, a veces te resbalabas del escalón chiquito. Ahora caés <b>en el medio</b> y quedás <b>clavado</b> (Anchored) un ratito.</div>
+
+  <h3>4. El clima 🌦️</h3>
+  <p>LocalScript: <b>StarterPlayerScripts → Menus</b>. Cambia el clima <b>solo para vos</b>: hora (☀️ 🌅 🌙), 🌧️ lluvia, ❄️ nieve, 💨 viento y 🌡️ temperatura. La lluvia y la nieve salen de una nube invisible que te sigue (un <b>ParticleEmitter</b>). Con viento, el paraguas te lleva un poquito.</p>
+
+  <h3>5. Las dos tablas 🏆</h3>
+  <ul>
+    <li><b>Arriba</b> de la torre: los mejores de <b>este servidor</b> (Partida).</li>
+    <li><b>Abajo</b>, en el lobby: los <b>100 mejores del mundo</b> (script <b>TablaMundo</b>). Se guardan en un <b>OrderedDataStore</b>: una lista guardada en Roblox, ordenada de mayor a menor.</li>
+  </ul>
+
+  <h3>6. Arreglos 🔧</h3>
+  <ul>
+    <li><b>Paraguas</b> (Flotar): al abrirlo se apaga el script <b>Animate</b> del personaje. Así tu paquete de animaciones no te hace girar.</li>
+    <li><b>Zona segura</b> (Partida, <code>estaASalvo</code>): ahora mide un poquito más (<code>MARGEN</code>), para que en el borde no te atrapen.</li>
+  </ul>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

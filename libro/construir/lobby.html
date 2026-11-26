@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El lobby — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="construir/lobby.html">
+<div class="hoja">
+  <h2>🏝️ El lobby: la isla donde aparecés</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="../antes/la-lista.html">La lista</a>, <a href="../antes/las-caracteristicas.html">Las características</a> y <a href="bloque.html">Hacer un bloque</a>.</div>
+  <p>El <b>lobby</b> (en inglés: "sala de espera") es el lugar donde aparecés al entrar. Está en <b>Workspace → Lobby</b>. Es una isla en el lago, al lado de la torre.</p>
+
+  <div class="dibujo">
+    <svg width="560" height="230" viewBox="0 0 560 230" font-family="Segoe UI, Arial" font-size="13">
+      <defs><marker id="fl" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <rect x="0" y="0" width="560" height="230" fill="#bfe6ff"/>
+      <circle cx="70" cy="115" r="40" fill="#d9b25e" stroke="#8a6a2a" stroke-width="4"/><text x="70" y="120" text-anchor="middle" font-weight="700">🗼 Torre</text>
+      <rect x="110" y="105" width="125" height="20" fill="#a0703c"/><text x="170" y="98" text-anchor="middle">puente</text>
+      <circle cx="340" cy="115" r="105" fill="#6aa84f" stroke="#999" stroke-width="8"/>
+      <text x="252" y="122" font-size="22">⛩️</text>
+      <rect x="300" y="102" width="22" height="22" fill="#eee" stroke="#555"/><text x="311" y="145" text-anchor="middle" font-size="11">aparecés</text>
+      <circle cx="372" cy="112" r="14" fill="#7cc4f0" stroke="#aaa" stroke-width="3"/><text x="372" y="145" text-anchor="middle" font-size="11">fuente</text>
+      <a href="../codigo/mejoras.html"><rect x="420" y="70" width="10" height="90" fill="#223"/><text x="470" y="62" text-anchor="middle" font-size="11">🌎 tabla del mundo</text></a>
+      <a href="../codigo/mejoras.html"><text x="330" y="45" font-size="20">📊</text><text x="290" y="30" font-size="11">tienda de mejoras</text></a>
+      <text x="330" y="200" font-size="20">📜</text><text x="295" y="222" font-size="11">cómo se juega</text>
+      <path d="M298 112 L245 112" stroke="#333" stroke-width="2" marker-end="url(#fl)"/>
+    </svg>
+  </div>
+
+  <h3>Qué tiene (y cómo se hace a mano)</h3>
+  <ol>
+    <li><b>Isla</b>: un bloque con <b>Shape = Cylinder</b> (cilindro), girado 90°. Abajo <b>Slate</b> (roca), arriba <b>Grass</b> (pasto).</li>
+    <li><b>Murito</b>: bloques de <b>Cobblestone</b> en ronda, con un hueco para el puente.</li>
+    <li><b>Puente</b>: tablas de <b>WoodPlanks</b> y barandas de <b>Wood</b>, hasta el <b>Inicio</b> de la torre.</li>
+    <li><b>Arco</b> con el cartel "🗼 A LA TORRE" (un <a href="cartel.html">cartel</a> con SurfaceGui).</li>
+    <li><b>Faroles</b> con <b>PointLight</b> (luz), <b>árboles</b> (bolas de Grass), <b>bancos</b> y una <b>fuente</b> con <b>ParticleEmitter</b> (chorrito de agua).</li>
+    <li><b>Tienda de mejoras</b>: tiene un <b>ProximityPrompt</b> (el cartelito "apretá E"). Abre el menú 📊 Niveles.</li>
+    <li><b>Tabla del mundo</b>: los 100 mejores de todos los servidores.</li>
+    <li>El <b>SpawnLocation</b> (donde aparecés) ahora está en el medio de la isla.</li>
+  </ol>
+  <div class="ojo">⏱️ En el lobby el reloj <b>no corre</b>. Arranca cuando pisás el <b>Inicio</b> de la torre.</div>
+  <a class="enlace codigo" href="../codigo/mejoras.html"><span class="emoji">🔧</span><span><b>¿Cómo funciona por dentro?</b><br>Tablas, niveles, globo, banana-portal y clima.</span></a>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>
