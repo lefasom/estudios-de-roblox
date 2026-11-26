@@ -92,7 +92,9 @@ Partida.atrapar(jugador)</pre>
     <tr><td><code>comprar(jugador, stat)</code></td><td>quién y qué mejora</td><td>Si tenés 💰, te sube un nivel.</td></tr>
     <tr><td><code>ralentizar(jugador, segundos, dueno)</code></td><td>quién, cuánto, de quién era el globo</td><td>Te hace caminar lento.</td></tr>
     <tr><td rowspan="2"><a href="mejoras.html">🎈 Juguetes / 🍌 Objetos</a></td><td><code>plantarGlobo(herramienta)</code></td><td>el globo que tenés en la mano</td><td>Lo deja donde estás parado.</td></tr>
-    <tr><td><code>viajar(jugador, k)</code></td><td>quién y en qué escalón está la banana</td><td>Te manda 3 escalones atrás, quieto.</td></tr>
+    <tr><td><code>viajar(jugador, k)</code></td><td>quién y en qué escalón está el agujero negro</td><td>Te manda 3 escalones atrás, quieto. Sale <code>true</code> si te pudo mandar.</td></tr>
+    <tr><td><code>hacerAgujero(k)</code></td><td>el número de escalón</td><td>Dibuja el agujero negro (tamaño y lugar al azar). Sale el modelo, las líneas y el centro.</td></tr>
+    <tr><td><code>agujeroNegro(desde, hasta, prohibido)</code></td><td>entre qué escalones, y cuál NO se puede usar</td><td>Pone un agujero en un escalón libre. Cuando te come, se borra y llama otra vez a <code>agujeroNegro</code> en otro lugar. No sale nada.</td></tr>
   </table></div>
 
   <h3>🕵️ Juego de detective</h3>

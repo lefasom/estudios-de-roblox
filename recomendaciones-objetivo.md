@@ -4,7 +4,7 @@
 
 ## 1. Dónde estamos (20/11/2026)
 
-- **El juego está terminado.** La torre de ladrillos tiene 96 escalones, 5 gusanos, 4 hoyos con cuenta 3-2-1, empujón y paraguas, juguetes, bananas, armadura de 7 piezas, puntos y una tabla de puntajes.
+- **El juego está terminado.** La torre de ladrillos tiene 96 escalones, 5 gusanos, 4 hoyos con cuenta 3-2-1, empujón y paraguas, juguetes, agujeros negros, armadura de 7 piezas, puntos y una tabla de puntajes.
 - Son **8 scripts** de verdad (Gusanos, Partida, Reglas, Juguetes, Objetos, Paraguas, Flotar, Pantalla) más ShiftLock y los `AlHacerClic`. Para alguien de 11 años eso **ya es mucho**: alcanza para aprender casi todo lo básico de Luau.
 - **Recomendación firme: no agregar más funciones al juego.** Cada cosa nueva que se suma la hace la IA, y Dylan no la entiende. Desde ahora el juego deja de ser algo para construir y pasa a ser **el material de estudio**.
 
@@ -47,7 +47,7 @@ Si al final del camino puede hacer esas 4 cosas, el objetivo está cumplido.
 
 1. `Reglas` (cortito: tres eventos `Touched` / `PlayerAdded`)
 2. `Pantalla` (lee atributos y muestra textos)
-3. `Objetos` (juguetes y bananas: eventos, `task.delay`)
+3. `Objetos` (comida y agujeros negros: eventos, `task.delay`)
 4. `Partida` (funciones con parámetros, tablas, el `atrapar(jugador, cuantas)`)
 5. `Juguetes` (ModuleScript, lanzar y batear)
 6. `Gusanos` (el más largo: dejarlo para el final)
@@ -58,7 +58,7 @@ Si al final del camino puede hacer esas 4 cosas, el objetivo está cumplido.
 1. **Vos sos el freno de las ideas nuevas.** Cuando Dylan quiera agregar algo ("¡un dragón!"), anotalo en un papel de "ideas para el juego que viene" y volvé al estudio. El juego nuevo llega cuando termine el Nivel 5.
 2. **Usá la IA como profesor, no como programador.** Pedile que *explique* una línea o que *invente un ejercicio*, no que haga el cambio. Si se usa la IA, que sea Dylan el que escribe en Studio.
 3. **Pedile que te enseñe a vos.** "Explicame qué hace `sacarDeUnHoyo`" funciona mejor que cualquier examen.
-4. **Retos chicos con su propio juego:** cambiar `CUENTA = 3` por 5, hacer que la banana tire 5 escalones, poner un `print` cuando el Forzudo golpea, hacer un bloque que se ponga transparente al tocarlo. Son cambios de 1 a 5 líneas, ideales para practicar.
+4. **Retos chicos con su propio juego:** cambiar `CUENTA = 3` por 5, hacer que el agujero negro tire 5 escalones, poner un `print` cuando el Forzudo golpea, hacer un bloque que se ponga transparente al tocarlo. Son cambios de 1 a 5 líneas, ideales para practicar.
 5. **Antes de cada sesión, guardá una copia** (File → Save to Roblox), así puede romper cosas sin miedo. Si algo se rompe, en el historial de versiones del juego se vuelve atrás.
 6. **Medí el avance por lo que explica, no por lo que construye.** Una semana en la que entendió bien una función vale más que una semana con tres cosas nuevas en el juego.
 7. **Cuándo pasar a un juego nuevo:** cuando pueda escribir solo, sin mirar, un script de 20 líneas con una función con parámetros, un `if` y un `Touched`. Recién ahí conviene un juego nuevo, **chico** (por ejemplo un obby de 10 plataformas con 3 trampas), hecho por él de cero.

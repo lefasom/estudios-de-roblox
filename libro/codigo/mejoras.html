@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Niveles, globo, banana-portal, clima y tablas — Mi libro de Roblox</title>
+<title>Niveles, globo, agujero negro, clima y tablas — Mi libro de Roblox</title>
 <link rel="stylesheet" href="../estilo.css">
 </head>
 <body data-pagina="codigo/mejoras.html">
 <div class="hoja">
-  <h2>📊 Niveles, globo, banana-portal, clima y tablas</h2>
+  <h2>📊 Niveles, globo, agujero negro, clima y tablas</h2>
   <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="funciones-con-datos.html">Funciones 2</a>, <a href="funciones-y-eventos.html">Funciones 3 (eventos)</a> y <a href="../antes/editor-y-output.html">El editor y el Output</a>.</div>
   <a class="enlace juego" href="../construir/lobby.html"><span class="emoji">🎮</span><span><b>¿Dónde se ve en el juego?</b><br>El lobby, la torre y los botones de la izquierda.</span></a>
 
@@ -44,8 +44,32 @@ function Partida.altoSalto(jugador)   return 7.2 + 0.5 * Partida.nivel(jugador, 
     </svg>
   </div>
 
-  <h3>3. La banana-portal 🍌</h3>
-  <p>Script: <b>ServerScriptService → Objetos</b>. Ya no es una cáscara: es un <b>portal</b> amarillo con líneas que giran. Mide como mucho el 70% del ancho y del largo del escalón (menos de la mitad del piso), así la podés saltar. Si la tocás, te manda <b>3 escalones atrás</b>, como en el Juego de la Oca.</p>
+  <h3>3. El agujero negro 🕳️ (antes era la banana)</h3>
+  <p>Script: <b>ServerScriptService → Objetos</b>. Es un <b>círculo negro</b> con un borde violeta y un remolino que gira. Si lo pisás, te manda <b>3 escalones atrás</b>, como en el Juego de la Oca.</p>
+  <ol>
+    <li><b>Tamaño al azar:</b> entre el 40% y el 70% del ancho del escalón (<code>AGUJERO_MIN</code> y <code>AGUJERO_MAX</code>). Así <b>nunca tapa más de la mitad</b> del piso: siempre tenés dónde pisar.</li>
+    <li><b>Lugar al azar en el escalón:</b> a veces mancha solo <b>una puntita</b>, a veces queda en el medio.</li>
+    <li><b>Cuando te come, cambia de lugar:</b> desaparece y a los 3 segundos (<code>CAMBIA_DE_LUGAR</code>) aparece en <b>otro escalón al azar</b>. Nunca en el mismo donde estaba.</li>
+    <li>Hay <b>12 agujeros</b> en la torre, y nunca dos muy cerca (así no caés de uno en otro).</li>
+  </ol>
+  <div class="dibujo">
+    <svg width="560" height="120" viewBox="0 0 560 120" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <defs><marker id="fan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <rect x="20" y="30" width="100" height="50" fill="#d9a066" stroke="#8a5a2b" stroke-width="2"/>
+      <circle cx="95" cy="55" r="20" fill="#000" stroke="#7828c8" stroke-width="4"/>
+      <text x="70" y="105">mancha una puntita</text>
+      <path d="M130 55 L175 55" stroke="#333" stroke-width="3" marker-end="url(#fan)"/>
+      <text x="230" y="50" font-size="30">🧍</text><text x="230" y="90">lo pisás</text>
+      <path d="M265 55 L310 55" stroke="#333" stroke-width="3" marker-end="url(#fan)"/>
+      <text x="365" y="50" font-size="26">⬅️3</text><text x="365" y="90">volvés 3 escalones</text>
+      <path d="M415 55 L455 55" stroke="#333" stroke-width="3" marker-end="url(#fan)"/>
+      <rect x="460" y="30" width="80" height="50" fill="#c9c9c9" stroke="#666" stroke-width="2"/>
+      <circle cx="485" cy="55" r="14" fill="#000" stroke="#7828c8" stroke-width="4"/>
+      <text x="500" y="105">aparece en otro lado</text>
+    </svg>
+  </div>
+<pre>-- ...y aparece en OTRO escalón al azar de la torre (nunca en el mismo)
+task.delay(CAMBIA_DE_LUGAR, function() agujeroNegro(5, N, k) end)</pre>
 <pre>raiz.Anchored = true                      -- quieto: no te podés deslizar
 personaje:PivotTo(CFrame.lookAt(destino, destino + mira))
 task.delay(0.6, function() raiz.Anchored = false end)</pre>
