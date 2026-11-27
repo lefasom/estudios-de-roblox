@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 7 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="clases/clase-7.html">
+<div class="hoja">
+  <h2>🏫 Clase 7 — Misiones, logros y tienda</h2>
+  <p><b>Fecha:</b> 27 de noviembre de 2026</p>
+  <div class="bien">✅ <b>Lo que hicimos hoy</b> (tocá cada cosa para ver cómo se hace):
+    <ul>
+      <li>📜 <a href="../codigo/logros-y-tienda.html#misiones"><b>Misiones</b></a>: 3 a la vez, dan 💰, y cuando cumplís una aparece otra.</li>
+      <li>🏅 <a href="../codigo/logros-y-tienda.html#logros"><b>18 logros</b></a>: se ganan una sola vez y dan mucho 💰.</li>
+      <li>🛒 <a href="../codigo/logros-y-tienda.html#tienda"><b>Tienda</b></a> con Robux: pociones x2 Victorias, x2 💰 y bolsas de 💰.</li>
+      <li>Todo se <b>guarda</b> en Roblox, junto con tus niveles.</li>
+    </ul>
+  </div>
+
+  <h3>Cómo se gana un logro</h3>
+  <div class="dibujo">
+    <svg width="560" height="110" viewBox="0 0 560 110" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <defs><marker id="fc7" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <a href="../codigo/juguetes.html"><text x="55" y="50" font-size="26">🏏</text><text x="55" y="80">mareás</text></a>
+      <path d="M95 50 L140 50" stroke="#333" stroke-width="3" marker-end="url(#fc7)"/>
+      <a href="../codigo/logros-y-tienda.html#logros"><rect x="145" y="30" width="140" height="40" rx="10" fill="#e3f9e5"/><text x="215" y="55">Logros.sumar(...)</text></a>
+      <path d="M290 50 L335 50" stroke="#333" stroke-width="3" marker-end="url(#fc7)"/>
+      <rect x="340" y="30" width="90" height="40" rx="10" fill="#ffd728"/><text x="385" y="55">¿10 / 10?</text>
+      <path d="M435 50 L475 50" stroke="#333" stroke-width="3" marker-end="url(#fc7)"/>
+      <text x="515" y="50" font-size="22">🏅</text><text x="515" y="80">+500 💰</text>
+    </svg>
+  </div>
+
+  <h3>Los scripts de esta clase</h3>
+  <a class="enlace codigo" href="../codigo/logros-y-tienda.html#lista"><span class="emoji">📋</span><span><b>ListaLogros</b> (ModuleScript en ReplicatedStorage) — ¡nuevo!<br>Los logros, las misiones y la tienda.</span></a>
+  <a class="enlace codigo" href="../codigo/logros-y-tienda.html#logros"><span class="emoji">🏅</span><span><b>Logros</b> (ModuleScript) — ¡nuevo!<br>Cuenta lo que hacés y da los premios.</span></a>
+  <a class="enlace codigo" href="../codigo/logros-y-tienda.html#tienda"><span class="emoji">🛒</span><span><b>Tienda</b> (Script) y <b>MenuLogros</b> (LocalScript) — ¡nuevos!<br>Las compras con Robux y los menús.</span></a>
+  <a class="enlace codigo" href="../codigo/partida.html"><span class="emoji">📋</span><span><b>Partida</b>, <b>Juguetes</b>, <b>Trampas</b> y <b>Paraguas</b> — cambiaron<br>Ahora le avisan a Logros.</span></a>
+
+  <h3>Palabras nuevas</h3>
+  <ul>
+    <li><b>Economía</b>: cómo se gana y se gasta la plata del juego (💰).</li>
+    <li><b>Developer Product</b>: algo que se compra con Robux y se puede comprar muchas veces.</li>
+    <li><b>Recibo</b>: el papelito de cada compra, con un número único. 🧾</li>
+    <li><b>JSON</b>: una forma de escribir una tabla como texto, para mandarla de un lado al otro.</li>
+  </ul>
+
+  <h3>Desafíos para practicar 💪</h3>
+  <div class="reto">⭐ <b>Fácil:</b> En ListaLogros, cambiale el premio a "🏏 Bateador" de 500 a 1000.</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> Inventá un logro nuevo: "🎈 Fiestero: dejá 50 globos". ¿Qué <code>cosa</code> tiene que contar?</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> Agregá una misión: "Mareá 15 gusanos" que dé 800 💰.</div>
+  <div class="reto">⭐⭐⭐ <b>Difícil:</b> Leé <code>Partida.comprarConRobux</code> y explicale al tío para qué sirve <code>d.recibos</code>.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

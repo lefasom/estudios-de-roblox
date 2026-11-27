@@ -45,6 +45,7 @@ function Partida.altoSalto(jugador)   return 7.2 + 0.5 * Partida.nivel(jugador, 
   </div>
 
   <h3>3. El agujero negro 🕳️ (antes era la banana)</h3>
+  <div class="ojo">📦 <b>Ya no está en el juego</b> (Clase 5). Ahora hay <a href="trampas.html">bloques trampa y dados</a> que usan la misma idea de cambiar de lugar. Esto queda para que veas cómo era.</div>
   <p>Script: <b>ServerScriptService → Objetos</b>. Es un <b>círculo negro</b> con un borde violeta y un remolino que gira. Si lo pisás, te manda <b>3 escalones atrás</b>, como en el Juego de la Oca.</p>
   <ol>
     <li><b>Tamaño al azar:</b> entre el 40% y el 70% del ancho del escalón (<code>AGUJERO_MIN</code> y <code>AGUJERO_MAX</code>). Así <b>nunca tapa más de la mitad</b> del piso: siempre tenés dónde pisar.</li>
@@ -76,6 +77,7 @@ task.delay(0.6, function() raiz.Anchored = false end)</pre>
   <div class="bien">🔧 <b>Arreglo:</b> antes, al volver, a veces te resbalabas del escalón chiquito. Ahora caés <b>en el medio</b> y quedás <b>clavado</b> (Anchored) un ratito.</div>
 
   <h3>4. El clima 🌦️</h3>
+  <div class="ojo">📦 <b>El menú de clima ya no está</b> (Clase 6). Ahora el clima cambia solo: mirá <a href="clima.html">Clima, ClimaLocal y PoseParaguas</a>.</div>
   <p>LocalScript: <b>StarterPlayerScripts → Menus</b>. Cambia el clima <b>solo para vos</b>: hora (☀️ 🌅 🌙), 🌧️ lluvia, ❄️ nieve, 💨 viento y 🌡️ temperatura. La lluvia y la nieve salen de una nube invisible que te sigue (un <b>ParticleEmitter</b>). Con viento, el paraguas te lleva un poquito.</p>
 
   <h3>5. Las dos tablas 🏆</h3>

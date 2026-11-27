@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 6 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="clases/clase-6.html">
+<div class="hoja">
+  <h2>🏫 Clase 6 — Clima que cambia solo y paraguas con equilibrio</h2>
+  <p><b>Fecha:</b> 26 de noviembre de 2026</p>
+  <div class="bien">✅ <b>Lo que hicimos hoy</b> (tocá cada cosa para ver cómo se hace):
+    <ul>
+      <li>Sacamos el menú <b>🌦️ Clima</b>. Ahora el <a href="../codigo/clima.html#clima"><b>clima cambia solo</b></a>, al azar.</li>
+      <li>Con más <a href="../codigo/trampas.html"><b>dificultad</b></a>, el clima es más feo: más nieve, más viento y ⛈️ <b>tormentas</b> con relámpagos.</li>
+      <li>Más arriba en la torre, <b>más fuerte</b> el clima.</li>
+      <li>Mucha más <a href="../codigo/clima.html#local"><b>lluvia y nieve</b></a>. El piso se ve <b>mojado</b> 💧 o se llena de <b>nieve</b> ❄️.</li>
+      <li>💨 <b>Ráfagas</b> que te tiran para atrás. ❄️ Con nieve, si te quedás quieto, <b>resbalás</b>.</li>
+      <li>El viento también empuja tu <a href="../codigo/paraguas.html"><b>paraguas</b></a>.</li>
+      <li>Una <a href="../codigo/clima.html#pose"><b>pose de paraguas</b></a> ☂️: una mano lo agarra y la otra hace equilibrio.</li>
+    </ul>
+  </div>
+
+  <h3>Cuanto más subís, más feo se pone</h3>
+  <div class="dibujo">
+    <svg width="560" height="180" viewBox="0 0 560 180" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <rect x="250" y="10" width="60" height="165" fill="#d9b25e" stroke="#8a6a2a" stroke-width="3"/>
+      <text x="280" y="30" font-size="11">🏁 meta</text>
+      <a href="../codigo/clima.html#local"><text x="420" y="40" font-size="20">⛈️💨❄️</text><text x="420" y="60">¡muy fuerte!</text></a>
+      <a href="../codigo/clima.html#local"><text x="420" y="105" font-size="20">🌧️</text><text x="420" y="125">mediano</text></a>
+      <text x="420" y="160" font-size="20">🌦️</text><text x="420" y="177">poquito</text>
+      <path d="M140 160 L140 30" stroke="#c33" stroke-width="4" marker-end="url(#fc6)"/>
+      <defs><marker id="fc6" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c33"/></marker></defs>
+      <text x="80" y="100">más alto</text><text x="80" y="118">= más clima</text>
+    </svg>
+  </div>
+
+  <h3>Los scripts de esta clase</h3>
+  <a class="enlace codigo" href="../codigo/clima.html#clima"><span class="emoji">🎲</span><span><b>Clima</b> (Script) — ¡nuevo!<br>Elige el clima al azar según la dificultad.</span></a>
+  <a class="enlace codigo" href="../codigo/clima.html#local"><span class="emoji">🌧️</span><span><b>ClimaLocal</b> (LocalScript) — ¡nuevo!<br>Lluvia, nieve, piso mojado o nevado, ráfagas y resbalar.</span></a>
+  <a class="enlace codigo" href="../codigo/clima.html#pose"><span class="emoji">☂️</span><span><b>PoseParaguas</b> (LocalScript) — ¡nuevo!<br>Los brazos con el paraguas.</span></a>
+  <a class="enlace codigo" href="../codigo/paraguas.html"><span class="emoji">🪂</span><span><b>Flotar</b> (LocalScript) — cambió<br>El viento te lleva más con el paraguas.</span></a>
+  <a class="enlace codigo" href="../codigo/mejoras.html"><span class="emoji">📊</span><span><b>Menus</b> (LocalScript) — cambió<br>Ya solo tiene el botón 📊 Niveles.</span></a>
+
+  <h3>Palabras nuevas</h3>
+  <ul>
+    <li><b>Peso</b> (en un sorteo): qué tan seguido sale algo. Más peso = sale más.</li>
+    <li><b>Ráfaga</b>: un golpe de viento fuerte que dura poquito.</li>
+    <li><b>Articulación</b> (en inglés: joint): donde se doblan los bloques del cuerpo, como el hombro o el codo.</li>
+    <li><b>math.clamp</b>: deja un número entre un mínimo y un máximo.</li>
+  </ul>
+
+  <h3>Desafíos para practicar 💪</h3>
+  <div class="reto">⭐ <b>Fácil:</b> En ClimaLocal, cambiá <code>RESBALA = 0.35</code> por <code>1</code>. ¿Podés quedarte quieto en la nieve?</div>
+  <div class="reto">⭐ <b>Fácil:</b> En PoseParaguas, cambiá <code>BALANCEO = 2.2</code> por <code>5</code>. ¿Qué hace el brazo izquierdo?</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> En Clima, cambiá el peso de <code>Tormenta</code> a <code>100</code>. Probá: ¿qué clima sale casi siempre?</div>
+  <div class="reto">⭐⭐⭐ <b>Difícil:</b> Leé la función <code>cuanto(y)</code>. Con dificultad 0, ¿a qué altura empieza el clima fuerte? Explicáselo al tío.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

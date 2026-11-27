@@ -91,10 +91,25 @@ Partida.atrapar(jugador)</pre>
     <tr><td><code>comer(jugador, stat, texto)</code></td><td>quién, qué sube, el mensaje</td><td>Suma 1 comida; cada 3, sube un nivel.</td></tr>
     <tr><td><code>comprar(jugador, stat)</code></td><td>quién y qué mejora</td><td>Si tenés 💰, te sube un nivel.</td></tr>
     <tr><td><code>ralentizar(jugador, segundos, dueno)</code></td><td>quién, cuánto, de quién era el globo</td><td>Te hace caminar lento.</td></tr>
-    <tr><td rowspan="2"><a href="mejoras.html">🎈 Juguetes / 🍌 Objetos</a></td><td><code>plantarGlobo(herramienta)</code></td><td>el globo que tenés en la mano</td><td>Lo deja donde estás parado.</td></tr>
-    <tr><td><code>viajar(jugador, k)</code></td><td>quién y en qué escalón está el agujero negro</td><td>Te manda 3 escalones atrás, quieto. Sale <code>true</code> si te pudo mandar.</td></tr>
-    <tr><td><code>hacerAgujero(k)</code></td><td>el número de escalón</td><td>Dibuja el agujero negro (tamaño y lugar al azar). Sale el modelo, las líneas y el centro.</td></tr>
-    <tr><td><code>agujeroNegro(desde, hasta, prohibido)</code></td><td>entre qué escalones, y cuál NO se puede usar</td><td>Pone un agujero en un escalón libre. Cuando te come, se borra y llama otra vez a <code>agujeroNegro</code> en otro lugar. No sale nada.</td></tr>
+    <tr><td><a href="mejoras.html">🎈 Juguetes</a></td><td><code>plantarGlobo(herramienta)</code></td><td>el globo que tenés en la mano</td><td>Lo deja donde estás parado.</td></tr>
+    <tr><td rowspan="7"><a href="trampas.html">🧱 Trampas</a></td><td><code>calcularDificultad()</code></td><td>nada</td><td>Mira las vueltas de todos. Sale la dificultad (0 a 5).</td></tr>
+    <tr><td><code>elegirEscalon()</code></td><td>nada</td><td>Sale un escalón libre al azar (más seguido cerca de la cima), o <code>nil</code>.</td></tr>
+    <tr><td><code>pisando(esc, alto)</code></td><td>un escalón</td><td>Sale la lista de jugadores parados arriba.</td></tr>
+    <tr><td><code>restaurar(k)</code></td><td>el número de escalón</td><td>Lo deja como era antes de la trampa.</td></tr>
+    <tr><td><code>nuevaTrampa()</code></td><td>nada</td><td>Pone una trampa al azar en un escalón libre.</td></tr>
+    <tr><td><code>nuevoDado()</code> / <code>hacerDado(tam)</code></td><td>el tamaño</td><td>Arma el cubo con puntitos y lo pone en un costado del escalón.</td></tr>
+    <tr><td><code>tirarDado(d, jugador)</code></td><td>el dado y quién lo tocó</td><td>Gira, muestra el número, humo o estrella, y te mueve.</td></tr>
+    <tr><td><a href="clima.html#clima">🎲 Clima</a></td><td><code>elegir(anterior)</code></td><td>el clima de antes</td><td>Sortea un clima nuevo con pesos (nunca el mismo). Sale su nombre.</td></tr>
+    <tr><td rowspan="3"><a href="clima.html#local">🌧️ ClimaLocal</a></td><td><code>cuanto(y)</code></td><td>una altura</td><td>Sale cuánto clima hay ahí (0.4 a 1) y cuánto es "fuerte" (0 a 1).</td></tr>
+    <tr><td><code>crearCapa(esc)</code></td><td>un escalón</td><td>Le pone arriba la capa de agua o nieve.</td></tr>
+    <tr><td><code>enZonaSegura(pos)</code></td><td>un lugar</td><td>Sale <code>true</code> si estás en una zona segura.</td></tr>
+    <tr><td rowspan="2"><a href="clima.html#pose">☂️ PoseParaguas</a></td><td><code>poner(motor, giro)</code></td><td>una articulación y cuánto girarla</td><td>Gira el hombro, el codo, la cintura o la pierna.</td></tr>
+    <tr><td><code>resorte(s, clave, meta, dt)</code></td><td>a dónde querés llegar</td><td>Se acerca a la meta como un resorte. Sale el valor nuevo.</td></tr>
+    <tr><td rowspan="4"><a href="logros-y-tienda.html#logros">🏅 Logros</a></td><td><code>sumar(jugador, cosa, cuanto)</code></td><td>quién, qué hizo y cuántas veces</td><td>Lo suma y revisa logros y misiones.</td></tr>
+    <tr><td><code>marcar(jugador, cosa, valor)</code></td><td>quién, qué y hasta dónde llegó</td><td>Se queda con el más alto (ej.: el escalón).</td></tr>
+    <tr><td><code>revisar(jugador)</code></td><td>quién</td><td>Si llegaste a una meta: da el 💰 y el cartel.</td></tr>
+    <tr><td><code>nuevaMision(d)</code></td><td>tus datos</td><td>Te agrega una misión al azar que no tengas.</td></tr>
+    <tr><td><a href="logros-y-tienda.html#tienda">🛒 Partida</a></td><td><code>comprarConRobux(jugador, producto, recibo)</code></td><td>quién, qué compró y el número de recibo</td><td>Entrega la compra una sola vez. Sale <code>true</code> si quedó guardada.</td></tr>
   </table></div>
 
   <h3>🕵️ Juego de detective</h3>

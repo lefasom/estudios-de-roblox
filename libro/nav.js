@@ -27,6 +27,7 @@ const PARTES = [
     ["construir/hoyos.html", "Los hoyos: luz y cuenta 3, 2, 1"],
     ["construir/juguetes.html", "Juguetes, bate y bananas"],
     ["construir/lobby.html", "El lobby: la isla donde aparecés"],
+    ["construir/trampas.html", "Bloques trampa y el dado"],
   ]},
   { emoji: "💻", titulo: "Código (scripts)", paginas: [
     ["codigo/que-es-un-script.html", "¿Qué es un script?"],
@@ -44,12 +45,18 @@ const PARTES = [
     ["codigo/paraguas.html", "Scripts Flotar y Paraguas: el empujón y el paraguas"],
     ["codigo/shift-lock.html", "Script del Shift Lock"],
     ["codigo/mejoras.html", "Niveles, globo, agujero negro, clima y tablas"],
+    ["codigo/trampas.html", "Script Trampas: bloques trampa, dado y dificultad"],
+    ["codigo/clima.html", "Scripts Clima, ClimaLocal y PoseParaguas"],
+    ["codigo/logros-y-tienda.html", "Logros, misiones y tienda"],
   ]},
   { emoji: "🏫", titulo: "Mis clases", paginas: [
     ["clases/clase-1.html", "Clase 1 — La Torre del Espacio y el gusano de lava (19/11/2026)"],
     ["clases/clase-2.html", "Clase 2 — Muchos gusanos, juguetes y armadura (19/11/2026)"],
     ["clases/clase-3.html", "Clase 3 — Torre de ladrillos, hoyos que avisan y paraguas (20/11/2026)"],
     ["clases/clase-4.html", "Clase 4 — Lobby, niveles, clima y agujero negro (25/11/2026)"],
+    ["clases/clase-5.html", "Clase 5 — Bloques trampa, el dado y la dificultad (26/11/2026)"],
+    ["clases/clase-6.html", "Clase 6 — Clima que cambia solo y paraguas con equilibrio (26/11/2026)"],
+    ["clases/clase-7.html", "Clase 7 — Misiones, logros y tienda (27/11/2026)"],
     ["clases/lo-que-viene.html", "¿Y ahora? ¡A aprender a programar!"],
   ]},
 ];

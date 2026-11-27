@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 5 — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="clases/clase-5.html">
+<div class="hoja">
+  <h2>🏫 Clase 5 — Bloques trampa, el dado y la dificultad</h2>
+  <p><b>Fecha:</b> 26 de noviembre de 2026</p>
+  <div class="bien">✅ <b>Lo que hicimos hoy</b> (tocá cada cosa para ver cómo se hace):
+    <ul>
+      <li>Arreglamos el <a href="../construir/lobby.html"><b>puente</b></a> del lobby 🌉: las tablas estaban giradas y parecía un solo tablón.</li>
+      <li>4 <a href="../construir/trampas.html"><b>bloques trampa</b></a> 🧱: se rompe 🧊, se cae ⬇️, elevador ↕️ y Jenga 🔄. Cambian de lugar solos.</li>
+      <li>El <a href="../construir/trampas.html"><b>dado</b></a> 🎲: te mueve de 1 a 6 escalones. 2 de cada 3 veces, ¡para atrás!</li>
+      <li>La <a href="../codigo/trampas.html"><b>dificultad</b></a> 📈: con más vueltas ganadas hay más gusanos, más trampas y más dados.</li>
+      <li>Sacamos el <b>agujero negro</b> 🕳️. Las trampas usan su idea de aparecer en un lugar al azar.</li>
+    </ul>
+  </div>
+
+  <h3>La vida de una trampa</h3>
+  <div class="dibujo">
+    <svg width="560" height="110" viewBox="0 0 560 110" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <defs><marker id="fc5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <a href="../codigo/trampas.html"><rect x="10" y="35" width="115" height="40" rx="10" fill="#e3f9e5"/><text x="67" y="60">🎯 elige escalón</text></a>
+      <path d="M128 55 L160 55" stroke="#333" stroke-width="3" marker-end="url(#fc5)"/>
+      <a href="../construir/trampas.html"><rect x="165" y="35" width="115" height="40" rx="10" fill="#ffd728"/><text x="222" y="60">🧱 es trampa</text></a>
+      <path d="M283 55 L315 55" stroke="#333" stroke-width="3" marker-end="url(#fc5)"/>
+      <rect x="320" y="35" width="115" height="40" rx="10" fill="#ddd"/><text x="377" y="52">⏱️ 25 a 45</text><text x="377" y="68">segundos</text>
+      <path d="M438 55 L470 55" stroke="#333" stroke-width="3" marker-end="url(#fc5)"/>
+      <rect x="475" y="35" width="80" height="40" rx="10" fill="#bfe6ff"/><text x="515" y="52">vuelve a</text><text x="515" y="68">ser escalón</text>
+      <path d="M515 80 Q515 105 280 105 Q67 105 67 80" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#fc5)"/>
+    </svg>
+  </div>
+
+  <h3>Los scripts de esta clase</h3>
+  <a class="enlace codigo" href="../codigo/trampas.html"><span class="emoji">🧱</span><span><b>Trampas</b> (Script) — ¡nuevo!<br>Bloques trampa, dado y dificultad.</span></a>
+  <a class="enlace codigo" href="../codigo/script-gusano.html"><span class="emoji">🐛</span><span><b>Gusanos</b> (Script) — cambió<br>Lee la dificultad: más gusanos y más seguido.</span></a>
+  <a class="enlace codigo" href="../codigo/objetos.html"><span class="emoji">🥕</span><span><b>Objetos</b> (Script) — cambió<br>Ya no tiene el agujero negro.</span></a>
+
+  <h3>Palabras nuevas</h3>
+  <ul>
+    <li><b>Hitbox</b>: la caja que detecta si algo te tocó.</li>
+    <li><b>GetPartsInPart</b>: "partes adentro de la parte". Le pregunta a Roblox qué está tocando un bloque.</li>
+    <li><b>Atributo</b>: un dato con nombre que le pegás a cualquier cosa. Ej.: <code>Dificultad</code> en TorreEspacio.</li>
+  </ul>
+
+  <h3>Desafíos para practicar 💪</h3>
+  <div class="reto">⭐ <b>Fácil:</b> En Trampas, cambiá <code>PROB_ATRAS = 2 / 3</code> por <code>1 / 2</code>. ¿El dado ahora es más bueno o más malo?</div>
+  <div class="reto">⭐ <b>Fácil:</b> Cambiá <code>TRAMPAS_AL_EMPEZAR = 8</code> por <code>20</code>. Probá el juego: ¿se puede subir?</div>
+  <div class="reto">⭐⭐ <b>Medio:</b> En <code>TRAMPAS.Jenga</code>, cambiá <code>angulo += 90</code> por <code>angulo += 45</code>. ¿Cómo gira ahora?</div>
+  <div class="reto">⭐⭐⭐ <b>Difícil:</b> Leé <code>elegirEscalon</code> y explicale al tío por qué nunca hay dos trampas pegadas.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

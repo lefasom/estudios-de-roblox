@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logros, misiones y tienda — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="codigo/logros-y-tienda.html">
+<div class="hoja">
+  <h2>🏅 Logros, misiones y tienda</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="../antes/la-lista.html">La lista</a>, <a href="funciones-con-datos.html">Funciones 2</a> y <a href="mejoras.html">Niveles y 💰</a>.</div>
+
+  <h3>La economía del juego 💰</h3>
+  <p>El <b>💰</b> sirve para <a href="mejoras.html">mejorar</a> el bate, el golpe, el salto y el globo. ¿De dónde sale?</p>
+  <div class="dibujo">
+    <svg width="560" height="170" viewBox="0 0 560 170" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <defs><marker id="fe" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <text x="80" y="30">🗼 llegar arriba</text>
+      <a href="#misiones"><text x="80" y="65">📜 misiones</text></a>
+      <a href="#logros"><text x="80" y="100">🏅 logros</text></a>
+      <a href="#tienda"><text x="80" y="135">🛒 tienda (Robux)</text></a>
+      <path d="M150 28 L240 75" stroke="#333" stroke-width="2" marker-end="url(#fe)"/>
+      <path d="M150 62 L240 80" stroke="#333" stroke-width="2" marker-end="url(#fe)"/>
+      <path d="M150 97 L240 88" stroke="#333" stroke-width="2" marker-end="url(#fe)"/>
+      <path d="M160 132 L240 95" stroke="#333" stroke-width="2" marker-end="url(#fe)"/>
+      <circle cx="285" cy="85" r="40" fill="#ffd728"/><text x="285" y="92" font-size="22">💰</text>
+      <path d="M330 85 L400 85" stroke="#333" stroke-width="3" marker-end="url(#fe)"/>
+      <a href="mejoras.html"><text x="470" y="80" font-size="16">📊 mejoras</text><text x="470" y="100" font-size="11">300 × (nivel + 1)</text></a>
+    </svg>
+  </div>
+
+  <h3 id="lista">1. La lista (ReplicatedStorage → ListaLogros) 📋</h3>
+  <p>Es un <b>ModuleScript</b> con tres tablas: <code>LOGROS</code>, <code>MISIONES</code> y <code>TIENDA</code>. Está en <b>ReplicatedStorage</b> porque la leen <b>los dos</b>: el servidor (que da los premios) y tu compu (que dibuja los menús).</p>
+<pre>{id = "Bateador", nombre = "🏏 Bateador", texto = "Mareá 10 gusanos", cosa = "Mareos", meta = 10, premio = 500},</pre>
+  <div class="tip">💡 ¿Querés un logro nuevo? Copiá una fila, cambiale el <code>id</code>, el nombre, la <code>meta</code> y el <code>premio</code>. ¡Listo!</div>
+
+  <h3 id="logros">2. El contador (ServerScriptService → Logros) 🏅</h3>
+  <p>Otros scripts le avisan cuando hacés algo. Por ejemplo, el bate en <a href="juguetes.html">Juguetes</a>:</p>
+<pre>Juguetes.aturdir(gusano, mareo)
+Logros.sumar(jugador, "Mareos", 1)   -- 🏅 para logros y misiones</pre>
+  <table class="tabla"><tr><th>Quién avisa</th><th>Qué cuenta</th></tr>
+    <tr><td><a href="partida.html">Partida</a></td><td>Vueltas, Comidas, Mejoras, Rapido, Campeon, ConNieve, ConTormenta</td></tr>
+    <tr><td><a href="juguetes.html">Juguetes</a></td><td>Mareos, Globos</td></tr>
+    <tr><td><a href="trampas.html">Trampas</a></td><td>Dados, DadosBuenos, Trampas</td></tr>
+    <tr><td><a href="paraguas.html">Paraguas</a></td><td>Paraguas</td></tr>
+    <tr><td>Logros (solo)</td><td>Escalon: cada segundo mira en qué escalón estás</td></tr>
+  </table>
+  <p>Después de sumar, <code>revisar</code> se fija si llegaste a la <b>meta</b>. Si llegaste: te da el 💰, te muestra un cartel y lo anota en <code>hechos</code> (así no lo ganás dos veces).</p>
+
+  <h3 id="misiones">3. Las misiones 📜</h3>
+  <p>Tenés <b>3 misiones a la vez</b>, elegidas al azar. Cuando cumplís una, cobrás y aparece <b>otra nueva</b>. Las misiones son más chiquitas que los logros, pero nunca se acaban.</p>
+
+  <h3 id="tienda">4. La tienda con Robux 🛒</h3>
+  <ol class="camino">
+    <li>Tocás un botón en el menú 🛒. El LocalScript <b>MenuLogros</b> llama a <code>PromptProductPurchase</code>: Roblox muestra su ventana de compra.</li>
+    <li>Si comprás, Roblox llama a <code>ProcessReceipt</code> ("procesar el recibo") en el Script <b>Tienda</b>.</li>
+    <li>Tienda llama a <code>Partida.comprarConRobux</code>: te da la poción o el 💰 y <b>guarda</b>.</li>
+    <li>Si salió bien, contesta <code>PurchaseGranted</code> ("compra entregada"). Si no, Roblox vuelve a probar más tarde.</li>
+  </ol>
+  <div class="ojo">🧾 Cada compra tiene un <b>número de recibo</b>. Lo guardamos, así nunca te damos lo mismo dos veces.</div>
+  <p><b>Las pociones</b> 🧪 duran <b>3 llegadas</b>: x2 Victorias hace que cada llegada valga 2 victorias. x2 💰 te da el doble de 💰 (pero <b>no</b> cambia tu récord de la tabla: eso es justo para todos).</p>
+<pre>if d.pocionPuntos &gt; 0 then ganaAhorro = puntos * 2; d.pocionPuntos -= 1 end
+if d.pocionVictorias &gt; 0 then ganaVictorias = 2; d.pocionVictorias -= 1 end</pre>
+  <div class="tip">💡 En Studio las compras son <b>de prueba</b>: no se gasta Robux de verdad.</div>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>

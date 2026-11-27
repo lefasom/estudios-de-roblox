@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloques trampa y el dado — Mi libro de Roblox</title>
+<link rel="stylesheet" href="../estilo.css">
+</head>
+<body data-pagina="construir/trampas.html">
+<div class="hoja">
+  <h2>🧱 Bloques trampa y el dado 🎲</h2>
+  <div class="necesitas">🧭 <b class="t">Antes de esto tenés que conocer:</b> <a href="../antes/la-lista.html">La lista</a>, <a href="../antes/las-caracteristicas.html">Las características</a> y <a href="bloque.html">Hacer un bloque</a>.</div>
+  <p>Las trampas <b>no son bloques nuevos</b>: el script agarra un <b>escalón</b> de la torre y lo <b>cambia</b> por un rato. Después lo deja como era y elige <b>otro escalón al azar</b>. ¡Por eso nunca están en el mismo lugar!</p>
+
+  <h3>Las 4 trampas (tocá cada una)</h3>
+  <div class="dibujo">
+    <svg width="560" height="170" viewBox="0 0 560 170" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <a href="../codigo/trampas.html#rompe">
+        <rect x="15" y="60" width="110" height="22" fill="#aadcff" stroke="#6aa" stroke-dasharray="6 3"/>
+        <text x="70" y="40" font-size="24">🧊</text><text x="70" y="110" font-weight="700">Se rompe</text>
+        <text x="70" y="130" font-size="11">vidrio celeste</text><text x="70" y="146" font-size="11">¡pasá rápido!</text></a>
+      <a href="../codigo/trampas.html#cae">
+        <rect x="155" y="60" width="110" height="22" fill="#c8503c"/>
+        <text x="210" y="40" font-size="24">⬇️</text><text x="210" y="110" font-weight="700">Se cae</text>
+        <text x="210" y="130" font-size="11">metal rojo, titila</text><text x="210" y="146" font-size="11">¡saltá antes!</text></a>
+      <a href="../codigo/trampas.html#elevador">
+        <rect x="295" y="60" width="110" height="22" fill="#7896be"/>
+        <path d="M350 30 L350 52 M350 90 L350 100" stroke="#333" stroke-width="3"/>
+        <text x="350" y="40" font-size="24">↕️</text><text x="350" y="118" font-weight="700">Elevador</text>
+        <text x="350" y="138" font-size="11">sube y baja</text><text x="350" y="154" font-size="11">con un patrón</text></a>
+      <a href="../codigo/trampas.html#jenga">
+        <rect x="430" y="64" width="120" height="14" fill="#d7aa6e" transform="rotate(25 490 71)"/>
+        <text x="490" y="40" font-size="24">🔄</text><text x="490" y="110" font-weight="700">Jenga</text>
+        <text x="490" y="130" font-size="11">tabla larga de madera</text><text x="490" y="146" font-size="11">gira de golpe</text></a>
+    </svg>
+  </div>
+
+  <h3>Hacer una trampa a mano (para practicar)</h3>
+  <ol class="camino">
+    <li>En <b>la lista</b>, abrí <b>Workspace → TorreEspacio → Escalones</b> y elegí un escalón.</li>
+    <li>Apretá <b>Ctrl + D</b> para hacer una copia. Movela al costado para probar.</li>
+    <li>En <b>las características</b>, cambiá <b>Material</b> a <b>Glass</b> y <b>Color</b> a celeste: ya parece la trampa que se rompe 🧊.</li>
+    <li>Para la Jenga 🔄: cambiá <b>Size</b> a algo largo y finito, por ejemplo <code>9, 1, 2</code>, y <b>Material</b> a <b>Wood</b>.</li>
+    <li>Que se <b>mueva</b> o se <b>rompa</b> eso lo hace el <a href="../codigo/trampas.html">script Trampas</a>. A mano solo armás cómo se ve.</li>
+  </ol>
+
+  <h3>El dado 🎲</h3>
+  <p>Es un <b>cubo blanco</b> con puntitos negros, que flota en un <b>costado</b> del escalón (nunca en el medio). Lo podés esquivar o agarrar a propósito.</p>
+  <div class="dibujo">
+    <svg width="560" height="120" viewBox="0 0 560 120" font-family="Segoe UI, Arial" font-size="13" text-anchor="middle">
+      <defs><marker id="fd" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
+      <a href="../codigo/trampas.html#dado"><rect x="30" y="25" width="50" height="50" rx="6" fill="#fff" stroke="#333" stroke-width="2"/>
+      <circle cx="45" cy="40" r="5"/><circle cx="55" cy="50" r="5"/><circle cx="65" cy="60" r="5"/>
+      <text x="55" y="100">lo tocás</text></a>
+      <path d="M95 50 L140 50" stroke="#333" stroke-width="3" marker-end="url(#fd)"/>
+      <text x="185" y="55" font-size="26">🌀</text><text x="185" y="100">gira 1 segundo</text>
+      <path d="M225 40 L290 25" stroke="#333" stroke-width="3" marker-end="url(#fd)"/>
+      <path d="M225 60 L290 80" stroke="#333" stroke-width="3" marker-end="url(#fd)"/>
+      <text x="400" y="30" fill="#c00">⬇️ −1 a −6 (2 de cada 3 veces) 💨 humo</text>
+      <text x="400" y="90" fill="#080">⬆️ +1 a +6 (1 de cada 3 veces) ⭐ luz de estrella</text>
+    </svg>
+  </div>
+  <div class="tip">🎯 El dado tiene una <b>hitbox exacta</b> (hitbox = "caja que detecta el toque"). Solo cuenta si tu cuerpo toca <b>de verdad</b> el cubo. Si pasás cerquita y no lo tocás, no pasa nada.</div>
+
+  <a class="enlace codigo" href="../codigo/trampas.html"><span class="emoji">🧠</span><span><b>¿Cómo funciona por dentro?</b><br>Script Trampas (ServerScriptService).</span></a>
+</div>
+<script src="../nav.js"></script>
+</body>
+</html>
